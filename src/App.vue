@@ -31,17 +31,20 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 <style lang="scss">
   header{
+    padding: 1rem;
     nav{
-      width: 80%;
+      width: 90%;
       margin:auto;
       display: flex;
       justify-content: space-between;
-      .home{
-        padding: 1rem;
-      }
       a{
-        padding: 1rem;
+        font-size: 18px;
+        padding: 1.5rem;
         display: block;
+        color: $dark-blue-primary;
+      }
+      a:hover{
+        color:$light-blue-primary;
       }
       ul{
         display: flex;
