@@ -8,12 +8,15 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+figure, figcaption, footer, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	font-size: 100%;
-	font-family: Montserrat, sans-serif;;
+	font-size: 100%;	
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	vertical-align: baseline;
+	border: 0;
+	padding: 0;
+	margin: 0;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 

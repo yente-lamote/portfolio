@@ -1,5 +1,12 @@
-$dark-blue-primary:#002B5B;
-$dark-blue-secundary: #002b40;
-$light-blue-primary: #80d6ff;
-$light-blue-secundary: #bfeaff;
+@import "reset";
+
+$blue:#1D53FF;
+$dark-blue:#31333A;
+$orange: #FB8500;
 $white: #ffffff;
+$background-color: #F5F9FF;
+$grey:#A0A0A0;
+$light-blue:#A5B4FF;
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
