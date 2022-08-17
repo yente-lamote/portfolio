@@ -65,7 +65,6 @@ export default{
     width: 80vw;
     margin: auto;
     padding:1rem;
-    font-weight: bold;
     nav{
       margin:auto;
       display: flex;
@@ -73,8 +72,10 @@ export default{
       justify-content: space-between;
       vertical-align: center;
       .home{
-        font-size: 2.8rem;
+        font-size: 2.4rem;
         margin:0;
+        color: $dark-blue;
+        font-weight: bold;
         span{
           color: $blue;
           border-radius: 25%;
@@ -86,16 +87,24 @@ export default{
       .resume{
         background-color: $blue;
         color:white;
+        -webkit-transition: background-color 0.1s linear;
+        -ms-transition: background-color 0.1s linear;
+        transition: background-color 0.1s linear;
+        margin-left: 1rem;
+        padding:0.7rem 1.5rem;
       }
       .resume:hover{
-        background-color: $light-blue;
+        color:white;
+        background-color:#4d78ff;
+        margin-top:0px;
       }
       li{
         display: flex;
         flex-direction: column;
         justify-content: center;
         position: relative;
-        margin-left: 1.4rem;
+        margin-left: 1rem;
+        padding: 0 0.3rem;
         .dot {
           height: 0.3rem;
           width: 0.3rem;
@@ -114,12 +123,14 @@ export default{
       }
       a{
         border-radius: 10px;
-        font-size: 19px;
-        padding:0.8rem 1.5rem;
-        color: $dark-blue;
+        font-size: 1em;
+        padding:0.7rem 1rem;
+        color: $grey;
+        font-weight: 600;
       }
       a:hover{
         margin-top: -2px;
+        color:$dark-blue;
       }
       a:hover + .dot{
         visibility: visible;
@@ -129,6 +140,7 @@ export default{
         display: flex;
         overflow: hidden;
         transition: max-height 0.2s  linear;
+        margin-top:8px;
       }
       .hamburger{
         display: none;
@@ -141,6 +153,10 @@ export default{
         padding: 0.5rem;
         cursor: pointer;
         font: inherit;
+      }
+      #burgericon{
+        margin-top: 8px;
+        height: auto;
       }
       #burgericon.open .frstbar {
         -webkit-transform: rotate(45deg);
@@ -183,6 +199,9 @@ export default{
       flex-direction: column;
       margin-left: 1rem !important;
       max-height: 0px;
+      li{
+        width: 88vw;
+      }
     }
     .open{
       max-height: 200px;
