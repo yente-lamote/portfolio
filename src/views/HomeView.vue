@@ -27,7 +27,8 @@ export default{
   
   #home-container{
     width:86%;
-    margin: 3em auto;
+    padding: 3em 0;
+    margin: 1em auto;
     display: flex;
     vertical-align: center;
     justify-content: center;

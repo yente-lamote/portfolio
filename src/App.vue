@@ -16,7 +16,7 @@ import HomeView from "./views/HomeView.vue";
   #right-corner{
     position: absolute;
     z-index: -1;
-    right: -0.2rem;
+    right:0;
     width:15rem;
     margin-top:-0.2rem;
   }
