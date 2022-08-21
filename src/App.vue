@@ -1,18 +1,26 @@
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
 import Header from "./components/Header.vue"
 import HomeView from "./views/HomeView.vue";
+import TopRightBars from "./components/svg's/TopRightBars.vue";
+import DotsNav from './components/DotsNav.vue';
 </script>
 <template>
-  <img id="left-corner" src="@/assets/images/left-corner.png">
-  <img id="right-corner" src="@/assets/images/right-corner.png">
-  <img id="background" src="@/assets/images/background.png">
+  <TopRightBars></TopRightBars>
+  <DotsNav></DotsNav>
   <Header></Header>
   <main>
     <HomeView></HomeView>
   </main>
+   
 </template>
 <style lang="scss">
+  #app{
+    height: 100%;
+  }
+  body{
+    background: linear-gradient(#002D40 60%, #001720);
+    height: 100vh;
+  }
   #right-corner{
     position: absolute;
     z-index: -1;
@@ -35,15 +43,11 @@ import HomeView from "./views/HomeView.vue";
   }
   main{
     width: 80vw;
-    margin:auto
+    margin:auto;
+    height: 100vh;
+    position:relative;
   }
   @media screen and (max-width: 800px) {
-    #right-corner{
-      visibility: hidden;
-    }
-    #left-corner{
-      visibility: hidden;
-    }
     main{
       width: 100%;
     }

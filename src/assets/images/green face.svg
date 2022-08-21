@@ -1,6 +1,5 @@
-<template lang="">
-    <div>
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 495.45 563.04">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 495.45 563.04">
   <defs>
     <pattern id="baard" x="0" y="0" width="20" height="20" patternTransform="translate(-439.98 674.01)" patternUnits="userSpaceOnUse" viewBox="0 0 20 20">
       <g>
@@ -156,13 +155,3 @@
     </g>
   </g>
 </svg>
-    </div>
-</template>
-<script>
-export default {
-    
-}
-</script>
-<style lang="">
-    
-</style>

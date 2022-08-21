@@ -5,25 +5,27 @@
         <button class="hamburger" v-on:click="handleHamburger" v-bind:class="{open:isOpen}">
           <svg id="burgericon" xmlns="http://www.w3.org/2000/svg" v-bind:class="{open:isOpen}" width="35" height="30">
             <g class="icon">
-              <rect class="frstbar" :x="firstX" :y="firstY" width="30" height="4" rx="3" ry="3" fill="#414141"/>
-              <rect class="scndbar" x="2" y="12" width="30" height="4" rx="3" ry="3" fill="#414141"/>
-              <rect class="thrdbar" :x="thirdX" :y="thirdY" width="30" height="4" rx="3" ry="3" fill="#414141"/>
+              <rect class="frstbar" :x="firstX" :y="firstY" width="30" height="4" rx="3" ry="3" fill="#FFFFFF"/>
+              <rect class="scndbar" x="2" y="12" width="30" height="4" rx="3" ry="3" fill="#FFFFFF"/>
+              <rect class="thrdbar" :x="thirdX" :y="thirdY" width="30" height="4" rx="3" ry="3" fill="#FFFFFF"/>
             </g>
           </svg>
         </button>        
         <ul v-bind:class="{open:isOpen}">
-          <li>
-            <RouterLink to="/about">about</RouterLink>
-            <span class="dot"></span>
-          </li>
-          <li>
-            <RouterLink to="/projects">projects</RouterLink>
-            <span class="dot"></span>
-          </li>
-          <li>
-            <RouterLink to="/contact">contact</RouterLink>
-            <span class="dot"></span>
-          </li>
+          <div>
+            <li>
+              <RouterLink to="/about">about</RouterLink>
+              <span class="dot"></span>
+            </li>
+            <li>
+              <RouterLink to="/projects">projects</RouterLink>
+              <span class="dot"></span>
+            </li>
+            <li>
+              <RouterLink to="/contact">contact</RouterLink>
+              <span class="dot"></span>
+            </li>
+          </div>
           <li>
             <RouterLink class="resume" to="/resume">resume</RouterLink>
           </li>
@@ -62,85 +64,94 @@ export default{
 </script>
 <style lang="scss">
   header{
-    width: 80vw;
-    margin: auto;
-    padding:1rem;
+    padding:0.2rem;
+    position: fixed;
+    width: 100%;
     nav{
+      width: 80vw;
+      margin: auto;
       margin:auto;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
       vertical-align: center;
       .home{
         font-size: 2.4rem;
         margin:0;
-        color: $dark-blue;
+        color: $white;
         font-weight: bold;
         span{
-          color: $blue;
+          color: $pink;
           border-radius: 25%;
         }
       }
       .home:hover{
         margin-top:0px;
+        color: $grey;
       }
       .resume{
-        background-color: $blue;
+        background-color: $pink;
         color:white;
-        -webkit-transition: background-color 0.1s linear;
-        -ms-transition: background-color 0.1s linear;
-        transition: background-color 0.1s linear;
         margin-left: 1rem;
         padding:0.7rem 1.5rem;
       }
       .resume:hover{
-        color:white;
-        background-color:#4d78ff;
-        margin-top:0px;
-      }
-      li{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        position: relative;
-        margin-left: 1rem;
-        padding: 0 0.3rem;
-        .dot {
-          height: 0.3rem;
-          width: 0.3rem;
-          background-color: $blue;
-          border-radius: 49%;
-          position: absolute;
-          bottom: 0px;
-          left: 50%;
-          visibility: hidden;
-          -webkit-transition: all 0.1s linear;
-          -moz-transition: all 0.1s linear;
-          -ms-transition: all 0.1s linear;
-          -o-transition: all 0.1s linear;
-          transition: all 0.1s linear;  
-        }
-      }
-      a{
-        border-radius: 10px;
-        font-size: 1em;
-        padding:0.7rem 1rem;
-        color: $grey;
-        font-weight: 600;
-      }
-      a:hover{
-        margin-top: -2px;
-        color:$dark-blue;
-      }
-      a:hover + .dot{
-        visibility: visible;
-        bottom: 7px;
+        background-color: $light-pink;
+        margin-top: -7px;
+        
       }
       ul{
+        justify-content: space-between;
         display: flex;
         overflow: hidden;
         transition: max-height 0.2s  linear;
         margin-top:8px;
+        flex-grow: 1;
+        div{
+          display: flex;
+        }
+        li{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          position: relative;
+          padding: 0 0.3rem;
+          .dot {
+            height: 0.3rem;
+            width: 0.3rem;
+            background-color: $pink;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            visibility: hidden;
+            -webkit-transition: all 0.1s linear;
+            -moz-transition: all 0.1s linear;
+            -ms-transition: all 0.1s linear;
+            -o-transition: all 0.1s linear;
+            transition: all 0.1s linear;  
+          }
+        }
+      }     
+      }
+      a{
+        border-radius: 10px;
+        font-size: 1em;
+        padding:0.75rem 1.5rem;
+        color: $grey;
+        font-weight: 600;
+        -webkit-transition: all 0.1s linear;
+        -moz-transition: all 0.1s linear;
+        -ms-transition: all 0.1s linear;
+        -o-transition: all 0.1s linear;
+        transition: all 0.1s linear;  
+      }
+      a:hover{
+        margin-top: -2px;
+        color:$white;
+      }
+      a:hover + .dot{
+        visibility: visible;
+        bottom: 7px;
       }
       .hamburger{
         display: none;
@@ -148,6 +159,7 @@ export default{
         margin-right: 1em;
         margin-top: auto;
         margin-bottom: auto;
+        margin-left: auto;
         background: none;
         border: none;
         padding: 0.5rem;
@@ -178,7 +190,6 @@ export default{
         -o-transition: all 0.35s linear;
         transition: all 0.35s linear;
       }
-    }
   }
 
   @media screen and (max-width: 1024px) {
@@ -193,26 +204,38 @@ export default{
       padding: 0 0.5rem;
       margin-top: 0.5rem;
       padding-bottom: 0.6rem;
-    }
-    ul{
-      flex-basis: 100%;
-      flex-direction: column;
-      margin-left: 1rem !important;
-      max-height: 0px;
-      li{
-        width: 88vw;
+      nav{
+        ul{
+          flex-basis: 100%;
+          flex-direction: column;
+          margin-left: 1rem !important;
+          max-height: 0px;
+          div{
+            flex-direction: column;
+          }
+          li{
+            width: 88vw;
+            a{
+              padding-left: 0.5rem;
+            }
+          }
+          .resume{
+          background-color: $pink !important;
+          color: $dark-blue !important;
+          margin-left:0.5rem;
+          }
+        }
       }
     }
+    
     .open{
       max-height: 200px;
+      margin-top: -5px;
     }
     .hamburger{
       display: flex !important;
     }
-    .resume{
-      background-color: white !important;
-      color: $dark-blue !important;
-    }
+    
     .dot{
       display: none;
     }
