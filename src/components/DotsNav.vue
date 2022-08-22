@@ -1,29 +1,63 @@
 <template lang="">
     <ul id="dots-nav">
         <li>
-            <RouterLink to="/" class="dot active" ></RouterLink>
+            <RouterLink 
+                @mouseover="onMouseOver"
+                @mouseleave="onMouseleave"
+                to="/" class="dot">
+            </RouterLink>
         </li>
         <li>
-            <RouterLink to="/about" class="dot"></RouterLink>
+            <RouterLink 
+                @mouseover="onMouseOver"
+                @mouseleave="onMouseleave"
+                to="/about" class="dot">
+            </RouterLink>
         </li>
         <li>
-            <RouterLink to="/projects" class="dot"></RouterLink>
+            <RouterLink 
+                @mouseover="onMouseOver"
+                @mouseleave="onMouseleave"
+                to="/projects" class="dot">
+                </RouterLink>
         </li>
         <li>
-            <RouterLink to="/contact" class="dot"></RouterLink>
+            <RouterLink 
+                @mouseover="onMouseOver"
+                @mouseleave="onMouseLeave"
+                to="/contact" class="dot">
+            </RouterLink>
         </li>
   </ul>
+  <div id="scroll-indicator-container">
+        <div class="scroll-indicator"></div>
+        <span>scroll</span>
+    </div>
 </template>
 <script>
+
 export default {
-    
+    data(){
+        return{
+            hideActive:false
+        }
+    },
+    methods: {
+      onMouseOver () {
+        this.hideActive=true
+      },
+      onMouseleave () {
+        this.hideActive=false
+      }
+    },
+
 }
 </script>
 <style lang="scss">
     #dots-nav{
         display: flex;
         flex-direction: column;
-        position: fixed;
+        position: absolute;
         height: 7em;
         transform: translateY(-50%);
         margin-left: 7vw;
@@ -47,13 +81,63 @@ export default {
             }
             .dot:hover{
                 background-color: $light-pink;
-                height: 1rem;
-                width: 1rem;
+                
             }
-            .active{
+            .router-link-active{
                 background-color: $pink;
             }
         }
-        
+    }
+
+    #scroll-indicator-container{
+        transform: translateX(-50%);
+        color: $grey;
+        position: absolute;
+        margin-left:7vw;
+        bottom:5vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        span{
+            line-height: 2rem;
+        }
+    }
+
+    .scroll-indicator:before{
+        position: absolute;
+        left: 50%;
+    }
+    
+
+    .scroll-indicator{
+        position: relative;
+        width: 20px;
+        height: 40px;
+        top: 50%;
+        box-shadow: inset 0 0 0 1px $grey;
+        border-radius: 20px;
+    }
+
+    .scroll-indicator:before{
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: $grey;
+        margin-left: -3px;
+        top: 8px;
+        border-radius: 4px;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-name: scroll;
+    }
+
+    @keyframes scroll{
+        0%{
+            opacity: 1
+        }
+        100%{
+            opacity: 0;
+            transform: translateY(18px);
+        }
     }
 </style>

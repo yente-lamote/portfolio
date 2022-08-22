@@ -1,7 +1,7 @@
 <template lang="">
     <header>
     <nav>
-        <RouterLink class="home" to="/">Yente<span>.</span></RouterLink>
+        <RouterLink id="home-button" to="/">Yente<span>.</span></RouterLink>
         <button class="hamburger" v-on:click="handleHamburger" v-bind:class="{open:isOpen}">
           <svg id="burgericon" xmlns="http://www.w3.org/2000/svg" v-bind:class="{open:isOpen}" width="35" height="30">
             <g class="icon">
@@ -14,20 +14,19 @@
         <ul v-bind:class="{open:isOpen}">
           <div>
             <li>
-              <RouterLink to="/about">about</RouterLink>
+              <RouterLink to="/about" class="page-link">About</RouterLink>
               <span class="dot"></span>
             </li>
             <li>
-              <RouterLink to="/projects">projects</RouterLink>
+              <RouterLink to="/projects" class="page-link">Projects</RouterLink>
               <span class="dot"></span>
             </li>
             <li>
-              <RouterLink to="/contact">contact</RouterLink>
-              <span class="dot"></span>
+              <RouterLink to="/contact" class="page-link">Contact</RouterLink>
             </li>
           </div>
           <li>
-            <RouterLink class="resume" to="/resume">resume</RouterLink>
+            <RouterLink class="resume" to="/">Resume</RouterLink>
           </li>
         </ul>
     </nav>
@@ -67,6 +66,7 @@ export default{
     padding:0.2rem;
     position: fixed;
     width: 100%;
+    z-index:2;
     nav{
       width: 80vw;
       margin: auto;
@@ -74,17 +74,18 @@ export default{
       display: flex;
       flex-wrap: wrap;
       vertical-align: center;
-      .home{
+      #home-button{
         font-size: 2.4rem;
-        margin:0;
         color: $white;
         font-weight: bold;
+        padding:0.75rem 0;
+        margin-right:1.5rem;
         span{
           color: $pink;
           border-radius: 25%;
         }
       }
-      .home:hover{
+      #home-button:hover{
         margin-top:0px;
         color: $grey;
       }
@@ -115,15 +116,41 @@ export default{
           justify-content: center;
           position: relative;
           padding: 0 0.3rem;
-          .dot {
+          .router-link-active{
+            color:$white;
+          }
+          a{
+            border-radius: 10px;
+            font-size: 1em;
+            padding:0.75rem 1.5rem;
+            color: $grey;
+            font-weight: 600;
+            -webkit-transition: all 0.1s linear;
+            -moz-transition: all 0.1s linear;
+            -ms-transition: all 0.1s linear;
+            -o-transition: all 0.1s linear;
+            transition: all 0.1s linear;  
+          }
+          a:hover{
+            margin-top: -2px;
+            color:$white;
+          }
+          .page-link:hover::after{
+            visibility: visible;
+            bottom: 7px;
+          }
+          .page-link::after {
+            content: '';
+            z-index: 4;
             height: 0.3rem;
             width: 0.3rem;
             background-color: $pink;
+            color: $pink;
             border-radius: 50%;
+            visibility: hidden;
             position: absolute;
             bottom: 0px;
             left: 50%;
-            visibility: hidden;
             -webkit-transition: all 0.1s linear;
             -moz-transition: all 0.1s linear;
             -ms-transition: all 0.1s linear;
@@ -133,26 +160,7 @@ export default{
         }
       }     
       }
-      a{
-        border-radius: 10px;
-        font-size: 1em;
-        padding:0.75rem 1.5rem;
-        color: $grey;
-        font-weight: 600;
-        -webkit-transition: all 0.1s linear;
-        -moz-transition: all 0.1s linear;
-        -ms-transition: all 0.1s linear;
-        -o-transition: all 0.1s linear;
-        transition: all 0.1s linear;  
-      }
-      a:hover{
-        margin-top: -2px;
-        color:$white;
-      }
-      a:hover + .dot{
-        visibility: visible;
-        bottom: 7px;
-      }
+      
       .hamburger{
         display: none;
         text-align: center;
@@ -204,25 +212,33 @@ export default{
       padding: 0 0.5rem;
       margin-top: 0.5rem;
       padding-bottom: 0.6rem;
+      background-color: $blue-100;
+      margin-top:0;
       nav{
         ul{
           flex-basis: 100%;
           flex-direction: column;
-          margin-left: 1rem !important;
+          margin-top: -5px;
+          margin-left: -0.5rem;
           max-height: 0px;
           div{
             flex-direction: column;
+            li{
+              a{
+                padding: 0.7 1.5rem;
+              }
+              .page-link::after{
+                display: none;
+              }
+              
           }
-          li{
-            width: 88vw;
-            a{
-              padding-left: 0.5rem;
-            }
           }
+          
           .resume{
           background-color: $pink !important;
           color: $dark-blue !important;
-          margin-left:0.5rem;
+          margin-left:0;
+          margin-bottom: 15px;
           }
         }
       }
@@ -230,11 +246,14 @@ export default{
     
     .open{
       max-height: 200px;
-      margin-top: -5px;
     }
-    .hamburger{
-      display: flex !important;
+    header{
+      .hamburger{
+        display: flex;
+        margin-right: 0;
+      }
     }
+    
     
     .dot{
       display: none;
@@ -242,7 +261,7 @@ export default{
     a:hover{
         margin-top: 0 !important;
     }
-    .home{
+    #home-button{
       font-size: 2rem !important;
     }
     a{

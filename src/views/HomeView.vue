@@ -10,17 +10,17 @@
     <aside id="face-wrapper">
         <Face></Face>
     </aside>
-
+    
 </template>
 <script>
 import Face from '../components/Face.vue';
 
 export default {
     components: { Face },
-
 }
 </script>
 <style lang="scss">
+    
     section{
         position: absolute;
         top:50%;
