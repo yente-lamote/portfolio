@@ -44,4 +44,7 @@ export default {
         margin-right: 6em;
         right:0;
     }
+    @media screen and (max-width: 1650px) {
+
+  }
 </style>

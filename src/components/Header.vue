@@ -199,7 +199,14 @@ export default{
         transition: all 0.35s linear;
       }
   }
-
+  @media screen and (max-width: 1650px) {
+    header{
+      nav{
+        width: 90%;
+      }
+    }
+    
+  }
   @media screen and (max-width: 1024px) {
     li{
       margin-left: 0 !important;

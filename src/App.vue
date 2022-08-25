@@ -20,6 +20,7 @@ import DotsNav from './components/DotsNav.vue';
   body{
     background: linear-gradient(#002D40 60%, #001720);
     height: 100vh;
+    overflow-x:hidden
   }
   #right-corner{
     position: absolute;
@@ -46,6 +47,11 @@ import DotsNav from './components/DotsNav.vue';
     margin:auto;
     height: 100vh;
     position:relative;
+  }
+  @media screen and (max-width: 1650px) {
+    main{
+      width: 90%;
+    }
   }
   @media screen and (max-width: 800px) {
     main{

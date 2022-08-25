@@ -41,4 +41,9 @@ export default {
         width: 92vh;
         z-index: -1;
     }
+    @media screen and (max-width: 1650px) {
+      #top-right-bars{
+        transform: translateX(7vw)
+      }
+    } 
 </style>

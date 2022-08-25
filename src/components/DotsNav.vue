@@ -39,7 +39,7 @@
 export default {
     data(){
         return{
-            hideActive:false
+            hideActive:false,
         }
     },
     methods: {
@@ -50,7 +50,13 @@ export default {
         this.hideActive=false
       }
     },
-
+    // doe met animatie 
+    //watch:{
+    //     $route (to, from){
+    //         this.showScroll = to.name =="home";
+    //         console.log(to)
+    //     }
+    // } 
 }
 </script>
 <style lang="scss">
@@ -73,14 +79,19 @@ export default {
                 width: 0.7rem;
                 background-color: $grey;
                 border-radius: 50%;
+                -webkit-transition: all 0.5s linear;
+                -moz-transition: all 0.5s linear;
+                -ms-transition: all 0.5s linear;
+                -o-transition: all 0.5s linear;
+                transition: all 0.5s linear;          
+            }
+            .dot:hover{
+                background-color: $light-pink;
                 -webkit-transition: all 0.1s linear;
                 -moz-transition: all 0.1s linear;
                 -ms-transition: all 0.1s linear;
                 -o-transition: all 0.1s linear;
-                transition: all 0.1s linear;          
-            }
-            .dot:hover{
-                background-color: $light-pink;
+                transition: all 0.1s linear;    
                 
             }
             .router-link-active{
