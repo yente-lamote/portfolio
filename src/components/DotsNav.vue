@@ -68,6 +68,7 @@ export default {
         transform: translateY(-50%);
         margin-left: 7vw;
         top:50%;
+        z-index: 1;
         li{
             height: 1.5rem;
             width: 1.5rem;
@@ -149,6 +150,26 @@ export default {
         100%{
             opacity: 0;
             transform: translateY(18px);
+        }
+    }
+
+    @media screen and (max-width: 1650px) {
+        #dots-nav{
+            bottom:5vh;
+            flex-direction: row;
+            transform: translateX(-50%);
+            left:50vw;
+            margin-left:0;
+            top:auto;
+            height: auto;
+        }
+        #scroll-indicator-container{
+            margin-left:5vw;
+        }
+    }
+    @media screen and (max-width: 800px) {
+        #scroll-indicator-container{
+            margin-left:10vw;
         }
     }
 </style>

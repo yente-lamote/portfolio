@@ -1,5 +1,5 @@
 <template lang="">
-<svg id="top-right-bars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 987.06 965.85">
+<svg id="top-right-bars" v-if="show" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 987.06 965.85">
   <g>
     <g>
       <rect x="72.37" y="119.71" width="454.54" height="283.58" transform="translate(-97.15 288.47) rotate(-45)" style="fill: #01293a;"/>
@@ -30,7 +30,11 @@
 </template>
 <script>
 export default {
-    
+   data(){
+      return{
+        show:window.innerHeight<window.innerWidth,
+      }
+    },
 }
 </script>
 <style lang="scss">
@@ -43,7 +47,18 @@ export default {
     }
     @media screen and (max-width: 1650px) {
       #top-right-bars{
-        transform: translateX(7vw)
+        transform: translateX(5vw)
       }
     } 
+    @media screen and (max-width: 1300px) {
+      #top-right-bars{
+        transform: translateX(11vw)
+      }
+    }
+    @media screen and (max-width: 800px) {
+      #top-right-bars{
+        display:none;
+      }
+    }
+    
 </style>

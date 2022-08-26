@@ -16,6 +16,8 @@ import DotsNav from './components/DotsNav.vue';
 <style lang="scss">
   #app{
     height: 100%;
+    overflow: hidden;
+    position:relative;
   }
   body{
     background: linear-gradient(#002D40 60%, #001720);

@@ -1,5 +1,5 @@
 <template lang="">
-    <header>
+  <header>
     <nav>
         <RouterLink id="home-button" to="/">Yente<span>.</span></RouterLink>
         <button class="hamburger" v-on:click="handleHamburger" v-bind:class="{open:isOpen}">
@@ -63,7 +63,6 @@ export default{
 </script>
 <style lang="scss">
   header{
-    padding:0.2rem;
     position: fixed;
     width: 100%;
     z-index:2;
@@ -259,12 +258,11 @@ export default{
         display: flex;
         margin-right: 0;
       }
-    }
-    
-    
-    .dot{
+      .dot{
       display: none;
+      }
     }
+    
     a:hover{
         margin-top: 0 !important;
     }

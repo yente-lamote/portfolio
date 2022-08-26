@@ -115,13 +115,16 @@
       <path d="M368.74,267.04s5.2-1.53,6.42-3.57c1.22-2.04,3.57-4.28,1.73-7.54-1.83-3.26-2.85-3.97-2.85-3.97" style="fill: none; stroke: #f1677a; stroke-miterlimit: 10;"/>
       <path d="M377.07,235.32c1.57,3.5,2.89,7.23,3.45,11.04" style="fill: none; stroke: #f1677a; stroke-miterlimit: 10;"/>
       <path d="M361.46,293.2c3.12-24.6,6.25-49.2,9.37-73.8" style="fill: none; stroke: #f1677a; stroke-miterlimit: 10; stroke-width: 2px;"/>
-      <path d="M226.36,336.31s33.13,23.47,73.4,0" style="fill: none; stroke: #001f2d; stroke-miterlimit: 10; stroke-width: 3px;"/>
       <path d="M282.09,284.98c1.08,4.82,.08,11.82-5.87,12.82-4.96,1-8.93,4-13.9,6-6.95-3-13.9-4-19.85-9-2.98-2-.99-8-.99-12,1.99-12,0-23,.99-34.85" style="fill: none; stroke: #001f2d; stroke-miterlimit: 10; stroke-width: 3px;"/>
-      <g id="right_eyebrow" data-name="right eyebrow">
+      
+      <path id="mouth" :d="`M226.36,${mouthY}s33.13,${mouthShape},73.4,0`" style="fill: none; stroke: #001f2d; stroke-miterlimit: 10; stroke-width: 3px;"/>
+
+
+      <g id="right_eyebrow" data-name="right eyebrow" :style="`transform: translateY(${rightEyebrowY}px)`">
         <path d="M355.72,189.91c-1-.68-1.99-1.33-2.93-2.09-.88-.71-1.55-1.52-2.25-2.4-.34-.42-.68-.84-1.02-1.26-.45-.55-.79-.56,0-.28-.7-.25-1.34-.63-1.88-1.09h-66.48s0,46.31,0,46.31h75.96s0-36.13,0-36.13c-.85-.82-1.42-1.89-1.4-3.06Z" style="fill: #fbd09b;"/>
         <path d="M357.37,192.38s-5.27-21.1-21.63-22.15c-16.35-1.05-54.33,11.08-54.33,11.08l3.69,11.08s55.38-21.1,72.26,0Z" style="fill: #001f2d;"/>
       </g>
-      <g id="left_eyebrow" data-name="left eyebrow">
+      <g id="left_eyebrow" data-name="left eyebrow" :style="`transform: translateY(${leftEyebrowY}px)`">
         <path d="M173.81,182.82c-.43,.86-.95,1.71-1.6,2.55-2.18,2.82-6.08,5.14-7.02,8.67-.3,1.13-.87,1.96-1.58,2.54v19.81s74.93,0,74.93,0v-33.57s-64.73,0-64.73,0Z" style="fill: #fbd09b;"/>
         <path d="M163.81,195.59s4.12-20.52,20.09-22.36c15.97-1.84,53.8,7.87,53.8,7.87l-3.07,10.82s-55.33-17.44-70.82,3.67Z" style="fill: #001f2d;"/>
       </g>
@@ -131,11 +134,11 @@
         <path d="M146.86,208.18s11.44-.67,14.57-3.59c8.35-7.75,20.07-11.33,31.25-12.08,17.04-1.14,34.83,1.22,49.25,10.96,.43,.29,2.79-.41,3.28-.47,2.57-.33,5.16-.59,7.75-.77,8.61-.62,17.85-.61,26.19,1.91,0,0,28.7-23.99,67.27-7.85,0,0,19.96,7.85,27.8,8.97v7.85s-8.3,1.79-10.99,16.14c-1.53,8.17-4.84,15.78-10.52,21.93-9.11,9.85-20.75,15.86-34.23,15.96-8.81,.06-17.73-1.99-25.09-6.97-10.25-6.93-14.07-16.86-16.55-23.29-2.94-7.61-3.78-14.39-4.01-18.98,.16-.4,1.6-4.08-.05-5.79-.51-.53-1.27-.82-2.38-1.24-1.46-.55-2.65-.74-2.99-.79-5.11-.78-13.96-.98-17.86,1.24-.42,.24-.78,.51-1.03,.97-.76,1.42,.41,3.44,.97,4.89,.81,2.09,.87,3.62,.63,5.82-.45,4.11-1.2,8.18-2.33,12.15-2.75,9.64-8.18,19.15-17,24.58-10.11,6.22-23.73,9.33-35.57,6.96-10.91-2.18-20.63-9.13-27.52-17.7,0,0-6.5-8.07-9.19-23.99-.47-2.79-1.22-5.98-3.38-7.98-2.19-2.03-5.49-2.02-8.28-2.56v-6.28Z" style="fill: none; stroke: #001f2d; stroke-miterlimit: 10; stroke-width: 2px;"/>
         <path d="M281.96,221.55s2.47-22.32,31.42-23.26c12.82-.42,30.19-.96,38.54,10.73,6.29,8.8,5.5,21.02,1.55,30.6-1.07,2.6-2.4,5.09-4,7.4-13.91,20.05-48.39,20.66-62.19,.09-5.04-7.52-6.11-16.73-5.32-25.57Z" style="fill: #fce3c4; stroke: #001f2d; stroke-miterlimit: 10; stroke-width: 2px;"/>
       </g>
-      <g id="left_eye" data-name="left eye">
+      <g id="left_eye" data-name="left eye" :style="`transform: translateX(${eyeX}px) translateY(${eyeY}px)`">
         <rect x="307.43" y="226.34" width="13.42" height="2.76" rx="1.38" ry="1.38" style="fill: #001f2d; stroke: #001f2d; stroke-miterlimit: 10;"/>
         <circle cx="314.14" cy="215.4" r="6.71" style="fill: none; stroke: #001f2d; stroke-miterlimit: 10; stroke-width: 3px;"/>
       </g>
-      <g id="right_eye" data-name="right eye">
+      <g id="right_eye" data-name="right eye" :style="`transform: translateX(${eyeX}px) translateY(${eyeY}px)`">
         <rect x="200.67" y="226.34" width="13.42" height="2.76" rx="1.38" ry="1.38" style="fill: #001f2d; stroke: #001f2d; stroke-miterlimit: 10;"/>
         <circle cx="207.38" cy="215.35" r="6.71" style="fill: none; stroke: #001f2d; stroke-miterlimit: 10; stroke-width: 3px;"/>
       </g>
@@ -164,13 +167,23 @@ export default {
       return{
         faceRotation:0,
         faceX:0,
-        faceY:0
+        faceY:0,
+
+        rightEyebrowY:0,
+        leftEyebrowY:0,
+
+        eyeX:0,
+        eyeY:0,
+
+        mouthY:0,
+        mouthShape:0
       }
     },
     methods:{
       mouseMove(ev){
         let x=ev.clientX
         let y=ev.clientY
+
         let xPercentage = (window.innerWidth/2-x)/window.innerWidth*2
         let yPercentage = (window.innerHeight/2-y)/window.innerHeight*2
         this.rotation = ((3*xPercentage)*yPercentage)
@@ -178,7 +191,32 @@ export default {
         this.faceY=-15*yPercentage*xPercentage+(yPercentage*1)
         this.faceRotation = ((3*xPercentage)*yPercentage)
 
+        if(xPercentage<0){
+          let tempXPercentage = 0.7*-xPercentage
+          if(tempXPercentage<0){
+            tempXPercentage=0
+          }
+          this.rightEyebrowY = -2-12*tempXPercentage
+          this.leftEyebrowY = -2+5*tempXPercentage
+        }else{
+          if(xPercentage>0.4){
+            this.rightEyebrowY = -2+5*(xPercentage-0.4)
+            this.leftEyebrowY = -2-9*(xPercentage-0.4)
+          }
+        }
+
+        this.eyeX= -xPercentage*6//was 4
+        this.eyeY= -yPercentage*6
+        let mouthExtraY=0
+        let mouthLessenShape=0
+        if(yPercentage<0){
+          mouthExtraY= 7*Math.abs(yPercentage)
+          mouthLessenShape = 10*Math.abs(yPercentage)
+        }
+        this.mouthY=336.31+mouthExtraY
+        this.mouthShape=18.47-mouthLessenShape
       }
+
     },
     mounted(){
       document.addEventListener('mousemove', this.mouseMove)
