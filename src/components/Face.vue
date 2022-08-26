@@ -175,8 +175,8 @@ export default {
         eyeX:0,
         eyeY:0,
 
-        mouthY:0,
-        mouthShape:0
+        mouthY:336.31,
+        mouthShape:18.47
       }
     },
     methods:{

@@ -1,10 +1,16 @@
 <template lang="">
     <div id="homeViewcontainer">
         <section>
-            <h1>
+            <h1 id="h1-desktop">
                 A Full Stack Developer<br>
                 <span>
                     With a passion for <br> solving problems <br> with code
+                </span>
+            </h1>
+            <h1 id="h1-mobile">
+                Yente Lamote<br>
+                <span>
+                    Full Stack Developer
                 </span>
             </h1>
         </section>
@@ -34,6 +40,9 @@ export default {
                 font-size:4.5rem;
                 font-weight: 500;
             }
+        }
+        #h1-mobile{
+            display:none;
         }
     }
     #face-wrapper{
@@ -76,34 +85,44 @@ export default {
         }
     }
     @media screen and (max-width: 800px) {
-        section{ 
-            margin-top: 4em;
+        section{
+            position: relative;
+            z-index: 3;
+            top:auto;
+            transform: none;
+            #h1-desktop{
+                display:none;
+            }
+            #h1-mobile{
+                display:inline-block;
+            }
             h1{
+                content:"test";
                 margin:auto;
-                width: 80vw;
-                font-size:1.5rem;
+                width: 90%;
+                margin-left:10%;
+                font-size:2.5rem;
+                line-height: 2rem;
+                font-weight: 600;
                 color:$white;
-                font-weight: 400;
                 span{
-                    font-size: 1.5rem;
+                    font-size:1.5rem;
                     color:$grey;
                     font-weight:normal;
                 }
             }
         }
-        section{
-            position: relative;
-            top:auto;
-            transform: none;
+        header{
+            background-color: none;
         }
         #face-wrapper{
             position:relative;
-            width: 70vw;
-            margin:auto;
+            width: 150vw;
             transform:none;
+            margin-top: -7.8em;
         }
         #homeViewcontainer{
-            margin-top:5em;
+            margin-top:7em;
             display: flex;
             flex-direction: column-reverse;
         }

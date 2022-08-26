@@ -153,7 +153,7 @@ export default {
         }
     }
 
-    @media screen and (max-width: 1650px) {
+    @media screen and (max-width: 1650px) and (min-width:800px) {
         #dots-nav{
             bottom:5vh;
             flex-direction: row;
@@ -169,7 +169,7 @@ export default {
     }
     @media screen and (max-width: 800px) {
         #scroll-indicator-container{
-            margin-left:10vw;
+            display: none;
         }
     }
 </style>

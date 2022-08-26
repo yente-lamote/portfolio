@@ -1,5 +1,5 @@
 <template lang="">
-  <header>
+  <header v-bind:class="{'background-color-blue':isOpen}">
     <nav>
         <RouterLink id="home-button" to="/">Yente<span>.</span></RouterLink>
         <button class="hamburger" v-on:click="handleHamburger" v-bind:class="{open:isOpen}">
@@ -62,6 +62,9 @@ export default{
 }
 </script>
 <style lang="scss">
+  .background-color-blue{
+    background-color: $blue-100;
+  }
   header{
     position: fixed;
     width: 100%;
@@ -215,12 +218,14 @@ export default{
   @media screen and (max-width: 800px) {
     header{
       width: 100%;
-      padding: 0 0.5rem;
+      padding: 0;
       margin-top: 0.5rem;
       padding-bottom: 0.6rem;
-      background-color: $blue-100;
       margin-top:0;
       nav{
+        width: 100;
+        padding-left: 5%;
+        padding-right: 5%;
         ul{
           flex-basis: 100%;
           flex-direction: column;
@@ -261,6 +266,7 @@ export default{
       .dot{
       display: none;
       }
+      background-color: transparent;
     }
     
     a:hover{
