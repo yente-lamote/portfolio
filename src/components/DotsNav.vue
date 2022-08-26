@@ -87,7 +87,7 @@ export default {
                 transition: all 0.5s linear;          
             }
             .dot:hover{
-                background-color: $light-pink;
+                background-color: $pink;
                 -webkit-transition: all 0.1s linear;
                 -moz-transition: all 0.1s linear;
                 -ms-transition: all 0.1s linear;

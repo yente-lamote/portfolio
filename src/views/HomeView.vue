@@ -100,13 +100,13 @@ export default {
                 content:"test";
                 margin:auto;
                 width: 90%;
-                margin-left:10%;
-                font-size:2.5rem;
-                line-height: 2rem;
+                margin-left:6%;
+                font-size:2.7rem;
+                line-height: 2.2rem;
                 font-weight: 600;
                 color:$white;
                 span{
-                    font-size:1.5rem;
+                    font-size:1.6rem;
                     color:$grey;
                     font-weight:normal;
                 }
