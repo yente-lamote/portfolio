@@ -2,7 +2,7 @@
     <div>
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 495.45 563.04">
   <defs>
-    <pattern id="baard" x="0" y="0" width="20" height="20" patternTransform="translate(-439.98 674.01)" patternUnits="userSpaceOnUse" viewBox="0 0 20 20">
+    <pattern id="beard" x="0" y="0" width="20" height="20" patternTransform="translate(-439.98 674.01)" patternUnits="userSpaceOnUse" viewBox="0 0 20 20">
       <g>
         <rect width="20" height="20" style="fill: none;"/>
         <g>
@@ -106,7 +106,7 @@
   <g id="face" :style="`transform: rotate(${faceRotation}deg) translateX(${faceX}px) translateY(${faceY}px)`">
     <g>
       <path d="M267.18,408.71c-77.67,6.21-112.9-105.58-113.07-108.14-.06-.87-.08-1.31-.08-1.31-1.05-18.99,4.22,27.96-18.46-37.98-22.68-65.93,15.82-32.18,15.3-25.32-.53,6.86,3.16-45.89,3.16-45.89,0,0,14.24-17.41,20.57-51.16,6.33-33.76,39.56-65.93,59.6-66.46,20.04-.53,72.79-6.33,103.38,40.09,13.21,20.04,11.92,29.14,11.92,29.14,.7,17.37,3.61,21.87,6.28,22.55,2.3,.59,9.49-.04,7.12,0,2.64-1.85,5.27-3.69,7.91-5.54,0,4.66,0,9.32,0,13.98v51.16c1.36-5.56,4.93-9.41,8.67-9.61,4.56-.25,7.81,4.97,8.73,6.45,1.57,2.52,4.39,8.38,.53,26.9-1.34,6.43-3.67,15.22-7.91,25.32-2.51,5.96-2.74,9.58-5.8,13.19-4.24,4.99-9.82,7.13-13.59,8.13-.35,6.15-.93,12.7-1.8,19.59-.85,6.72-1.91,13.05-3.07,18.96,0,0-2.41,9.04-8.7,19.78-4.62,7.88-33.57,52.41-80.7,56.18Z" style="fill: #fce3c4; stroke: #f1677a; stroke-miterlimit: 10; stroke-width: 3px;"/>
-      <path d="M155.82,277.22c5.86-2.35,19.24,20.87,22.95,24.63,7.24,7.34,24.13,23.35,35.32,22.23,7.06-.71,18.91-10.03,23.33-15.33,0,0,6.73-8.05,6.73-8.05l-.65-5.03,19.63,8.78,17.08-7.37,8.86,7.37c7.15,5.96,15.59,16.37,25.9,16.92,4.48,.24,18.46-4.05,21.57-7.47,4-4.4,8-8.8,12-13.19l12.64-18.69,2.3-4.79-8.39,59.32s-26.37,62.21-87.13,70.18c-60.76,7.97-97.02-70.18-97.02-70.18-4.93-11.75-9.85-23.51-14.78-35.26-.82-3.83-4.64-22.33-.31-24.06Z" style="fill: url(#baard);"/>
+      <path d="M155.82,277.22c5.86-2.35,19.24,20.87,22.95,24.63,7.24,7.34,24.13,23.35,35.32,22.23,7.06-.71,18.91-10.03,23.33-15.33,0,0,6.73-8.05,6.73-8.05l-.65-5.03,19.63,8.78,17.08-7.37,8.86,7.37c7.15,5.96,15.59,16.37,25.9,16.92,4.48,.24,18.46-4.05,21.57-7.47,4-4.4,8-8.8,12-13.19l12.64-18.69,2.3-4.79-8.39,59.32s-26.37,62.21-87.13,70.18c-60.76,7.97-97.02-70.18-97.02-70.18-4.93-11.75-9.85-23.51-14.78-35.26-.82-3.83-4.64-22.33-.31-24.06Z" style="fill: url(#beard);"/>
       <polyline points="260.55 210.44 262.32 303.81 282.46 293.9 279.78 244.41 275.09 209.54 260.55 210.44 260.55 210.44" style="fill: #fbd09b;"/>
       <path d="M138.39,254.95s-2.5-6.73,1.75-8.42c4.25-1.68-1.24-10.31-1.24-10.31" style="fill: none; stroke: #f1677a; stroke-miterlimit: 10;"/>
       <path d="M146.27,270.28c2.67-.11-2.61,1.57-4-3.15-1.36-4.62-3.88-6.9-3.88-6.9" style="fill: #e7feff; stroke: #f1677a; stroke-miterlimit: 10;"/>
@@ -159,6 +159,7 @@
     </g>
   </g>
 </svg>
+      <img id="binary-background" src="../assets/images/binary.png" alt="face background"/>
     </div>
 </template>
 <script>
@@ -210,8 +211,8 @@ export default {
         let mouthExtraY=0
         let mouthLessenShape=0
         if(yPercentage<0){
-          mouthExtraY= 7*Math.abs(yPercentage)
-          mouthLessenShape = 10*Math.abs(yPercentage)
+          mouthExtraY= 3*Math.abs(yPercentage)
+          mouthLessenShape = 6*Math.abs(yPercentage)
         }
         this.mouthY=336.31+mouthExtraY
         this.mouthShape=18.47-mouthLessenShape
@@ -224,7 +225,12 @@ export default {
 }
 </script>
 <style lang="scss">
-    svg{
-      overflow: visible;
+    #binary-background{
+      position: absolute;
+      bottom: -3%;
+      left:-5%;
+      width: 110%;
+      z-index: -1;
+      opacity: 10%;
     }
 </style>

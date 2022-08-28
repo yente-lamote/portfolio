@@ -1,22 +1,24 @@
-<template lang="">
-    <div id="homeViewcontainer">
-        <section>
-            <h1 id="h1-desktop">
+<template>
+    <div id="home-view-container">
+        <aside id="face-wrapper">
+            <Face></Face>
+        </aside>
+        <section id="info">
+            <h1 id="desktop-h1">
                 A Full Stack Developer<br>
                 <span>
                     With a passion for <br> solving problems <br> with code
                 </span>
             </h1>
-            <h1 id="h1-mobile">
-                Yente Lamote<br>
-                <span>
-                    Full Stack Developer
-                </span>
-            </h1>
+            <div id="mobile-h1">
+                <h1>
+                    Yente Lamote<br>
+                    <span>
+                        Full Stack Developer
+                    </span>
+                </h1>
+            </div>
         </section>
-        <aside id="face-wrapper">
-            <Face></Face>
-        </aside>
     </div>
 </template>
 <script>
@@ -24,7 +26,16 @@ import Face from '../components/Face.vue';
 
 export default {
     components: { Face },
+    mounted(){
+        const tl = gsap.timeline({defaults:{duration:0.9}})
+        tl.delay(0.4)
+        tl.add("home")
+        tl.fromTo('#info',{'margin-left':'-100%',opacity:0},{'margin-left':'0px',opacity:1, ease:Power2.easeOut,},"home")
+        tl.fromTo('#face-wrapper',{'right':'-100%',opacity:0},{'right':'0',opacity:1, ease:Power2.easeOut},"home")
+        tl.fromTo('#top-right-bars',{'margin-top':'-100%',"margin-right":"-100%"},{'margin-top':'0',"margin-right":"0", ease:Power2.easeOut, duration:1.3},"home")
+    },
 }
+
 </script>
 <style lang="scss">
     section{
@@ -41,7 +52,7 @@ export default {
                 font-weight: 500;
             }
         }
-        #h1-mobile{
+        #mobile-h1{
             display:none;
         }
     }
@@ -76,55 +87,77 @@ export default {
             margin-right: 2em;
         }
     }
-    @media screen and (max-width: 950px) {
+    @media screen and (max-width: 950px) and (min-width:500px) {
         section h1{
             font-size:1.5rem;
             span{
                 font-size: 2.7rem;
             }
         }
-    }
-    @media screen and (max-width: 800px) {
+        #face-wrapper{
+            position:relative;
+            width: 50vw;
+            margin-left: auto;
+            margin-right:auto;
+            transform:none;
+            top:10vh;
+        }
         section{
+            display: flex;
+            justify-content: center;
+            position: relative;
+            transform: none;
+            top:15vh;
+            transform: translateX(-50%);
+            left:50%
+        }
+    }
+    @media screen and (max-width: 500px) {
+        section{
+            bottom:0;
             position: relative;
             z-index: 3;
             top:auto;
             transform: none;
-            #h1-desktop{
+            #desktop-h1{
                 display:none;
             }
-            #h1-mobile{
-                display:inline-block;
-            }
-            h1{
-                content:"test";
+            #mobile-h1{
+                display:flex;
+                margin-bottom: 13vh;                
+                h1{
                 margin:auto;
-                width: 90%;
-                margin-left:6%;
-                font-size:2.7rem;
-                line-height: 2.2rem;
+                margin-left:8vw;
+                width: 100%;
+                font-size:2rem;
+                line-height: 1.8rem;
                 font-weight: 600;
                 color:$white;
-                span{
-                    font-size:1.6rem;
-                    color:$grey;
-                    font-weight:normal;
-                }
+                    span{
+                        font-size:1rem;
+                        color:$grey;
+                        font-weight:normal;
+                    }
+                }   
             }
         }
         header{
             background-color: none;
         }
+        main{
+            overflow: visible;
+        }
         #face-wrapper{
             position:relative;
-            width: 150vw;
+            width: 65vh;
+            margin-left:15vw;
             transform:none;
-            margin-top: -7.8em;
+            top: 0;
         }
-        #homeViewcontainer{
-            margin-top:7em;
+        #home-view-container{
             display: flex;
-            flex-direction: column-reverse;
+            flex-direction: column;
+            justify-content: space-between;
         }
     }
 </style>

@@ -2,29 +2,21 @@
     <ul id="dots-nav">
         <li>
             <RouterLink 
-                @mouseover="onMouseOver"
-                @mouseleave="onMouseleave"
                 to="/" class="dot">
             </RouterLink>
         </li>
         <li>
             <RouterLink 
-                @mouseover="onMouseOver"
-                @mouseleave="onMouseleave"
                 to="/about" class="dot">
             </RouterLink>
         </li>
         <li>
             <RouterLink 
-                @mouseover="onMouseOver"
-                @mouseleave="onMouseleave"
                 to="/projects" class="dot">
                 </RouterLink>
         </li>
         <li>
             <RouterLink 
-                @mouseover="onMouseOver"
-                @mouseleave="onMouseLeave"
                 to="/contact" class="dot">
             </RouterLink>
         </li>
@@ -39,16 +31,7 @@
 export default {
     data(){
         return{
-            hideActive:false,
         }
-    },
-    methods: {
-      onMouseOver () {
-        this.hideActive=true
-      },
-      onMouseleave () {
-        this.hideActive=false
-      }
     },
     // doe met animatie 
     //watch:{
@@ -63,7 +46,7 @@ export default {
     #dots-nav{
         display: flex;
         flex-direction: column;
-        position: absolute;
+        position: fixed;
         height: 7em;
         transform: translateY(-50%);
         margin-left: 7vw;
@@ -104,7 +87,7 @@ export default {
     #scroll-indicator-container{
         transform: translateX(-50%);
         color: $grey;
-        position: absolute;
+        position: fixed;
         margin-left:7vw;
         bottom:5vh;
         display: flex;
@@ -167,9 +150,13 @@ export default {
             margin-left:5vw;
         }
     }
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 500px) {
         #scroll-indicator-container{
             display: none;
         }
+        #dots-nav{
+            transform: translateY(-50%) translateX(-50%);
+        }
+
     }
 </style>

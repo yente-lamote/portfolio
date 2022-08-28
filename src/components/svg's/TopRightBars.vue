@@ -55,7 +55,7 @@ export default {
         transform: translateX(11vw)
       }
     }
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 950px) {
       #top-right-bars{
         display:none;
       }
