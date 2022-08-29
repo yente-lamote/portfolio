@@ -58,7 +58,9 @@ export default {
         currentPage:0,
         scrolling:false,
         to:{},
-        from:{}
+        from:{},
+        xDown: null,
+        yDown: null,
       }
     },
     watch:{
@@ -87,7 +89,7 @@ export default {
           tl.delay(0.4)://wanneer pagina voor eerste keer ingeladen wordt
           tl.delay(0.5)
         tl.add("loadFirst")
-        tl.to('#scroll-indicator-container',{'display':'flex','bottom':'5vh'},'loadFirst')
+        tl.fromTo('#scroll-indicator-container',{'bottom':'-100vh','display':'none'},{'display':'flex','bottom':'5vh'},'loadFirst')
         tl.fromTo('#home-title',{'margin-left':'-100%',opacity:0},{'margin-left':'0px',opacity:1, ease:Power2.easeOut,},"loadFirst")
         tl.fromTo('#face-wrapper',{'right':'-100%',opacity:0},{'right':'0',opacity:1, ease:Power2.easeOut},"loadFirst")
         !this.from.name&&
@@ -101,7 +103,7 @@ export default {
         const tl = gsap.timeline({defaults:{duration:0.9},onComplete:this.animationComplete})
         tl.delay(0.7)
         tl.add("loadFirst")
-        tl.fromTo('#about-info',{'left':'-35%',opacity:0},{'left':'0',opacity:1, ease:Power2.easeOut,},"loadFirst")
+        tl.fromTo('#about-info',{'margin-left':'-40%',opacity:0},{'margin-left':'1em',opacity:1, ease:Power2.easeOut,},"loadFirst")
         tl.fromTo('.tagcloud',{'right':'-100%',opacity:0},{'right':'3%',opacity:1, ease:Power2.easeOut},"loadFirst")
       },
       animationComplete(){
@@ -143,14 +145,53 @@ export default {
           this.vh = window.innerHeight * 0.01;
           // Then we set the value in the --vh custom property to the root of the document
           document.documentElement.style.setProperty('--vh', `${this.vh}px`);
+      },
+      getTouches(event) {
+        return event.touches ||             // browser API
+        event.originalEvent.touches; // jQuery
+      },   
+      handleTouchStart(event){
+        const firstTouch = this.getTouches(event)[0];                                      
+        this.xDown = firstTouch.clientX;                                      
+        this.yDown = firstTouch.clientY;     
+      },
+      handleTouchMove(event){
+        if ( ! this.xDown || ! this.yDown ) {
+            return;
+        }
+
+        var xUp = event.touches[0].clientX;                                    
+        var yUp = event.touches[0].clientY;
+
+        var xDiff = this.xDown - xUp;
+        var yDiff = this.yDown - yUp;
+                                                                            
+        if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+            if ( xDiff > 0 ) {
+                /* right swipe */ 
+            } else {
+                /* left swipe */
+            }                       
+        } else {
+            if ( yDiff > 0 ) {
+              this.handleScrollDown()
+            } else { 
+              this.handleScrollUp()
+            }                 
+            router.push({name:this.pages[this.currentPage].name})                                                
+        }
+        /* reset values */
+        this.xDown = null;
+        this.yDown = null;      
       }
+
     },
     mounted(){
       this.calculateVh();
       window.addEventListener("resize",this.calculateVh)
       window.addEventListener("wheel", this.checkScrollDirection);
-      //document.addEventListener('touchstart', handleTouchStart, false);        
-      //document.addEventListener('touchmove', handleTouchMove, false);
+      document.addEventListener('touchstart', this.handleTouchStart, false);        
+      document.addEventListener('touchmove', this.handleTouchMove, false);
       //https://stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android
       const tl = gsap.timeline({defaults:{duration:0.7}})
       tl.delay(0.3)

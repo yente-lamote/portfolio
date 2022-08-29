@@ -212,7 +212,7 @@ export default {
             justify-content: space-between;
         }
         #scroll-indicator-container{
-            display: none;
+            display: none !important;
         }
     }
 </style>
