@@ -21,10 +21,6 @@
             </RouterLink>
         </li>
   </ul>
-  <div id="scroll-indicator-container">
-        <div class="scroll-indicator"></div>
-        <span>scroll</span>
-    </div>
 </template>
 <script>
 
@@ -32,14 +28,7 @@ export default {
     data(){
         return{
         }
-    },
-    // doe met animatie 
-    //watch:{
-    //     $route (to, from){
-    //         this.showScroll = to.name =="home";
-    //         console.log(to)
-    //     }
-    // } 
+    }, 
 }
 </script>
 <style lang="scss">
@@ -84,57 +73,6 @@ export default {
         }
     }
 
-    #scroll-indicator-container{
-        transform: translateX(-50%);
-        color: $grey;
-        position: fixed;
-        margin-left:7vw;
-        bottom:5vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        span{
-            line-height: 2rem;
-        }
-    }
-
-    .scroll-indicator:before{
-        position: absolute;
-        left: 50%;
-    }
-    
-
-    .scroll-indicator{
-        position: relative;
-        width: 20px;
-        height: 40px;
-        top: 50%;
-        box-shadow: inset 0 0 0 1px $grey;
-        border-radius: 20px;
-    }
-
-    .scroll-indicator:before{
-        content: '';
-        width: 6px;
-        height: 6px;
-        background: $grey;
-        margin-left: -3px;
-        top: 8px;
-        border-radius: 4px;
-        animation-duration: 1.5s;
-        animation-iteration-count: infinite;
-        animation-name: scroll;
-    }
-
-    @keyframes scroll{
-        0%{
-            opacity: 1
-        }
-        100%{
-            opacity: 0;
-            transform: translateY(18px);
-        }
-    }
 
     @media screen and (max-width: 1650px) and (min-width:800px) {
         #dots-nav{
@@ -148,6 +86,12 @@ export default {
         }
         #scroll-indicator-container{
             margin-left:5vw;
+        }
+    }
+    @media screen and (max-width: 1650px) {
+        #scroll-indicator-container{
+            margin-left:0vw;
+            transform: none;
         }
     }
     @media screen and (max-width: 500px) {

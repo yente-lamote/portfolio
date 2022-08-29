@@ -1,25 +1,31 @@
 <template>
-    <div id="home-view-container">
-        <aside id="face-wrapper">
-            <Face></Face>
-        </aside>
-        <section id="info">
-            <h1 id="desktop-h1">
-                A Full Stack Developer<br>
-                <span>
-                    With a passion for <br> solving problems <br> with code
-                </span>
-            </h1>
-            <div id="mobile-h1">
-                <h1>
-                    Yente Lamote<br>
+    <section>
+        <div id="home-view-container">
+            <aside id="face-wrapper">
+                <Face></Face>
+            </aside>
+            <div id="home-title">
+                <h1 id="desktop-h1">
+                    A Full Stack Developer<br>
                     <span>
-                        Full Stack Developer
+                        With a passion for <br> solving problems <br> with code
                     </span>
                 </h1>
+                <div id="mobile-h1">
+                    <h1>
+                        Yente Lamote<br>
+                        <span>
+                            Full Stack Developer
+                        </span>
+                    </h1>
+                </div>
             </div>
-        </section>
+        </div>
+        <div id="scroll-indicator-container">
+            <div class="scroll-indicator"></div>
+        <span>scroll</span>
     </div>
+    </section>
 </template>
 <script>
 import Face from '../components/Face.vue';
@@ -27,18 +33,13 @@ import Face from '../components/Face.vue';
 export default {
     components: { Face },
     mounted(){
-        const tl = gsap.timeline({defaults:{duration:0.9}})
-        tl.delay(0.4)
-        tl.add("home")
-        tl.fromTo('#info',{'margin-left':'-100%',opacity:0},{'margin-left':'0px',opacity:1, ease:Power2.easeOut,},"home")
-        tl.fromTo('#face-wrapper',{'right':'-100%',opacity:0},{'right':'0',opacity:1, ease:Power2.easeOut},"home")
-        tl.fromTo('#top-right-bars',{'margin-top':'-100%',"margin-right":"-100%"},{'margin-top':'0',"margin-right":"0", ease:Power2.easeOut, duration:1.3},"home")
+
     },
 }
 
 </script>
 <style lang="scss">
-    section{
+    #home-title{
         position: absolute;
         top:50%;
         transform: translateY(-50%);
@@ -64,8 +65,61 @@ export default {
         margin-right: 6em;
         right:0;
     }
+
+    #scroll-indicator-container{
+        transform: translateX(-50%);
+        color: $grey;
+        position: fixed;
+        margin-left:7vw;
+        bottom:5vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        span{
+            line-height: 2rem;
+        }
+    }
+
+    .scroll-indicator:before{
+        position: absolute;
+        left: 50%;
+    }
+    
+
+    .scroll-indicator{
+        position: relative;
+        width: 20px;
+        height: 40px;
+        top: 50%;
+        box-shadow: inset 0 0 0 1px $grey;
+        border-radius: 20px;
+    }
+
+    .scroll-indicator:before{
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: $grey;
+        margin-left: -3px;
+        top: 8px;
+        border-radius: 4px;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-name: scroll;
+    }
+
+    @keyframes scroll{
+        0%{
+            opacity: 1
+        }
+        100%{
+            opacity: 0;
+            transform: translateY(18px);
+        }
+    }
+
     @media screen and (max-width: 1650px) {
-        section h1{
+        #home-title h1{
             font-size:2.2rem;
             span{
                 font-size: 3.8rem;
@@ -77,7 +131,7 @@ export default {
     }
 
     @media screen and (max-width: 1300px) {
-        section h1{
+        #home-title h1{
             font-size:2rem;
             span{
                 font-size: 3.5rem;
@@ -88,7 +142,7 @@ export default {
         }
     }
     @media screen and (max-width: 950px) and (min-width:500px) {
-        section h1{
+        #home-title h1{
             font-size:1.5rem;
             span{
                 font-size: 2.7rem;
@@ -102,7 +156,7 @@ export default {
             transform:none;
             top:10vh;
         }
-        section{
+        #home-title{
             display: flex;
             justify-content: center;
             position: relative;
@@ -113,7 +167,7 @@ export default {
         }
     }
     @media screen and (max-width: 500px) {
-        section{
+        #home-title{
             bottom:0;
             position: relative;
             z-index: 3;
