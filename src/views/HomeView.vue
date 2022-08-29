@@ -67,10 +67,8 @@ export default {
     }
 
     #scroll-indicator-container{
-        transform: translateX(-50%);
         color: $grey;
         position: fixed;
-        margin-left:7vw;
         bottom:5vh;
         display: flex;
         flex-direction: column;
@@ -212,6 +210,9 @@ export default {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+        }
+        #scroll-indicator-container{
+            display: none;
         }
     }
 </style>

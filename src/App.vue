@@ -95,8 +95,7 @@ export default {
       },
       homeEnd(){
         const tl = gsap.timeline({defaults:{duration:0.5},onComplete:this.animationComplete})
-        tl.to('#scroll-indicator-container',{'bottom':'-100vh'})
-        tl.to('#scroll-indicator-container',{'display':'none',duration:0})
+        tl.to('#scroll-indicator-container',{'bottom':'-100vh','display':'none'})
       },
       aboutStart(){
         const tl = gsap.timeline({defaults:{duration:0.9},onComplete:this.animationComplete})

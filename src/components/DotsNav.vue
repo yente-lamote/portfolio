@@ -84,20 +84,9 @@ export default {
             top:auto;
             height: auto;
         }
-        #scroll-indicator-container{
-            margin-left:5vw;
-        }
     }
-    @media screen and (max-width: 1650px) {
-        #scroll-indicator-container{
-            margin-left:0vw;
-            transform: none;
-        }
-    }
+
     @media screen and (max-width: 500px) {
-        #scroll-indicator-container{
-            display: none;
-        }
         #dots-nav{
             transform: translateY(-50%) translateX(-50%);
         }
