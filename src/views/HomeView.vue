@@ -150,7 +150,7 @@ export default {
             position:relative;
             width: 50vw;
             margin-left: auto;
-            margin-right:auto;
+            margin-right:auto !important;
             transform:none;
             top:10vh;
         }

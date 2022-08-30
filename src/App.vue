@@ -6,6 +6,7 @@ import DotsNav from './components/DotsNav.vue';
 import AboutView from "./views/AboutView.vue";
 import Projects from "./views/Projects.vue";
 import router from "./router";
+import Contact from "./views/Contact.vue";
 </script>
 <template>
   <TopRightBars></TopRightBars>
@@ -15,6 +16,7 @@ import router from "./router";
     <HomeView class="page" :style="{'transform':`translateY(-${translateY}px)`}"></HomeView>
     <AboutView class="page" :style="{'transform':`translateY(-${translateY}px)`}"></AboutView>
     <Projects class="page" :style="{'transform':`translateY(-${translateY}px)`}"></Projects>
+    <Contact class="page" :style="{'transform':`translateY(-${translateY}px)`}"></Contact>
   </main>
    <div id="loading">
       <p>

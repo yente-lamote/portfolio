@@ -10,7 +10,8 @@
           from internships and school projects. The projects I enjoy
           working on are web applications and software with a lot 
           of functionality.
-        </p><p>
+        </p>
+        <p>
           Besides software development I also have interests in 
           artificial intelligence and tech in general.
         </p>
@@ -39,12 +40,12 @@ export default {
     const skills = [
     'JavaScript', 'Java', 'C#',
     'Python', 'ASP.NET', 'Vue.js', 'Node.js',
-    'Laravel', 'PHP', 'Machine learning', 'Deep learning',
-    'MySQL', 'GraphQL', 'Git', 'Linux', 'PowerShell', 'HTML', 'scss'
+    'Laravel', 'PHP', 'git', 'MySQL',
+    'Deep learning', 'GraphQL', 'scss', 'Linux', 'PowerShell', 'HTML', 'Machine learning'
     ];
     const options = {
       // radius in px
-      radius: 300,
+      radius: window.innerWidth>950?window.innerWidth*0.17:window.innerWidth*0.3,
 
       // animation speed
       // slow, normal, fast
@@ -69,10 +70,11 @@ export default {
       display: flex;
       position: absolute;
       top:50%;
-      transform: translateY(-50%);
+      transform: translateY(-49%);
       width: 100%;
       article{
         width: 38%;
+        padding-top:2em;
         margin: auto auto auto 1rem;
         h1{
           font-size:4em;
@@ -80,6 +82,7 @@ export default {
         p{
           margin-top:1rem;
           font-size:1.4em;
+          color: $grey;
         }
         #tiles-container{
           display: flex;
@@ -97,18 +100,101 @@ export default {
           }
         }
         
-        
       }
-      .tagcloud{
-        margin-left: auto;
-        margin-right:4%;
+      aside{
+        .tagcloud{
+          right: 0% !important
+        }
       }
     }
     color:white;
   }
+  @media screen and (max-width: 1650px) {
+        #about #about-container{
+          article{
+            width: 45%;
+            h1{
+              font-size:3em;
+            }
+            p{
+              font-size: 1.3rem;
+            }
+          }
+          aside{
+            .tagcloud{
+              right: 1% !important;
+            }
+          }
+        }
+        #face-wrapper{
+            margin-right: 4em;
+        }
+    }
+
+    @media screen and (max-width: 950px) {
+      #about #about-container{
+        padding: 2em 0;
+        flex-direction: column-reverse;
+        height: 80%;
+        align-content: center;
+        justify-content: center;
+        article{
+          width: 80%;
+          height: 50%;
+          margin: auto;
+          margin-left: auto !important;
+          margin-top:1.3em;
+          padding-top: 0;
+        }
+        aside{
+          height: 50%;
+          .tagcloud{
+            top:-9%;
+            right: 0% !important;
+            margin: auto !important;
+          }
+        }
+      }
+    }
   @media screen and (max-width: 500px) {
     #about{
       overflow: hidden;
+      #about-container{
+        padding: 2em 0;
+        flex-direction: column-reverse;
+        align-content: center;
+        justify-content: center;
+        height: auto;
+
+        article{
+          width: 72%;
+            h1{
+              font-size:1.9em;
+            }
+            p{
+              font-size: 1rem;
+            }
+            #tiles-container{
+              display: flex;
+              .tile{
+                padding:2rem 2rem 2rem 0;
+                .tile-value{
+                  display: block;
+                  font-weight: 500;
+                  font-size:2.1em;
+                }
+                .tile-subtitle{
+                  font-size: 1rem;
+                  font-weight: normal;
+                }
+              }
+            }
+        }
+        aside{
+          display: none;
+        }
+        
+      }
     }
   }
 </style>
