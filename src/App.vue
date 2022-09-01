@@ -86,7 +86,7 @@ export default {
     },
     methods:{
       homeStart(){
-        const tl = gsap.timeline({defaults:{duration:0.9,delay:0},onComplete:this.animationComplete})
+        const tl = gsap.timeline({defaults:{duration:1,delay:0},onComplete:this.animationComplete})
         !this.from.name?
           tl.delay(0.45)://wanneer pagina voor eerste keer ingeladen wordt
           tl.delay(0.35)
@@ -105,14 +105,14 @@ export default {
         const tl = gsap.timeline({defaults:{duration:1},onComplete:this.animationComplete})
         tl.delay(0.35)
         tl.add("loadFirst")
-        tl.fromTo('#about-info',{'margin-left':'-100%','opacity':'0'},{'margin-left':'1em','opacity':'1', ease:Power2.easeOut,},"loadFirst")
+        tl.fromTo('#about-info',{'margin-left':'-100%','opacity':'0'},{'margin-left':'auto','opacity':'1', ease:Power2.easeOut,},"loadFirst")
         tl.fromTo('.tagcloud',{'margin-right':'-140%','opacity':'0'},{'margin-right':'3%','opacity':'1', ease:Power2.easeOut},"loadFirst")
       },
       contactStart(){
-        const tl = gsap.timeline({defaults:{duration:0.8},onComplete:this.animationComplete})
+        const tl = gsap.timeline({defaults:{duration:1},onComplete:this.animationComplete})
         tl.delay(0.35)
-        tl.fromTo('#contact-form',{'margin-right':'-150%','opacity':'0'},{'margin-right':'auto','opacity':'1'},"loadFirst")
-        tl.fromTo('#left-contact-side-container',{'left':'-100%','opacity':'0'},{'left':'0','opacity':'1'},"loadFirst")
+        tl.fromTo('#contact-form',{'margin-right':'-130%','opacity':'0'},{'margin-right':'auto','opacity':'1'},"loadFirst")
+        tl.fromTo('#left-contact-side-container',{'left':'-80%','opacity':'0'},{'left':'0','opacity':'1'},"loadFirst")
       },
       animationComplete(){
         this.scrolling=false;

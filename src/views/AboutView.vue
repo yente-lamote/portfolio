@@ -74,7 +74,6 @@ export default {
       width: 100%;
       article{
         width: 50%;
-        padding-left:2%;
         padding-top:2em;
         margin: auto auto auto 1rem;
         h1{
@@ -84,7 +83,7 @@ export default {
           margin-top:1rem;
           font-size:1.4em;
           color: $grey;
-          padding-right: 10%;
+          padding-right: 12%;
         }
         #tiles-container{
           display: flex;
@@ -126,7 +125,7 @@ export default {
           }
           aside{
             .tagcloud{
-              right: 1% !important;
+              right: 0 !important;
             }
           }
         }
@@ -146,7 +145,7 @@ export default {
           width: 80%;
           height: 50%;
           margin: auto;
-          margin-left: auto !important;
+          margin-left: auto;
           margin-top:1.3em;
           padding-top: 0;
         }
