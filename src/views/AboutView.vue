@@ -37,30 +37,30 @@
 export default {
   mounted(){
     const container = '#tagcloud'
-    const skills = [
-    'JavaScript', 'Java', 'C#',
-    'Python', 'ASP.NET', 'Vue.js', 'Node.js',
-    'Laravel', 'PHP', 'git', 'MySQL',
-    'Deep learning', 'GraphQL', 'scss', 'Linux', 'PowerShell', 'HTML', 'Machine learning'
-    ];
-    const options = {
-      // radius in px
-      radius: window.innerWidth>950?window.innerWidth*0.17:window.innerWidth*0.3,
+      const skills = [
+      'JavaScript', 'Java', 'C#',
+      'Python', 'ASP.NET', 'Vue.js', 'Node.js',
+      'Laravel', 'PHP', 'git', 'MySQL',
+      'Deep learning', 'GraphQL', 'scss', 'Linux', 'PowerShell', 'HTML', 'Machine learning'
+      ];
+      const options = {
+        // radius in px
+        radius: window.innerWidth>950?window.innerWidth*0.17:window.innerWidth*0.3,
 
-      // animation speed
-      // slow, normal, fast
-      maxSpeed: 'fast',
-      initSpeed: 'fast',
+        // animation speed
+        // slow, normal, fast
+        maxSpeed: 'fast',
+        initSpeed: 'slow',
 
-      // 0 = top
-      // 90 = left
-      // 135 = right-bottom
-      direction: 135,
+        // 0 = top
+        // 90 = left
+        // 135 = right-bottom
+        direction: 135,
 
-      // interact with cursor move on mouse out
-      keep: false
-    };
-    TagCloud(container, skills, options); 
+        // interact with cursor move on mouse out
+        keep: false
+      };
+      TagCloud(container, skills, options);
   }
 }
 </script>
@@ -73,7 +73,8 @@ export default {
       transform: translateY(-49%);
       width: 100%;
       article{
-        width: 38%;
+        width: 50%;
+        padding-left:2%;
         padding-top:2em;
         margin: auto auto auto 1rem;
         h1{
@@ -83,11 +84,12 @@ export default {
           margin-top:1rem;
           font-size:1.4em;
           color: $grey;
+          padding-right: 10%;
         }
         #tiles-container{
           display: flex;
           .tile{
-            padding:2rem 2rem 2rem 0;
+            padding:2rem 4rem 2rem 0;
             .tile-value{
               display: block;
               font-weight: 500;
@@ -102,8 +104,10 @@ export default {
         
       }
       aside{
+        width:50%;
+        position: relative;
         .tagcloud{
-          right: 0% !important
+          margin-left: auto;
         }
       }
     }
@@ -148,6 +152,7 @@ export default {
         }
         aside{
           height: 50%;
+          width:100%;
           .tagcloud{
             top:-9%;
             right: 0% !important;
@@ -173,11 +178,12 @@ export default {
             }
             p{
               font-size: 1rem;
+              padding: 0;
             }
             #tiles-container{
               display: flex;
               .tile{
-                padding:2rem 2rem 2rem 0;
+                padding:2rem 3rem 2rem 0;
                 .tile-value{
                   display: block;
                   font-weight: 500;

@@ -53,7 +53,7 @@ export default {
           {
             name:"contact",
             position:3,
-            start:()=>{this.scrolling=false},
+            start:this.contactStart,
             end:()=>{}
           }
         ],
@@ -86,30 +86,35 @@ export default {
     },
     methods:{
       homeStart(){
-        const tl = gsap.timeline({defaults:{duration:0.9},onComplete:this.animationComplete})
+        const tl = gsap.timeline({defaults:{duration:0.9,delay:0},onComplete:this.animationComplete})
         !this.from.name?
-          tl.delay(0.4)://wanneer pagina voor eerste keer ingeladen wordt
-          tl.delay(0.5)
+          tl.delay(0.45)://wanneer pagina voor eerste keer ingeladen wordt
+          tl.delay(0.35)
         tl.add("loadFirst")
         tl.fromTo('#scroll-indicator-container',{'bottom':'-100vh','display':'none'},{'display':'flex','bottom':'5vh'},'loadFirst')
         tl.fromTo('#home-title',{'margin-left':'-100%',opacity:0},{'margin-left':'0px',opacity:1, ease:Power2.easeOut,},"loadFirst")
         tl.fromTo('#face-wrapper',{'right':'-100%',opacity:0},{'right':'0',opacity:1, ease:Power2.easeOut},"loadFirst")
         !this.from.name&&
-        tl.fromTo('#top-right-bars',{'margin-top':'-100%',"margin-right":"-100%"},{'margin-top':'0',"margin-right":"0", ease:Power2.easeOut, duration:1.3},"home")
+        tl.fromTo('#top-right-bars',{'margin-top':'-100%',"margin-right":"-100%"},{'margin-top':'0',"margin-right":"0", duration:1.2},"loadFirst")
       },
       homeEnd(){
         const tl = gsap.timeline({defaults:{duration:0.5},onComplete:this.animationComplete})
         tl.to('#scroll-indicator-container',{'bottom':'-100vh','display':'none'})
       },
       aboutStart(){
-        const tl = gsap.timeline({defaults:{duration:0.9},onComplete:this.animationComplete})
-        tl.delay(0.7)
+        const tl = gsap.timeline({defaults:{duration:1},onComplete:this.animationComplete})
+        tl.delay(0.35)
         tl.add("loadFirst")
-        tl.fromTo('#about-info',{'margin-left':'-40%',opacity:0},{'margin-left':'1em',opacity:1, ease:Power2.easeOut,},"loadFirst")
-        tl.fromTo('.tagcloud',{'right':'-100%',opacity:0},{'right':'3%',opacity:1, ease:Power2.easeOut},"loadFirst")
+        tl.fromTo('#about-info',{'margin-left':'-100%','opacity':'0'},{'margin-left':'1em','opacity':'1', ease:Power2.easeOut,},"loadFirst")
+        tl.fromTo('.tagcloud',{'margin-right':'-140%','opacity':'0'},{'margin-right':'3%','opacity':'1', ease:Power2.easeOut},"loadFirst")
+      },
+      contactStart(){
+        const tl = gsap.timeline({defaults:{duration:0.8},onComplete:this.animationComplete})
+        tl.delay(0.35)
+        tl.fromTo('#contact-form',{'margin-right':'-150%','opacity':'0'},{'margin-right':'auto','opacity':'1'},"loadFirst")
+        tl.fromTo('#left-contact-side-container',{'left':'-100%','opacity':'0'},{'left':'0','opacity':'1'},"loadFirst")
       },
       animationComplete(){
-        console.log("complete")
         this.scrolling=false;
       },
       checkScrollDirection(event){
@@ -214,10 +219,10 @@ export default {
     height: 100vh; /* Fallback for browsers that do not support Custom Properties */
     height: calc(var(--vh, 1vh) * 100);
     position: relative;
-    -webkit-transition: all 0.7s linear;
-    -moz-transition: all 0.7s linear;
-    -o-transition: all 0.7s linear;
-    transition: all 0.7s linear;
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
   }
   #app{
     height: 100vh; /* Fallback for browsers that do not support Custom Properties */
