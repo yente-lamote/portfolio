@@ -77,13 +77,13 @@ export default {
         padding-top:2em;
         margin: auto auto auto 1rem;
         h1{
-          font-size:4em;
+          font-size:3em;
         }
         p{
           margin-top:1rem;
-          font-size:1.4em;
+          font-size:1.2em;
           color: $grey;
-          padding-right: 12%;
+          padding-right: 20%;
         }
         #tiles-container{
           display: flex;
@@ -92,10 +92,10 @@ export default {
             .tile-value{
               display: block;
               font-weight: 500;
-              font-size:3em;
+              font-size:2.5em;
             }
             .tile-subtitle{
-              font-size: 1.2rem;
+              font-size: 1.1rem;
               font-weight: normal;
             }
           }
@@ -118,9 +118,6 @@ export default {
             width: 45%;
             h1{
               font-size:3em;
-            }
-            p{
-              font-size: 1.3rem;
             }
           }
           aside{

@@ -17,13 +17,13 @@
                         </div>
                         <div id="links">
                             <a href="https://github.com/yente-lamote">
-                            yente-lamote
+                            <span class="handle">yente-lamote</span>
                             </a>
                             <a href="https://www.linkedin.com/in/yente-lamote/">
-                                yente-lamote
+                                <span class="handle">yente-lamote</span>
                             </a>
                             <a href="#">
-                                info@yentelamote.be
+                                <span class="handle">info@yentelamote.be</span>
                             </a>
                         </div>
                     </div>
@@ -181,7 +181,7 @@ export default {
             p{
                 width: 80%;
                 color:$grey;
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
         }
         #contact-info{
@@ -221,5 +221,24 @@ export default {
             margin-top:1em;
         }
     }
+    @media screen and (max-width: 500px) {
+        h1{
+            font-size:1.5em;
+        }
+        .handle{
+            display: none;
+        }
+        #links{
+            display: flex;
+        }
+        textarea{
+            height: 5em;
+        }
+        #contact-form{
+            margin-top:0.5em;
+            padding-top: 1em;
+        }
+    }
+
 
 </style>
