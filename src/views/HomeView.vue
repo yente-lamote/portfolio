@@ -39,10 +39,17 @@ export default {
 
 </script>
 <style lang="scss">
-    #home-title{
+    #home-view-container{
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
         position: absolute;
         top:50%;
+        justify-content: space-between;
         transform: translateY(-50%);
+    }
+    #home-title{
+        margin: auto 0;
         h1{
             color: $grey;
             font-size: 2.5rem;
@@ -58,9 +65,6 @@ export default {
         }
     }
     #face-wrapper{
-        position: absolute;
-        top:50%;
-        transform: translateY(-50%);
         width:53vh;
         margin-right: 6em;
         right:0;
@@ -207,9 +211,7 @@ export default {
             top: 0;
         }
         #home-view-container{
-            display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
         #scroll-indicator-container{
             display: none !important;

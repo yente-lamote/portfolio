@@ -1,22 +1,22 @@
 <template lang="">
     <ul id="dots-nav">
         <li>
-            <RouterLink 
+            <RouterLink aria-label="home"
                 to="/" class="dot">
             </RouterLink>
         </li>
         <li>
-            <RouterLink 
+            <RouterLink  aria-label="about"
                 to="/about" class="dot">
             </RouterLink>
         </li>
         <li>
-            <RouterLink 
+            <RouterLink aria-label="projects"
                 to="/projects" class="dot">
                 </RouterLink>
         </li>
         <li>
-            <RouterLink 
+            <RouterLink aria-label="contact"
                 to="/contact" class="dot">
             </RouterLink>
         </li>
@@ -56,7 +56,8 @@ export default {
                 -moz-transition: all 0.5s linear;
                 -ms-transition: all 0.5s linear;
                 -o-transition: all 0.5s linear;
-                transition: all 0.5s linear;          
+                transition: all 0.5s linear;   
+                color: transparent;       
             }
             .dot:hover{
                 background-color: $pink;

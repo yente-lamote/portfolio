@@ -89,34 +89,34 @@ export default {
         const tl = gsap.timeline({defaults:{duration:1,delay:0},onComplete:this.animationComplete})
         !this.from.name?
           tl.delay(0.6)://wanneer pagina voor eerste keer ingeladen wordt
-          tl.delay(0.15)
+          tl.delay(0.35)
         tl.add("loadFirst")
-        tl.fromTo('#scroll-indicator-container',{'bottom':'-100vh','display':'none','opacity':0},{'display':'flex','bottom':'5vh','opacity':1},'loadFirst')
-        tl.fromTo('#home-title',{'margin-left':'-100%'},{'margin-left':'0px'},"loadFirst")
-        tl.fromTo('#face-wrapper',{'right':'-100%'},{'right':'0'},"loadFirst")
+        tl.fromTo('#scroll-indicator-container',{'transform':'translateY(100vh)','display':'none','opacity':0},{'display':'flex','transform':'translateY(0)','opacity':1},'loadFirst')
+        tl.fromTo('#home-title',{'transform':'translate(-140%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
+        tl.fromTo('#face-wrapper',{'transform':'translate(140%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
         !this.from.name&&
-        tl.fromTo('#top-right-bars',{'margin-top':'-100%',"margin-right":"-100%"},{'margin-top':'0',"margin-right":"0", duration:1.2},"loadFirst")
+        tl.fromTo('#top-right-bars',{'transform':'translate(100%, -100%)'},{'transform':'translate(0, 0)', duration:1.2},"loadFirst")
       },
       homeEnd(){
         const tl = gsap.timeline({defaults:{duration:0.6},onComplete:this.animationComplete})
-        tl.to('#scroll-indicator-container',{'bottom':'-100vh','display':'none','opacity':0})
+        tl.to('#scroll-indicator-container',{'transform':'translateY(100vh)','display':'none','opacity':0})
       },
       aboutStart(){
         const tl = gsap.timeline({defaults:{duration:1},onComplete:this.animationComplete})
         !this.from.name?
           tl.delay(0.6)://wanneer pagina voor eerste keer ingeladen wordt
-          tl.delay(0.3)
+          tl.delay(0.35)
         tl.add("loadFirst")
-        tl.fromTo('#about-info',{'margin-left':'-100%','opacity':'0'},{'margin-left':'auto','opacity':'1'},"loadFirst")
-        tl.fromTo('.tagcloud',{'margin-right':'-140%','opacity':'0'},{'margin-right':'3%','opacity':'1'},"loadFirst")
+        tl.fromTo('#about-info',{'transform':'translate(-100%, 0)','opacity':'0'},{'transform':'translate(0, 0)','opacity':'1'},"loadFirst")
+        tl.fromTo('.tagcloud',{'transform':'translate(140%, 0)','opacity':'0'},{'transform':'translate(0, 0)','opacity':'1'},"loadFirst")
       },
       contactStart(){
         const tl = gsap.timeline({defaults:{duration:1},onComplete:this.animationComplete})
         !this.from.name?
           tl.delay(0.6)://wanneer pagina voor eerste keer ingeladen wordt
           tl.delay(0.35)
-        tl.fromTo('#contact-form',{'margin-right':'-130%','opacity':'0'},{'margin-right':'auto','opacity':'1'},"loadFirst")
-        tl.fromTo('#left-contact-side-container',{'left':'-80%','opacity':'0'},{'left':'0','opacity':'1'},"loadFirst")
+        tl.fromTo('#contact-form',{'transform':'translate(200%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
+        tl.fromTo('#left-contact-side-container',{'transform':'translate(-200%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
       },
       animationComplete(){
         this.scrolling=false;
@@ -206,7 +206,7 @@ export default {
       //https://stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android
       const tl = gsap.timeline({defaults:{duration:0.7}})
       tl.delay(0.5)
-      tl.fromTo('#loading',{'top':'0%'},{'top':'-100%'})
+      tl.fromTo('#loading',{'transform':'translateY(0)'},{'transform':'translateY(-100%)'})
       tl.to('#loading',{'display':'none', duration:0})
     }
 }

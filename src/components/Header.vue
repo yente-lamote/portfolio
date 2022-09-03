@@ -2,7 +2,7 @@
   <header v-bind:class="{'background-color-blue':isOpen}">
     <nav>
         <RouterLink id="home-button" to="/">Yente<span>.</span></RouterLink>
-        <button class="hamburger" v-on:click="handleHamburger" v-bind:class="{open:isOpen}">
+        <button class="hamburger" aria-label="open navigation" v-on:click="handleHamburger" v-bind:class="{open:isOpen}">
           <svg id="burgericon" xmlns="http://www.w3.org/2000/svg" v-bind:class="{open:isOpen}" width="35" height="30">
             <g class="icon">
               <rect class="frstbar" :x="firstX" :y="firstY" width="30" height="4" rx="3" ry="3" fill="#FFFFFF"/>
@@ -11,8 +11,8 @@
             </g>
           </svg>
         </button>        
-        <ul v-bind:class="{open:isOpen}">
-          <div>
+        <div id="nav-list" v-bind:class="{open:isOpen}">
+          <ul id="nav-left">
             <li>
               <RouterLink to="/about" class="page-link">About</RouterLink>
               <span class="dot"></span>
@@ -24,11 +24,11 @@
             <li>
               <RouterLink to="/contact" class="page-link">Contact</RouterLink>
             </li>
-          </div>
-          <li>
+          </ul>
+          <div>
             <RouterLink class="resume" to="/">Resume</RouterLink>
-          </li>
-        </ul>
+          </div>
+        </div>
     </nav>
   </header>
 </template>
@@ -96,20 +96,23 @@ export default{
         color:white;
         margin-left: 1rem;
         padding:0.7rem 1.5rem;
+        margin-top:auto;
+        margin-bottom: auto;
+        border-radius: 10px;
       }
       .resume:hover{
         background-color: $light-pink;
-        margin-top: -7px;
+        transform: translateY(-2px);
         
       }
-      ul{
+      #nav-list{
         justify-content: space-between;
         display: flex;
         overflow: hidden;
         transition: max-height 0.2s  linear;
         margin-top:8px;
         flex-grow: 1;
-        div{
+        #nav-left{
           display: flex;
         }
         li{
@@ -159,6 +162,9 @@ export default{
             -o-transition: all 0.1s linear;
             transition: all 0.1s linear;  
           }
+        }
+        div{
+          display: flex;
         }
       }     
       }
@@ -226,13 +232,13 @@ export default{
         width: 100;
         padding-left: 5%;
         padding-right: 5%;
-        ul{
+        #nav-list{
           flex-basis: 100%;
           flex-direction: column;
           margin-top: -5px;
           margin-left: -0.5rem;
           max-height: 0px;
-          div{
+          #nav-left{
             flex-direction: column;
             li{
               a{
@@ -242,9 +248,8 @@ export default{
                 display: none;
               }
               
+            }
           }
-          }
-          
           .resume{
           background-color: $pink !important;
           color: $dark-blue !important;
@@ -256,7 +261,7 @@ export default{
     }
     
     .open{
-      max-height: 200px;
+      max-height: 200px !important;
     }
     header{
       .hamburger{

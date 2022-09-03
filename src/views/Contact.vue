@@ -16,13 +16,13 @@
                         <div id="arrow">
                         </div>
                         <div id="links">
-                            <a href="https://github.com/yente-lamote">
+                            <a aria-label="gitbhub profile" href="https://github.com/yente-lamote">
                             <span class="handle">yente-lamote</span>
                             </a>
-                            <a href="https://www.linkedin.com/in/yente-lamote/">
+                            <a aria-label="linkedin profile" href="https://www.linkedin.com/in/yente-lamote/">
                                 <span class="handle">yente-lamote</span>
                             </a>
-                            <a href="#">
+                            <a aria-label="email" href="#">
                                 <span class="handle">info@yentelamote.be</span>
                             </a>
                         </div>
