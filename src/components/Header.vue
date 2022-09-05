@@ -17,10 +17,10 @@
               <RouterLink to="/about" class="page-link">About</RouterLink>
               <span class="dot"></span>
             </li>
-            <li>
+            <!-- <li>
               <RouterLink to="/projects" class="page-link">Projects</RouterLink>
               <span class="dot"></span>
-            </li>
+            </li> -->
             <li>
               <RouterLink to="/contact" class="page-link">Contact</RouterLink>
             </li>
@@ -99,6 +99,7 @@ export default{
         margin-top:auto;
         margin-bottom: auto;
         border-radius: 10px;
+        font-weight: 600;
       }
       .resume:hover{
         background-color: $light-pink;

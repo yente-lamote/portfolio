@@ -17,12 +17,15 @@
                         </div>
                         <div id="links">
                             <a aria-label="gitbhub profile" href="https://github.com/yente-lamote">
+                                <img class="link-icon" src="@/assets/images/icons/iconmonstr-github-3.svg"/>
                             <span class="handle">yente-lamote</span>
                             </a>
                             <a aria-label="linkedin profile" href="https://www.linkedin.com/in/yente-lamote/">
+                                <img class="link-icon" src="@/assets/images/icons/iconmonstr-linkedin-3.svg"/>
                                 <span class="handle">yente-lamote</span>
                             </a>
                             <a aria-label="email" href="#">
+                                <img class="link-icon" src="@/assets/images/icons/email.svg"/>
                                 <span class="handle">info@yentelamote.be</span>
                             </a>
                         </div>
@@ -82,6 +85,16 @@ export default {
 }
 </script>
 <style lang="scss">
+    #links{
+        a{
+            display: flex;
+            justify-content: center;
+        }
+    }
+    .link-icon{
+        width: 20px;
+        height: 20px;
+    }
     #contact-form{
         width: 75%;
         margin: auto;
@@ -150,7 +163,8 @@ export default {
             color:$blue-400;
             background-color: $white;
             margin-left: auto;
-            padding:0.7em 1.7em;
+            padding:0.8em 1.5em;
+            font-weight: 600;
             border-radius: 10px;
             -webkit-transition: all 0.15s linear;
             -moz-transition: all 0.15s linear;
@@ -189,9 +203,14 @@ export default {
             display: flex;
             flex-direction: column;
             a{
-                display: block;
                 color:$grey;
+                padding: 0.2em 0;
+                span{
+                    margin-right: auto;
+                    margin-left: 5px;
+                }
             }
+            
         }
         #arrow{
             flex-grow: 1;
@@ -206,37 +225,52 @@ export default {
             flex-direction: column;
             left:47%;
             h1{
-                font-size:2em;
+                font-size:3.2em;
             }
             .contact-side-container{
                 width:100%;
                 p{
                     width: 100%;
-                    font-size: 1em;
+                    font-size: 1.5em;
                 }
             }
         }
+        #links{
+            font-size: 1.5em;
+        }
         #contact-form{
             width: 100%;
-            margin-top:1em;
+            margin-top:1.4em;
         }
     }
     @media screen and (max-width: 500px) {
-        h1{
-            font-size:1.5em;
-        }
-        .handle{
-            display: none;
+
+        #contact-container{
+            h1{
+            font-size:2em;
+            }
+            .contact-side-container{
+                p{
+                    font-size: 1.2em;
+                }
+            }
         }
         #links{
-            display: flex;
+            font-size: 1em;
         }
+
         textarea{
             height: 5em;
         }
         #contact-form{
             margin-top:0.5em;
             padding-top: 1em;
+            display: none;
+            width: 72%;
+            input, textarea{
+                font-size: 1em;
+            }
+            
         }
     }
 

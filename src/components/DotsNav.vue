@@ -10,17 +10,21 @@
                 to="/about" class="dot">
             </RouterLink>
         </li>
-        <li>
+        <!-- <li>
             <RouterLink aria-label="projects"
                 to="/projects" class="dot">
                 </RouterLink>
-        </li>
+        </li> -->
         <li>
             <RouterLink aria-label="contact"
                 to="/contact" class="dot">
             </RouterLink>
         </li>
   </ul>
+  <div id="scroll-indicator-container">
+        <div class="scroll-indicator"></div>
+        <span>scroll</span>
+    </div>
 </template>
 <script>
 
@@ -32,6 +36,58 @@ export default {
 }
 </script>
 <style lang="scss">
+    #scroll-indicator-container{
+        color: $grey;
+        position: fixed;
+        bottom:5vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        left: 7vw;
+        span{
+            line-height: 2rem;
+        }
+        
+    }
+
+    .scroll-indicator:before{
+        position: absolute;
+        left: 50%;
+    }
+    
+
+    .scroll-indicator{
+        position: relative;
+        width: 20px;
+        height: 40px;
+        top: 50%;
+        box-shadow: inset 0 0 0 1px $grey;
+        border-radius: 20px;
+    }
+
+    .scroll-indicator:before{
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: $grey;
+        margin-left: -3px;
+        top: 8px;
+        border-radius: 4px;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-name: scroll;
+    }
+
+    @keyframes scroll{
+        0%{
+            opacity: 1
+        }
+        100%{
+            opacity: 0;
+            transform: translateY(18px);
+        }
+    }
+
     #dots-nav{
         display: flex;
         flex-direction: column;
@@ -85,12 +141,17 @@ export default {
             top:auto;
             height: auto;
         }
+        #scroll-indicator-container{
+            left: 5vw;
+        }
     }
 
     @media screen and (max-width: 500px) {
         #dots-nav{
             transform: translateY(-50%) translateX(-50%);
         }
-
+        #scroll-indicator-container{
+            display: none !important;
+        }
     }
 </style>

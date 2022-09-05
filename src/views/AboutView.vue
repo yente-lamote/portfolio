@@ -11,14 +11,14 @@
           working on are web applications and software with a lot 
           of functionality.
         </p>
-        <p>
+        <p id="interests">
           Besides software development I also have interests in 
           artificial intelligence and tech in general.
         </p>
         <div id="tiles-container">
           <div class="tile">
             <span class="tile-value">22</span>
-            <span class="tile-subtitle">Years</span>
+            <span class="tile-subtitle">Years old</span>
           </div>
           <div class="tile">
             <span class="tile-value"> 6</span>
@@ -145,6 +145,10 @@ export default {
           margin-left: auto;
           margin-top:1.3em;
           padding-top: 0;
+          p{
+            font-size: 1.4em;
+            padding-right: 0;
+          }
         }
         aside{
           height: 50%;
@@ -173,13 +177,15 @@ export default {
               font-size:1.9em;
             }
             p{
-              font-size: 1rem;
+              font-size: 1.1em;
               padding: 0;
             }
             #tiles-container{
               display: flex;
+              justify-content: space-between;
               .tile{
-                padding:2rem 3rem 2rem 0;
+                padding:2rem 0rem 2rem 0;
+                
                 .tile-value{
                   display: block;
                   font-weight: 500;
@@ -191,12 +197,22 @@ export default {
                 }
               }
             }
+
         }
         aside{
           display: none;
         }
         
       }
+    }
+    
+  }
+  @media screen and (max-height: 650px) {
+    #interests{
+      display: none;
+    }
+    #tiles-container{
+      display: none !important;
     }
   }
 </style>

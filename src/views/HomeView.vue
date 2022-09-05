@@ -21,10 +21,7 @@
                 </div>
             </div>
         </div>
-        <div id="scroll-indicator-container">
-            <div class="scroll-indicator"></div>
-        <span>scroll</span>
-    </div>
+        
     </section>
 </template>
 <script>
@@ -70,56 +67,6 @@ export default {
         right:0;
     }
 
-    #scroll-indicator-container{
-        color: $grey;
-        position: fixed;
-        bottom:5vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        span{
-            line-height: 2rem;
-        }
-    }
-
-    .scroll-indicator:before{
-        position: absolute;
-        left: 50%;
-    }
-    
-
-    .scroll-indicator{
-        position: relative;
-        width: 20px;
-        height: 40px;
-        top: 50%;
-        box-shadow: inset 0 0 0 1px $grey;
-        border-radius: 20px;
-    }
-
-    .scroll-indicator:before{
-        content: '';
-        width: 6px;
-        height: 6px;
-        background: $grey;
-        margin-left: -3px;
-        top: 8px;
-        border-radius: 4px;
-        animation-duration: 1.5s;
-        animation-iteration-count: infinite;
-        animation-name: scroll;
-    }
-
-    @keyframes scroll{
-        0%{
-            opacity: 1
-        }
-        100%{
-            opacity: 0;
-            transform: translateY(18px);
-        }
-    }
-
     @media screen and (max-width: 1650px) {
         #home-title h1{
             font-size:2.2rem;
@@ -150,8 +97,12 @@ export default {
                 font-size: 2.7rem;
             }
         }
+        #home-view-container{
+            flex-direction: column;
+            height: 70%;
+            justify-content: space-between;
+        }
         #face-wrapper{
-            position:relative;
             width: 50vw;
             margin-left: auto;
             margin-right:auto !important;
@@ -161,7 +112,6 @@ export default {
         #home-title{
             display: flex;
             justify-content: center;
-            position: relative;
             transform: none;
             top:15vh;
             transform: translateX(-50%);
@@ -212,9 +162,6 @@ export default {
         }
         #home-view-container{
             flex-direction: column;
-        }
-        #scroll-indicator-container{
-            display: none !important;
         }
     }
 </style>

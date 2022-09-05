@@ -15,13 +15,20 @@ import Contact from "./views/Contact.vue";
   <main>
     <HomeView class="page" :style="{'transform':`translateY(-${translateY}px)`}"></HomeView>
     <AboutView class="page" :style="{'transform':`translateY(-${translateY}px)`}"></AboutView>
-    <Projects class="page" :style="{'transform':`translateY(-${translateY}px)`}"></Projects>
+    <!--<Projects class="page" :style="{'transform':`translateY(-${translateY}px)`}"></Projects>-->
     <Contact class="page" :style="{'transform':`translateY(-${translateY}px)`}"></Contact>
   </main>
    <div id="loading">
+    <div id="loading-container">
       <p>
         Yente<span>.</span>
       </p>
+      <div class="loading-dots" data-title=".dot-elastic">
+          <div class="stage">
+            <div class="dot-elastic"></div>
+          </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -30,7 +37,7 @@ export default {
       return{
         lastScrollTop:0,
         vh:0,
-        pagesArray:["home","about","projects","contact"],
+        pagesArray:["home","about","contact"],
         pages:[
           {
             name:"home",
@@ -44,15 +51,15 @@ export default {
             start:this.aboutStart,
             end:()=>{}
           },
-          {
+          /*{
             name:"projects",
             position:2,
             start:()=>{this.scrolling=false},
             end:()=>{}
-          },
+          },*/
           {
             name:"contact",
-            position:3,
+            position:2,
             start:this.contactStart,
             end:()=>{}
           }
@@ -88,10 +95,10 @@ export default {
       homeStart(){
         const tl = gsap.timeline({defaults:{duration:1,delay:0},onComplete:this.animationComplete})
         !this.from.name?
-          tl.delay(0.6)://wanneer pagina voor eerste keer ingeladen wordt
+          tl.delay(1.05)://wanneer pagina voor eerste keer ingeladen wordt
           tl.delay(0.35)
         tl.add("loadFirst")
-        tl.fromTo('#scroll-indicator-container',{'transform':'translateY(100vh)','display':'none','opacity':0},{'display':'flex','transform':'translateY(0)','opacity':1},'loadFirst')
+        tl.fromTo('#scroll-indicator-container',{'transform':'translateY(100vh) translateX(-50%)','display':'none','opacity':0},{'display':'flex','transform':'translateY(0) translateX(-50%)','opacity':1},'loadFirst')
         tl.fromTo('#home-title',{'transform':'translate(-140%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
         tl.fromTo('#face-wrapper',{'transform':'translate(140%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
         !this.from.name&&
@@ -104,8 +111,8 @@ export default {
       aboutStart(){
         const tl = gsap.timeline({defaults:{duration:1},onComplete:this.animationComplete})
         !this.from.name?
-          tl.delay(0.6)://wanneer pagina voor eerste keer ingeladen wordt
-          tl.delay(0.35)
+          tl.delay(1.05)://wanneer pagina voor eerste keer ingeladen wordt
+          tl.delay(0.4)
         tl.add("loadFirst")
         tl.fromTo('#about-info',{'transform':'translate(-100%, 0)','opacity':'0'},{'transform':'translate(0, 0)','opacity':'1'},"loadFirst")
         tl.fromTo('.tagcloud',{'transform':'translate(140%, 0)','opacity':'0'},{'transform':'translate(0, 0)','opacity':'1'},"loadFirst")
@@ -113,7 +120,7 @@ export default {
       contactStart(){
         const tl = gsap.timeline({defaults:{duration:1},onComplete:this.animationComplete})
         !this.from.name?
-          tl.delay(0.6)://wanneer pagina voor eerste keer ingeladen wordt
+          tl.delay(1.05)://wanneer pagina voor eerste keer ingeladen wordt
           tl.delay(0.35)
         tl.fromTo('#contact-form',{'transform':'translate(200%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
         tl.fromTo('#left-contact-side-container',{'transform':'translate(-200%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
@@ -205,13 +212,110 @@ export default {
       document.addEventListener('touchmove', this.handleTouchMove, false);
       //https://stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android
       const tl = gsap.timeline({defaults:{duration:0.7}})
-      tl.delay(0.5)
+      tl.delay(1)
       tl.fromTo('#loading',{'transform':'translateY(0)'},{'transform':'translateY(-100%)'})
       tl.to('#loading',{'display':'none', duration:0})
     }
 }
 </script>
 <style lang="scss">
+  #loading-container{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top:50%;
+  }
+  .dot-elastic {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: $pink;
+  color: $pink;
+  animation: dotElastic 1s infinite linear;
+  left: 50%;
+}
+
+.dot-elastic::before, .dot-elastic::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.dot-elastic::before {
+  left: -12px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: $pink;
+  color: $pink;
+  animation: dotElasticBefore 1s infinite linear;
+}
+
+.dot-elastic::after {
+  left: 12px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: $pink;
+  color: $pink;
+  animation: dotElasticAfter 1s infinite linear;
+}
+
+@keyframes dotElasticBefore {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1, 1.5);
+  }
+  50% {
+    transform: scale(1, 0.67);
+  }
+  75% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes dotElastic {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1, 1.5);
+  }
+  75% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes dotElasticAfter {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1, 0.67);
+  }
+  75% {
+    transform: scale(1, 1.5);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
   main{
     width: 80vw;
     margin:auto;
@@ -274,17 +378,11 @@ export default {
     left: 0;
     position: absolute;
     p{
-      overflow: hidden;
-      position: absolute;
-      top:50%;
-      left:50%;
       font-size: 2em;
-      transform: translateX(-50%) translateY(-50%);
       font-size: 2.4rem;
       color: $white;
       font-weight: bold;
-      padding:0.75rem 0;
-      margin-right:1.5rem;
+      padding:0.4rem 0;
       span{
         color: $pink;
         border-radius: 25%;
