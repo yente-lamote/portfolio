@@ -1,6 +1,6 @@
 <template>
-    <section>
-        <div id="home-view-container">
+    <section id="home">
+        <div class="content-container">
             <aside id="face-wrapper">
                 <Face></Face>
             </aside>
@@ -21,7 +21,6 @@
                 </div>
             </div>
         </div>
-        
     </section>
 </template>
 <script>
@@ -36,14 +35,9 @@ export default {
 
 </script>
 <style lang="scss">
-    #home-view-container{
-        width: 100%;
-        display: flex;
+    #home .content-container{
         flex-direction: row-reverse;
-        position: absolute;
-        top:50%;
         justify-content: space-between;
-        transform: translateY(-50%);
     }
     #home-title{
         margin: auto 0;
@@ -97,7 +91,7 @@ export default {
                 font-size: 2.7rem;
             }
         }
-        #home-view-container{
+        #home .content-container{
             flex-direction: column;
             height: 70%;
             justify-content: space-between;
@@ -160,7 +154,7 @@ export default {
             transform:none;
             top: 0;
         }
-        #home-view-container{
+        #home .content-container{
             flex-direction: column;
         }
     }

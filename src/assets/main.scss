@@ -22,3 +22,10 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.15;
 }
+.content-container{
+    display: flex;
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    width: 100%;
+}

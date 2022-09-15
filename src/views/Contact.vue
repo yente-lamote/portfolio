@@ -1,6 +1,6 @@
 <template>
-    <section>
-        <div id="contact-container">
+    <section id="contact">
+        <div class="content-container">
                 <div id="left-contact-side-container" class="contact-side-container">
                     <div id="contact-info">
                         <div>
@@ -17,15 +17,15 @@
                         </div>
                         <div id="links">
                             <a aria-label="gitbhub profile" href="https://github.com/yente-lamote">
-                                <img class="link-icon" src="@/assets/images/icons/iconmonstr-github-3.svg"/>
+                                <img class="link-icon" src="@/assets/images/icons/iconmonstr-github-3.svg" alt="github icon"/>
                             <span class="handle">yente-lamote</span>
                             </a>
                             <a aria-label="linkedin profile" href="https://www.linkedin.com/in/yente-lamote/">
-                                <img class="link-icon" src="@/assets/images/icons/iconmonstr-linkedin-3.svg"/>
+                                <img class="link-icon" src="@/assets/images/icons/iconmonstr-linkedin-3.svg" alt="linkedIn icon"/>
                                 <span class="handle">yente-lamote</span>
                             </a>
                             <a aria-label="email" href="#">
-                                <img class="link-icon" src="@/assets/images/icons/email.svg"/>
+                                <img class="link-icon" src="@/assets/images/icons/email.svg" alt="mail icon"/>
                                 <span class="handle">info@yentelamote.be</span>
                             </a>
                         </div>
@@ -177,13 +177,10 @@ export default {
         }
     }
 
-    #contact-container{
-        display: flex;
+    #contact .content-container{
         color:$white;
         width: 70%;
-        top:50%;
         left:50%;
-        position: absolute;
         transform:translateY(-50%) translateX(-50%);
         h1{
             font-size: 3em;
@@ -221,7 +218,7 @@ export default {
         }
     }
     @media screen and (max-width: 950px) {
-        #contact-container{
+        #contact .content-container{
             flex-direction: column;
             left:47%;
             h1{
@@ -245,7 +242,7 @@ export default {
     }
     @media screen and (max-width: 500px) {
 
-        #contact-container{
+        #contact .content-container{
             h1{
             font-size:2em;
             }

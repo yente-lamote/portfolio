@@ -14,11 +14,11 @@ import Contact from "./views/Contact.vue";
   <Header></Header>
   <main>
     <HomeView class="page" :style="{'transform':`translateY(-${translateY}px)`}"></HomeView>
+    <Projects class="page" :style="{'transform':`translateY(-${translateY}px)`}"></Projects>
     <AboutView class="page" :style="{'transform':`translateY(-${translateY}px)`}"></AboutView>
-    <!--<Projects class="page" :style="{'transform':`translateY(-${translateY}px)`}"></Projects>-->
     <Contact class="page" :style="{'transform':`translateY(-${translateY}px)`}"></Contact>
   </main>
-   <div id="loading">
+   <!-- <div id="loading">
     <div id="loading-container">
       <p>
         Yente<span>.</span>
@@ -29,7 +29,7 @@ import Contact from "./views/Contact.vue";
           </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 <script>
 export default {
@@ -37,31 +37,31 @@ export default {
       return{
         lastScrollTop:0,
         vh:0,
-        pagesArray:["home","about","contact"],
+        pagesArray:["home","projects","about","contact"],
         pages:[
           {
             name:"home",
             position:0,
-            start:this.homeStart,
-            end:this.homeEnd
+            enter:this.homeEnter,
+            leave:this.homeLeave
+          },
+          {
+            name:"projects",
+            position:1,
+            enter:this.projectEnter,
+            leave:this.projectLeave
           },
           {
             name:"about",
-            position:1,
-            start:this.aboutStart,
-            end:()=>{}
-          },
-          /*{
-            name:"projects",
             position:2,
-            start:()=>{this.scrolling=false},
-            end:()=>{}
-          },*/
+            enter:this.aboutEnter,
+            leave:()=>{}
+          },
           {
             name:"contact",
-            position:2,
-            start:this.contactStart,
-            end:()=>{}
+            position:3,
+            enter:this.contactEnter,
+            leave:()=>{}
           }
         ],
         currentPage:0,
@@ -79,10 +79,10 @@ export default {
         this.from=from
         if(this.from.name){
           let prevPage = this.pages.filter(function(el){return el.name == from.name})[0]
-          prevPage.end()
+          prevPage.leave()
         }
         let page = this.pages.filter(function(el){return el.name == to.name})[0]
-        page.start()
+        page.enter()
         this.currentPage=page.position
       }
     },
@@ -92,11 +92,11 @@ export default {
       }
     },
     methods:{
-      homeStart(){
+      homeEnter(){
         const tl = gsap.timeline({defaults:{duration:1,delay:0},onComplete:this.animationComplete})
-        !this.from.name?
-          tl.delay(1.05)://wanneer pagina voor eerste keer ingeladen wordt
-          tl.delay(0.35)
+        // !this.from.name?
+        //   tl.delay(1.05)://wanneer pagina voor eerste keer ingeladen wordt
+        //   tl.delay(0.35)
         tl.add("loadFirst")
         tl.fromTo('#scroll-indicator-container',{'transform':'translateY(100vh) translateX(-50%)','display':'none','opacity':0},{'display':'flex','transform':'translateY(0) translateX(-50%)','opacity':1},'loadFirst')
         tl.fromTo('#home-title',{'transform':'translate(-140%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
@@ -104,26 +104,37 @@ export default {
         !this.from.name&&
         tl.fromTo('#top-right-bars',{'transform':'translate(100%, -100%)'},{'transform':'translate(0, 0)', duration:1.2},"loadFirst")
       },
-      homeEnd(){
+      homeLeave(){
         const tl = gsap.timeline({defaults:{duration:0.6},onComplete:this.animationComplete})
         tl.to('#scroll-indicator-container',{'transform':'translateY(100vh)','display':'none','opacity':0})
       },
-      aboutStart(){
+      aboutEnter(){
         const tl = gsap.timeline({defaults:{duration:1},onComplete:this.animationComplete})
-        !this.from.name?
-          tl.delay(1.05)://wanneer pagina voor eerste keer ingeladen wordt
-          tl.delay(0.4)
+        // !this.from.name?
+        //   tl.delay(1.05)://wanneer pagina voor eerste keer ingeladen wordt
+        //   tl.delay(0.4)
         tl.add("loadFirst")
         tl.fromTo('#about-info',{'transform':'translate(-100%, 0)','opacity':'0'},{'transform':'translate(0, 0)','opacity':'1'},"loadFirst")
         tl.fromTo('.tagcloud',{'transform':'translate(140%, 0)','opacity':'0'},{'transform':'translate(0, 0)','opacity':'1'},"loadFirst")
       },
-      contactStart(){
+      contactEnter(){
         const tl = gsap.timeline({defaults:{duration:1},onComplete:this.animationComplete})
-        !this.from.name?
-          tl.delay(1.05)://wanneer pagina voor eerste keer ingeladen wordt
-          tl.delay(0.35)
+        // !this.from.name?
+        //   tl.delay(1.05)://wanneer pagina voor eerste keer ingeladen wordt
+        //   tl.delay(0.35)
         tl.fromTo('#contact-form',{'transform':'translate(200%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
         tl.fromTo('#left-contact-side-container',{'transform':'translate(-200%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
+      },
+      projectEnter(){
+        const tl = gsap.timeline({defaults:{duration:1},onComplete:this.animationComplete})
+         !this.from.name?
+           tl.delay(1.05)://wanneer pagina voor eerste keer ingeladen wordt
+           tl.delay(0.35)
+        tl.fromTo('#lid',{'transform':'perspective(3000px) rotateX(-90deg)'},{'transform':'perspective(3000px) rotateX(0deg)'})
+      },
+      projectLeave(){
+        const tl = gsap.timeline({defaults:{duration:0.6},onComplete:this.animationComplete})
+        tl.to('#lid',{'transform':'perspective(3000px) rotateX(-90deg)'})
       },
       animationComplete(){
         this.scrolling=false;
@@ -211,10 +222,10 @@ export default {
       document.addEventListener('touchstart', this.handleTouchStart, false);        
       document.addEventListener('touchmove', this.handleTouchMove, false);
       //https://stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android
-      const tl = gsap.timeline({defaults:{duration:0.7}})
-      tl.delay(1)
-      tl.fromTo('#loading',{'transform':'translateY(0)'},{'transform':'translateY(-100%)'})
-      tl.to('#loading',{'display':'none', duration:0})
+      // const tl = gsap.timeline({defaults:{duration:0.7}})
+      // tl.delay(1)
+      // tl.fromTo('#loading',{'transform':'translateY(0)'},{'transform':'translateY(-100%)'})
+      // tl.to('#loading',{'display':'none', duration:0})
     }
 }
 </script>
@@ -317,8 +328,7 @@ export default {
   }
 }
   main{
-    width: 80vw;
-    margin:auto;
+    width: 100vw;
     position:relative;
     overflow: hidden;
     overflow-x: hidden;
@@ -326,6 +336,9 @@ export default {
   .page{
     height: 100vh; /* Fallback for browsers that do not support Custom Properties */
     height: calc(var(--vh, 1vh) * 100);
+    width:80vw;
+    margin:auto;
+    overflow:hidden;
     position: relative;
     -webkit-transition: all 0.5s linear;
     -moz-transition: all 0.5s linear;
@@ -393,12 +406,12 @@ export default {
     }
   }
   @media screen and (max-width: 1650px) {
-    main{
+    .page{
       width: 90%;
     }
   }
   @media screen and (max-width: 800px) {
-    main{
+    .page{
       width: 100%;
     }
   }

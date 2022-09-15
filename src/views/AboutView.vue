@@ -1,6 +1,6 @@
 <template>
   <section id="about">
-    <div id="about-container">
+    <div class="content-container">
       <article id="about-info">
         <h1>About Me</h1>
         <p>
@@ -66,12 +66,6 @@ export default {
 </script>
 <style lang="scss">
   #about {
-    #about-container{
-      display: flex;
-      position: absolute;
-      top:50%;
-      transform: translateY(-49%);
-      width: 100%;
       article{
         width: 50%;
         padding-top:2em;
@@ -82,6 +76,7 @@ export default {
         p{
           margin-top:1rem;
           font-size:1.2em;
+          line-height: 1.3;
           color: $grey;
           padding-right: 20%;
         }
@@ -109,11 +104,10 @@ export default {
           margin-left: auto;
         }
       }
-    }
     color:white;
   }
   @media screen and (max-width: 1650px) {
-        #about #about-container{
+        #about{
           article{
             width: 45%;
             h1{
@@ -132,7 +126,7 @@ export default {
     }
 
     @media screen and (max-width: 950px) {
-      #about #about-container{
+      #about .content-container{
         padding: 2em 0;
         flex-direction: column-reverse;
         height: 80%;
@@ -164,7 +158,7 @@ export default {
   @media screen and (max-width: 500px) {
     #about{
       overflow: hidden;
-      #about-container{
+      .content-container{
         padding: 2em 0;
         flex-direction: column-reverse;
         align-content: center;

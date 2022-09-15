@@ -6,15 +6,15 @@
             </RouterLink>
         </li>
         <li>
+            <RouterLink aria-label="projects"
+                to="/projects" class="dot">
+                </RouterLink>
+        </li>
+        <li>
             <RouterLink  aria-label="about"
                 to="/about" class="dot">
             </RouterLink>
         </li>
-        <!-- <li>
-            <RouterLink aria-label="projects"
-                to="/projects" class="dot">
-                </RouterLink>
-        </li> -->
         <li>
             <RouterLink aria-label="contact"
                 to="/contact" class="dot">

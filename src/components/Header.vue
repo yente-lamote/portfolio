@@ -14,13 +14,13 @@
         <div id="nav-list" v-bind:class="{open:isOpen}">
           <ul id="nav-left">
             <li>
+              <RouterLink to="/projects" class="page-link">Projects</RouterLink>
+              <span class="dot"></span>
+            </li>
+            <li>
               <RouterLink to="/about" class="page-link">About</RouterLink>
               <span class="dot"></span>
             </li>
-            <!-- <li>
-              <RouterLink to="/projects" class="page-link">Projects</RouterLink>
-              <span class="dot"></span>
-            </li> -->
             <li>
               <RouterLink to="/contact" class="page-link">Contact</RouterLink>
             </li>
