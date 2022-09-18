@@ -1,2 +1,2 @@
 User-agent:*
-disallow:
+disallow: /assets/binary.d7202a23.png

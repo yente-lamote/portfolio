@@ -7,6 +7,7 @@ import AboutView from "./views/AboutView.vue";
 import Projects from "./views/Projects.vue";
 import router from "./router";
 import Contact from "./views/Contact.vue";
+import { createSimpleExpression } from "@vue/compiler-core";
 </script>
 <template>
   <TopRightBars></TopRightBars>
@@ -18,7 +19,7 @@ import Contact from "./views/Contact.vue";
     <AboutView class="page" :style="{'transform':`translateY(-${translateY}px)`}"></AboutView>
     <Contact class="page" :style="{'transform':`translateY(-${translateY}px)`}"></Contact>
   </main>
-   <!-- <div id="loading">
+   <div id="loading">
     <div id="loading-container">
       <p>
         Yente<span>.</span>
@@ -29,7 +30,7 @@ import Contact from "./views/Contact.vue";
           </div>
       </div>
     </div>
-  </div> -->
+  </div>
 </template>
 <script>
 export default {
@@ -84,6 +85,10 @@ export default {
         let page = this.pages.filter(function(el){return el.name == to.name})[0]
         page.enter()
         this.currentPage=page.position
+        if(this.currentPage!=0){
+          const tl = gsap.timeline()
+          tl.to('#scroll-indicator-container',{'display':'none', duration:0})
+        }
       }
     },
     computed:{
@@ -93,50 +98,50 @@ export default {
     },
     methods:{
       homeEnter(){
-        const tl = gsap.timeline({defaults:{duration:1,delay:0},onComplete:this.animationComplete})
-        // !this.from.name?
-        //   tl.delay(1.05)://wanneer pagina voor eerste keer ingeladen wordt
-        //   tl.delay(0.35)
+        const tl = gsap.timeline({defaults:{duration:0.7,delay:0},onComplete:this.animationComplete})
+        !this.from.name?
+          tl.delay(0.55)://wanneer pagina voor eerste keer ingeladen wordt
+          tl.delay(0.35)
         tl.add("loadFirst")
         tl.fromTo('#scroll-indicator-container',{'transform':'translateY(100vh) translateX(-50%)','display':'none','opacity':0},{'display':'flex','transform':'translateY(0) translateX(-50%)','opacity':1},'loadFirst')
         tl.fromTo('#home-title',{'transform':'translate(-140%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
         tl.fromTo('#face-wrapper',{'transform':'translate(140%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
         !this.from.name&&
-        tl.fromTo('#top-right-bars',{'transform':'translate(100%, -100%)'},{'transform':'translate(0, 0)', duration:1.2},"loadFirst")
+        tl.fromTo('#top-right-bars',{'transform':'translate(100%, -100%)'},{'transform':'translate(0, 0)', duration:0.9},"loadFirst")
       },
       homeLeave(){
-        const tl = gsap.timeline({defaults:{duration:0.6},onComplete:this.animationComplete})
+        const tl = gsap.timeline({defaults:{duration:0.6}})
         tl.to('#scroll-indicator-container',{'transform':'translateY(100vh)','display':'none','opacity':0})
       },
       aboutEnter(){
-        const tl = gsap.timeline({defaults:{duration:1},onComplete:this.animationComplete})
-        // !this.from.name?
-        //   tl.delay(1.05)://wanneer pagina voor eerste keer ingeladen wordt
-        //   tl.delay(0.4)
+        const tl = gsap.timeline({defaults:{duration:0.7,ease: Power1.easeIn},onComplete:this.animationComplete})
+        !this.from.name?
+          tl.delay(0.55)://wanneer pagina voor eerste keer ingeladen wordt
+          tl.delay(0.4)
         tl.add("loadFirst")
         tl.fromTo('#about-info',{'transform':'translate(-100%, 0)','opacity':'0'},{'transform':'translate(0, 0)','opacity':'1'},"loadFirst")
         tl.fromTo('.tagcloud',{'transform':'translate(140%, 0)','opacity':'0'},{'transform':'translate(0, 0)','opacity':'1'},"loadFirst")
       },
       contactEnter(){
-        const tl = gsap.timeline({defaults:{duration:1},onComplete:this.animationComplete})
-        // !this.from.name?
-        //   tl.delay(1.05)://wanneer pagina voor eerste keer ingeladen wordt
-        //   tl.delay(0.35)
+        const tl = gsap.timeline({defaults:{duration:0.7,ease: Power1.easeIn},onComplete:this.animationComplete})
+        !this.from.name?
+          tl.delay(0.55)://wanneer pagina voor eerste keer ingeladen wordt
+          tl.delay(0.35)
         tl.fromTo('#contact-form',{'transform':'translate(200%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
         tl.fromTo('#left-contact-side-container',{'transform':'translate(-200%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
       },
       projectEnter(){
-        const tl = gsap.timeline({defaults:{duration:1},onComplete:this.animationComplete})
+        const tl = gsap.timeline({defaults:{duration:0.7},onComplete:this.animationComplete})
          !this.from.name?
-           tl.delay(1.05)://wanneer pagina voor eerste keer ingeladen wordt
-           tl.delay(0.35)
-        tl.fromTo('#lid',{'transform':'perspective(3000px) rotateX(-90deg)'},{'transform':'perspective(3000px) rotateX(0deg)'})
+           tl.delay(0.65)://wanneer pagina voor eerste keer ingeladen wordt
+           tl.delay(0.25)
+        //tl.fromTo('#lid',{'transform':'perspective(3000px) rotateX(-80deg)'},{'transform':'perspective(3000px) rotateX(0deg)',duration: 0.6,ease: 'none',})
       },
       projectLeave(){
-        const tl = gsap.timeline({defaults:{duration:0.6},onComplete:this.animationComplete})
-        tl.to('#lid',{'transform':'perspective(3000px) rotateX(-90deg)'})
+        const tl = gsap.timeline({defaults:{duration:0.6}})
+        //tl.to('#lid',{'transform':'perspective(3000px) rotateX(-90deg)'})
       },
-      animationComplete(){
+      async animationComplete(){
         this.scrolling=false;
       },
       checkScrollDirection(event){
@@ -221,11 +226,14 @@ export default {
       window.addEventListener("wheel", this.checkScrollDirection);
       document.addEventListener('touchstart', this.handleTouchStart, false);        
       document.addEventListener('touchmove', this.handleTouchMove, false);
+      
       //https://stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android
-      // const tl = gsap.timeline({defaults:{duration:0.7}})
-      // tl.delay(1)
-      // tl.fromTo('#loading',{'transform':'translateY(0)'},{'transform':'translateY(-100%)'})
-      // tl.to('#loading',{'display':'none', duration:0})
+      const tl = gsap.timeline({defaults:{duration:0.7}})
+      console.log(this.currentPage);
+      tl.delay(0.5)
+      
+      tl.fromTo('#loading',{'transform':'translateY(0)'},{'transform':'translateY(-100%)'})
+      tl.to('#loading',{'display':'none', duration:0})
     }
 }
 </script>
