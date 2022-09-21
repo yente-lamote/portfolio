@@ -49,8 +49,8 @@
                         </div>
                     </div>
                     <div class="buttons">
-                        <a class="highlight-button" href="https://lead-project.yentelamote.be">View Lead-project</a>
-                        <a href="#">See all projects</a>
+                        <a class="button-full" href="https://lead-project.yentelamote.be">View Lead-project</a>
+                        <a class="button-border" href="#">See all projects</a>
                     </div>
                     </div>
                 </article>
@@ -63,7 +63,7 @@
                 <img src="@/assets/images/phone-mockups-mobile-version.png" alt="phone mockups"/>
                 <div class="container">
                     <h1>My projects</h1>
-                    <div id="projects-buttons">
+                    <div class="buttons">
                         <a href="https://lead-project.yentelamote.be" class="button-full">Lead project</a>
                         <a href="#" class="button-border">All projects</a>
                     </div>
@@ -91,11 +91,27 @@ export default {
 }
 </script>
 <style lang="scss">
+    .button-full{
+        color: $blue-400;
+        background-color: $white; 
+    }
+    .button-border{
+        margin-left: 1em;
+        color:$white;
+    }
+
     #projects-mobile{
         display: none;
     }
     #projects{
         overflow: visible;
+        a{
+            padding: 0.8em 1.5em;
+            display: inline-block;
+            border-radius: 10px;
+            border:1px solid $white;
+            font-weight: 600;
+        }
     }
     #laptop{
         position: absolute;
@@ -118,13 +134,14 @@ export default {
                 display: flex;
                 align-items: center;
                 h1{
-                    font-size: 4em;
+                    font-size: 3em;
                     margin-bottom: 0.4em;
                     font-weight: 500;
                 }
                 .subtitle{
                     display: flex;
                     align-items: center;
+                    padding-bottom:0.9rem;
                     h2{
                         font-size: 2em;
                         display: inline;
@@ -140,7 +157,7 @@ export default {
                 }
                 
                 p{
-                    margin-top:0.9rem;
+                    padding-bottom:0.9rem;
                     font-size:1.1em;
                     line-height: 1.6;
                     color: $grey;
@@ -232,19 +249,6 @@ export default {
                     display: flex;
                     justify-content: space-between;
                 }
-                a{
-                    padding: 0.8em 1.5em;
-                    display: inline-block;
-                    color:white;
-                    border-radius: 10px;
-                    border:1px solid $white;
-                    font-weight: 600;
-                }
-                .highlight-button{
-                    background-color: $white;
-                    color: $blue-400;
-                }
-
             }
             
             #mockups-desktop{
@@ -335,25 +339,12 @@ export default {
                 margin-top: -15px;
                 h1{
                     font-size: 2em;
+                    font-weight: 600;
                 }
-                #projects-buttons{
+                .buttons{
                     margin: 1.5em 0;
                     a{
-                        display: inline-block;
-                        border-radius: 10px;
-                        border: 1px;
-                        border-style: solid;
-                        text-decoration: none;
-                        padding: 0.7rem 1.2rem;
-                        font-weight: 600;
-                    }
-                    .button-full{
-                        color: $blue-400;
-                        background-color: $white; 
-                }
-                    .button-border{
-                        margin-left: 1em;
-                        color:$white;
+                        padding: 0.6rem 1.1rem;
                     }
                 }
             }

@@ -47,7 +47,7 @@ export default {
             font-weight: 300;
             span{
                 color:$white;
-                font-size:4.5rem;
+                font-size:4rem;
                 font-weight: 500;
             }
         }

@@ -8,6 +8,7 @@ import Projects from "./views/Projects.vue";
 import router from "./router";
 import Contact from "./views/Contact.vue";
 import { createSimpleExpression } from "@vue/compiler-core";
+import AboutViewNew from "./views/AboutViewNew.vue";
 </script>
 <template>
   <TopRightBars></TopRightBars>
@@ -16,7 +17,8 @@ import { createSimpleExpression } from "@vue/compiler-core";
   <main>
     <HomeView class="page" :style="{'transform':`translateY(-${translateY}px)`}"></HomeView>
     <Projects class="page" :style="{'transform':`translateY(-${translateY}px)`}"></Projects>
-    <AboutView class="page" :style="{'transform':`translateY(-${translateY}px)`}"></AboutView>
+    <!-- <AboutView class="page" :style="{'transform':`translateY(-${translateY}px)`}"></AboutView> -->
+    <AboutViewNew class="page" :style="{'transform':`translateY(-${translateY}px)`}"></AboutViewNew>
     <Contact class="page" :style="{'transform':`translateY(-${translateY}px)`}"></Contact>
   </main>
    <div id="loading">
@@ -99,15 +101,18 @@ export default {
     methods:{
       homeEnter(){
         const tl = gsap.timeline({defaults:{duration:0.7,delay:0},onComplete:this.animationComplete})
-        !this.from.name?
-          tl.delay(0.55)://wanneer pagina voor eerste keer ingeladen wordt
-          tl.delay(0.35)
-        tl.add("loadFirst")
-        tl.fromTo('#scroll-indicator-container',{'transform':'translateY(100vh) translateX(-50%)','display':'none','opacity':0},{'display':'flex','transform':'translateY(0) translateX(-50%)','opacity':1},'loadFirst')
-        tl.fromTo('#home-title',{'transform':'translate(-140%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
-        tl.fromTo('#face-wrapper',{'transform':'translate(140%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
+        /*!this.from.name?
+          tl.delay(0.6)://wanneer pagina voor eerste keer ingeladen wordt
+          tl.delay(0.6)*/
+        tl.delay(0.6)
+        tl.add("start")
+        tl.fromTo('#scroll-indicator-container',{'transform':'translateY(100vh) translateX(-50%)','display':'none','opacity':0},{'display':'flex','transform':'translateY(0) translateX(-50%)','opacity':1},'start')
+        tl.fromTo('#home-title',{'transform':'translate(-140%, 0)'},{'transform':'translate(0, 0)'},"start")
+        //tl.fromTo('#face-wrapper',{'transform':'translate(140%, 0)'},{'transform':'translate(0, 0)'},"start")
+        tl.fromTo('#face-wrapper',{'transform':'scale(0.4) translateY(-60%)'},{'transform':'scale(1) translateY(0)',ease: Sine.easeOut},'start')
+
         !this.from.name&&
-        tl.fromTo('#top-right-bars',{'transform':'translate(100%, -100%)'},{'transform':'translate(0, 0)', duration:0.9},"loadFirst")
+        tl.fromTo('#top-right-bars',{'transform':'translate(100%, -100%)'},{'transform':'translate(0, 0)', duration:0.9},"start")
       },
       homeLeave(){
         const tl = gsap.timeline({defaults:{duration:0.6}})
@@ -118,9 +123,9 @@ export default {
         !this.from.name?
           tl.delay(0.55)://wanneer pagina voor eerste keer ingeladen wordt
           tl.delay(0.4)
-        tl.add("loadFirst")
-        tl.fromTo('#about-info',{'transform':'translate(-100%, 0)','opacity':'0'},{'transform':'translate(0, 0)','opacity':'1'},"loadFirst")
-        tl.fromTo('.tagcloud',{'transform':'translate(140%, 0)','opacity':'0'},{'transform':'translate(0, 0)','opacity':'1'},"loadFirst")
+        tl.add("start")
+        tl.fromTo('#about-info',{'transform':'translate(-100%, 0)','opacity':'0'},{'transform':'translate(0, 0)','opacity':'1'},"start")
+        tl.fromTo('.tagcloud',{'transform':'translate(140%, 0)','opacity':'0'},{'transform':'translate(0, 0)','opacity':'1'},"start")
       },
       contactEnter(){
         const tl = gsap.timeline({defaults:{duration:0.7,ease: Power1.easeIn},onComplete:this.animationComplete})
@@ -131,10 +136,26 @@ export default {
         tl.fromTo('#left-contact-side-container',{'transform':'translate(-200%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
       },
       projectEnter(){
-        const tl = gsap.timeline({defaults:{duration:0.7},onComplete:this.animationComplete})
-         !this.from.name?
-           tl.delay(0.65)://wanneer pagina voor eerste keer ingeladen wordt
-           tl.delay(0.25)
+        const tlOne = gsap.timeline({defaults:{duration:0.7},onComplete:this.animationComplete})
+        tlOne.delay(0.3)
+        tlOne.add("start")
+        tlOne.fromTo('#mockups-desktop, #projects-mobile img',{'transform':'scale(0.4) translateY(-60%)'},{'transform':'scale(1) translateY(0)',ease: Sine.easeOut},"start")
+        tlOne.fromTo('#projects-mobile h1',{'transform':'translateX(-140%)'},{'transform':'translateX(0)'},"start")
+        tlOne.add("butons")
+        tlOne.fromTo('#projects-mobile .button-full',{'opacity':'0', 'transform':'translateY(10px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.5},"butons")
+        tlOne.fromTo('#projects-mobile .button-border',{'opacity':'0', 'transform':'translateY(10px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.6,delay:0.1},"butons")
+        
+        const tlTwo = gsap.timeline({defaults:{duration:0.4}})
+        tlTwo.delay(0.5)
+        tlTwo.add("start")
+        tlTwo.fromTo('#projects-desktop h1',{'opacity':'0'},{'opacity':'1'},"start")
+        tlTwo.fromTo('#projects-desktop h2',{'opacity':'0', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)',delay:0.3},"start")
+        tlTwo.fromTo('#projects-desktop p:first-of-type',{'opacity':'0', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.5},"start")
+        tlTwo.fromTo('#projects-desktop p:last-of-type',{'opacity':'0', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.6},"start")
+        tlTwo.fromTo('#projects-desktop #icons',{'opacity':'0', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.7},"start")
+        tlTwo.fromTo('#projects-desktop .button-full',{'opacity':'0', 'transform':'translateY(35px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.5,delay:0.6},"start")
+        tlTwo.fromTo('#projects-desktop .button-border',{'opacity':'0', 'transform':'translateY(35px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.6,delay:0.7},"start")
+        
         //tl.fromTo('#lid',{'transform':'perspective(3000px) rotateX(-80deg)'},{'transform':'perspective(3000px) rotateX(0deg)',duration: 0.6,ease: 'none',})
       },
       projectLeave(){
@@ -229,7 +250,6 @@ export default {
       
       //https://stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android
       const tl = gsap.timeline({defaults:{duration:0.7}})
-      console.log(this.currentPage);
       tl.delay(0.5)
       
       tl.fromTo('#loading',{'transform':'translateY(0)'},{'transform':'translateY(-100%)'})
@@ -348,10 +368,15 @@ export default {
     margin:auto;
     overflow:hidden;
     position: relative;
-    -webkit-transition: all 0.5s linear;
-    -moz-transition: all 0.5s linear;
-    -o-transition: all 0.5s linear;
-    transition: all 0.5s linear;
+    // -webkit-transition: all 0.5s linear;
+    // -moz-transition: all 0.5s linear;
+    // -o-transition: all 0.5s linear;
+    // transition: all 0.5s linear;
+    transition: all 1000ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    transition-property: all;
+    transition-duration: 1000ms;
+    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition-delay: 0s;
   }
   #app{
     height: 100vh; /* Fallback for browsers that do not support Custom Properties */
