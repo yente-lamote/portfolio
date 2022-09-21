@@ -85,16 +85,6 @@ export default {
 }
 </script>
 <style lang="scss">
-    #links{
-        a{
-            display: flex;
-            justify-content: center;
-        }
-    }
-    .link-icon{
-        width: 20px;
-        height: 20px;
-    }
     #contact-form{
         width: 75%;
         margin: auto;
@@ -216,6 +206,16 @@ export default {
             border-style: solid;
             margin: .5em 0;
         }
+        #links{
+            a{
+                display: flex;
+                justify-content: center;
+            }
+        }
+        .link-icon{
+            width: 20px;
+            height: 20px;
+        }
     }
     @media screen and (max-width: 950px) {
         #contact .content-container{
@@ -231,10 +231,11 @@ export default {
                     font-size: 1.5em;
                 }
             }
+            #links{
+                font-size: 1.5em;
+            }
         }
-        #links{
-            font-size: 1.5em;
-        }
+        
         #contact-form{
             width: 100%;
             margin-top:1.4em;
@@ -251,11 +252,11 @@ export default {
                     font-size: 1.2em;
                 }
             }
+            #links{
+                font-size: 1em;
+            }
         }
-        #links{
-            font-size: 1em;
-        }
-
+        
         textarea{
             height: 5em;
         }

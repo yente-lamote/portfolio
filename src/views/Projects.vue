@@ -8,14 +8,14 @@
                     <div class="subtitle">
                         <h2>Lead Project</h2>
                     </div>
-                    <p>
+                    <p id="lead-project-main-info">
                         Lead Project is a web application that visualizes a company's leads.
                         It allows users to keep track of their leads with various dashboards.
                         Users are also able to change leads and view a leads history. On top
                         of that the application has role-based access control. So only
                         employees with a certain role can edit the leads.
                     </p>
-                    <p>
+                    <p id="lead-project-api-info">
                         New leads can be added with API requests. For Drupal I've 
                         made a module that automatically sends an API request to the 
                         server whenever a form with lead data is submitted. 
@@ -157,7 +157,7 @@ export default {
                 }
                 
                 p{
-                    padding-bottom:0.9rem;
+                    margin-bottom:0.9rem;
                     font-size:1.1em;
                     line-height: 1.6;
                     color: $grey;

@@ -40,33 +40,47 @@ export default {
       return{
         lastScrollTop:0,
         vh:0,
-        pagesArray:["home","projects","about","contact"],
+        pagesArray:["home","projects","about","experience","skills","contact"],
         pages:[
           {
             name:"home",
-            position:0,
+            pageTranslate:0,
             enter:this.homeEnter,
             leave:this.homeLeave
           },
           {
             name:"projects",
-            position:1,
+            pageTranslate:1,
             enter:this.projectEnter,
             leave:this.projectLeave
           },
           {
             name:"about",
-            position:2,
+            pageTranslate:2,
+            page:2,
+            enter:this.aboutEnter,
+            leave:()=>{}
+          },
+          {
+            name:"experience",
+            pageTranslate:2,
+            enter:this.aboutEnter,
+            leave:()=>{}
+          },
+          {
+            name:"skills",
+            pageTranslate:2,
             enter:this.aboutEnter,
             leave:()=>{}
           },
           {
             name:"contact",
-            position:3,
+            pageTranslate:3,
             enter:this.contactEnter,
             leave:()=>{}
           }
         ],
+        //is gelinkt aan index van de bovenstaande array
         currentPage:0,
         scrolling:false,
         to:{},
@@ -86,7 +100,7 @@ export default {
         }
         let page = this.pages.filter(function(el){return el.name == to.name})[0]
         page.enter()
-        this.currentPage=page.position
+        this.currentPage=this.pages.indexOf(page)
         if(this.currentPage!=0){
           const tl = gsap.timeline()
           tl.to('#scroll-indicator-container',{'display':'none', duration:0})
@@ -95,10 +109,25 @@ export default {
     },
     computed:{
       translateY(){
-        return this.vh*100*this.currentPage
+        return this.vh*100*this.pages[this.currentPage].pageTranslate
       }
     },
     methods:{
+      async aboutEnter(){
+        let aboutPages = ["about","experience","skills"]
+        if(!aboutPages.includes(this.from.name)){
+          const tl = gsap.timeline({defaults:{duration:0.4,ease: Power1.easeIn},onComplete:this.animationComplete})
+          tl.delay(0.3)
+          await new Promise(resolve => setTimeout(resolve, 0.1));
+          tl.add("start")
+          tl.fromTo('#profile-picture',{'transform':'scale(0.6) translateY(-40%)'},{'transform':'scale(1) translateY(0)',duration:0.7, ease: Sine.easeOut},"start")
+          tl.fromTo("#about nav ul li",{"transform":"translateY(20px)","opacity":0},{"transform":"translateY(0)","opacity":1, delay:0.4},"start")
+          tl.fromTo(".tab",{"transform":"translateY(20px)","opacity":0},{"transform":"translateY(0)","opacity":1,delay:0.5},"start")
+        }else{
+          this.animationComplete();
+        }
+        
+      },
       homeEnter(){
         const tl = gsap.timeline({defaults:{duration:0.7,delay:0},onComplete:this.animationComplete})
         /*!this.from.name?
@@ -118,7 +147,7 @@ export default {
         const tl = gsap.timeline({defaults:{duration:0.6}})
         tl.to('#scroll-indicator-container',{'transform':'translateY(100vh)','display':'none','opacity':0})
       },
-      aboutEnter(){
+      /*aboutEnter(){
         const tl = gsap.timeline({defaults:{duration:0.7,ease: Power1.easeIn},onComplete:this.animationComplete})
         !this.from.name?
           tl.delay(0.55)://wanneer pagina voor eerste keer ingeladen wordt
@@ -126,7 +155,7 @@ export default {
         tl.add("start")
         tl.fromTo('#about-info',{'transform':'translate(-100%, 0)','opacity':'0'},{'transform':'translate(0, 0)','opacity':'1'},"start")
         tl.fromTo('.tagcloud',{'transform':'translate(140%, 0)','opacity':'0'},{'transform':'translate(0, 0)','opacity':'1'},"start")
-      },
+      },*/
       contactEnter(){
         const tl = gsap.timeline({defaults:{duration:0.7,ease: Power1.easeIn},onComplete:this.animationComplete})
         !this.from.name?
@@ -150,8 +179,8 @@ export default {
         tlTwo.add("start")
         tlTwo.fromTo('#projects-desktop h1',{'opacity':'0'},{'opacity':'1'},"start")
         tlTwo.fromTo('#projects-desktop h2',{'opacity':'0', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)',delay:0.3},"start")
-        tlTwo.fromTo('#projects-desktop p:first-of-type',{'opacity':'0', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.5},"start")
-        tlTwo.fromTo('#projects-desktop p:last-of-type',{'opacity':'0', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.6},"start")
+        tlTwo.fromTo('#lead-project-main-info',{'opacity':'0', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.5},"start")
+        tlTwo.fromTo('#lead-project-api-info',{'opacity':'0', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.6},"start")
         tlTwo.fromTo('#projects-desktop #icons',{'opacity':'0', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.7},"start")
         tlTwo.fromTo('#projects-desktop .button-full',{'opacity':'0', 'transform':'translateY(35px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.5,delay:0.6},"start")
         tlTwo.fromTo('#projects-desktop .button-border',{'opacity':'0', 'transform':'translateY(35px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.6,delay:0.7},"start")
