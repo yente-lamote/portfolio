@@ -113,12 +113,11 @@ export default {
       }
     },
     methods:{
-      async aboutEnter(){
+      aboutEnter(){
         let aboutPages = ["about","experience","skills"]
         if(!aboutPages.includes(this.from.name)){
           const tl = gsap.timeline({defaults:{duration:0.4,ease: Power1.easeIn},onComplete:this.animationComplete})
-          tl.delay(0.3)
-          await new Promise(resolve => setTimeout(resolve, 0.1));
+          tl.delay(0.4)
           tl.add("start")
           tl.fromTo('#profile-picture',{'transform':'scale(0.6) translateY(-40%)'},{'transform':'scale(1) translateY(0)',duration:0.7, ease: Sine.easeOut},"start")
           tl.fromTo("#about nav ul li",{"transform":"translateY(20px)","opacity":0},{"transform":"translateY(0)","opacity":1, delay:0.4},"start")

@@ -49,36 +49,56 @@
                             </div>
                         </div>
                         <div id="experience"  class="tab">
-                            <div class="job">
-                                <p class="title">Jobstudent IT - Dana</p>
-                                <p class="period">July - September 2022</p>
-                                <!-- <ul class="tasks">
-                                    <li>Helped colleagues with hardware and software problems</li>
-                                    <li>Developed in-house software applications</li>
-                                    <li>Automated tasks with scripts</li>
-                                </ul> -->
-                            </div>
-                            <div class="job">
-                                <p class="title">Internship - D'M&S</p>
-                                <p class="period">February - May 2021</p>
-                                <!-- <ul class="tasks">
-                                    <li>Backend developer in Drupal & Laravel</li>
-                                    <li>Developed Lead Project</li>
-                                    <li>Reasearch on when to use Laravel over Drupal and vice versa</li>
-                                </ul> -->
-                            </div>
-                            <div class="job">
-                                <p class="title">Internship - BMT Aerospace</p>
-                                <p class="period">March 2018</p>
-                                <!-- <ul class="tasks">
-                                    <li>Helped colleagues with hardware and software problems</li>
-                                </ul> -->
+                            <div id="jobs">
+                                <div class="job">
+                                    <div>
+                                        <p class="company">Dana</p>
+                                        <p class="title">Jobstudent - IT</p>
+                                    </div>
+                                    <div>
+                                        <p class="period">3 Months</p>
+                                        <p class="year">2022</p>
+                                    </div>
+                                    
+                                    <!-- <ul class="tasks">
+                                        <li>Helped colleagues with hardware and software problems</li>
+                                        <li>Developed in-house software applications</li>
+                                        <li>Automated tasks with scripts</li>
+                                    </ul> -->
+                                </div>
+                                <div class="job">
+                                    <div>
+                                        <p class="company">D'M&S</p>
+                                        <p class="title">Internship - Backend developer</p>
+                                    </div>
+                                    <div>
+                                        <p class="period">4 Months</p>
+                                        <p class="year">2021</p>
+                                    </div>
+                                    <!-- <ul class="tasks">
+                                        <li>Backend developer in Drupal & Laravel</li>
+                                        <li>Developed Lead Project</li>
+                                        <li>Reasearch on when to use Laravel over Drupal and vice versa</li>
+                                    </ul> -->
+                                </div>
+                                <div class="job">
+                                    <div>
+                                        <p class="company">BMT Aerospace</p>
+                                        <p class="title">Internship - IT</p>
+                                    </div>
+                                    <div>
+                                        <p class="period">1 Month</p>
+                                        <p class="year">2018</p>
+                                    </div>                                <!-- <ul class="tasks">
+                                        <li>Helped colleagues with hardware and software problems</li>
+                                    </ul> -->
+                                </div>
                             </div>
                         </div>
                         <div id="skills"  class="tab">
                             <p>
                                 I'm specialized in both back and front-end but I must say that back-end is more of my expertise.
-                                Below you can see couple of my skills.
+                                Below you can see some of my skills.
                             </p>
                             <div id="skills-list">   
                                 <span>HTML & CSS</span>
@@ -109,8 +129,8 @@
 </template>
 <script>
 export default {
-    data:()=>{
-        return{
+    data(){
+      return{
             tabs:[
                 {
                     name:"about",
@@ -120,8 +140,8 @@ export default {
                 },
                 {
                     name:"experience",
-                    enter:()=>{},
-                    leave:()=>{}
+                    enter:this.experienceEnter,
+                    leave:this.experienceLeave
                 },
                 {
                     name:"skills",
@@ -138,9 +158,14 @@ export default {
         $route (to, from){
             let newTab = this.tabs.filter(function(el){return el.name == to.name})[0]
             let prevTab = this.tabs.filter(function(el){return el.name == from.name})[0]
-            if(newTab){
-                this.currentTab=this.tabs.indexOf(newTab)           
+            if(prevTab!=undefined){
+                prevTab.leave()
             }
+            if(newTab!=undefined){
+                this.currentTab=this.tabs.indexOf(newTab)
+                newTab.enter()
+            }
+
       }
     },
     computed:{
@@ -153,13 +178,18 @@ export default {
           this.tabWidth = document.querySelector("#about-me").offsetWidth
           await new Promise(resolve => setTimeout(resolve, 1050));
           this.tabWidth = document.querySelector("#about-me").offsetWidth
-          console.log(this.tabWidth)
           // Then we set the value in the --vh custom property to the root of the document
           document.documentElement.style.setProperty('--tabWidth', `${this.tabWidth}px`)
-      },
-      forceUpdate(){
-        this.$forceUpdate();
-      }
+        },
+        experienceEnter(){
+            const tl = gsap.timeline({defaults:{duration:0.9,ease: Power1.easeIn},onComplete:this.animationComplete})
+            tl.fromTo("#jobs",{"width":"50%"},{"width":"100%"})
+        },
+        experienceLeave(){
+            const tl = gsap.timeline({defaults:{duration:0.6,ease: Power1.easeIn},onComplete:this.animationComplete})
+            tl.fromTo("#jobs",{"width":"100%"},{"width":"50%"})
+        }
+      
     },
     mounted(){
       this.calculateTabWidth();
@@ -168,18 +198,6 @@ export default {
 }
 </script>
 <style lang="scss">
-    .tagcloud--item{
-        font-size: 0.7em;
-    }
-    #skills{
-        position: relative;
-    }
-    #tagcloud{
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        
-    }
     #about{
         position: relative;
         #about-container{
@@ -209,7 +227,7 @@ export default {
                     background-color: $blue-200;
                     width: 100%;
                     height: 100%;
-                    opacity: 0.5;
+                    opacity: 0.4;
                 }
             }
             #profile-picture::before{
@@ -234,17 +252,18 @@ export default {
                             text-decoration: none;
                             padding:0.1rem 0;
                             font-weight: 600;
-                            font-size: 1.2rem;
+                            font-size: 1.4rem;
                             color:$grey;
                         }
                         margin-right: 3rem;
                         .router-link-exact-active{
                             color: $white;
+                            border-bottom: 2px solid $pink;
                         }
                     }
-                    margin-bottom: 1rem;
+                    margin-bottom: 1.8rem;
                 }
-                ul::before{
+                /*ul::before{
                     content:"";
                     height: 1.05px;
                     background-color: $pink;
@@ -252,7 +271,7 @@ export default {
                     position: absolute;
                     left: -28%;
                     top:50%;
-                }
+                }*/
             }
 
             //right side
@@ -299,7 +318,10 @@ export default {
                 }
 
                 #experience{
-                    margin-top:1em;
+                    #jobs{
+                        margin: auto;
+                    }
+                    /*
                     .job:first-of-type{
                         border-top: 1px solid $white;
                     }
@@ -315,6 +337,44 @@ export default {
                         .period{
                             margin-bottom: 0.2em;
                         }
+                    }*/
+                    .job:last-of-type{
+                        border:none;
+                    }
+                    .job:first-of-type{
+                        padding-top: 0.8em;
+                    }
+                    .job{
+                        margin: auto;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items:flex-end;
+                        padding: 1.1em 0.8em;
+                        border-bottom: 1px solid $white;
+                        .company{
+                            font-size: 1.2em;
+                            font-weight: 600;
+                            color: $white;
+                            margin-bottom:0;
+                        }
+                        .title{
+                            margin:0;
+                            font-size: 1em;
+                        }
+                        .period{
+                            color:$grey;
+                            margin:0;
+                            font-size: 0.9em;
+                            line-height: 1em;
+                        }
+                        .year{
+                            color: $white;
+                            text-align: right;
+                            line-height: 1.4;
+                            font-size: 1em;
+                            font-weight: 600;
+                            margin:0;
+                        }
                     }
                 }
                 #skills{
@@ -326,11 +386,17 @@ export default {
                     span{
                         display: inline-block;
                         padding: 0.5em 1em;
-                        margin: 0.2em;
+                        margin: 0.5em;
                         border: 1px solid $white;
                     }
                 }
             }
         }
+    }
+    @media screen and (max-width: 1650px) {
+        #about #about-container{
+            width: 100%;
+        }
+
     }
 </style>
