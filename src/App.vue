@@ -120,8 +120,8 @@ export default {
           tl.delay(0.4)
           tl.add("start")
           tl.fromTo('#profile-picture',{'transform':'scale(0.6) translateY(-40%)'},{'transform':'scale(1) translateY(0)',duration:0.7, ease: Sine.easeOut},"start")
-          tl.fromTo("#about nav ul li",{"transform":"translateY(20px)","opacity":0},{"transform":"translateY(0)","opacity":1, delay:0.4},"start")
-          tl.fromTo(".tab",{"transform":"translateY(20px)","opacity":0},{"transform":"translateY(0)","opacity":1,delay:0.5},"start")
+          tl.fromTo("#about nav ul li",{"transform":"translateY(20px)","opacity":0.001},{"transform":"translateY(0)","opacity":1, delay:0.4},"start")
+          tl.fromTo(".tab",{"transform":"translateY(20px)","opacity":0.001},{"transform":"translateY(0)","opacity":1,delay:0.5},"start")
         }else{
           this.animationComplete();
         }
@@ -134,7 +134,7 @@ export default {
           tl.delay(0.6)*/
         tl.delay(0.6)
         tl.add("start")
-        tl.fromTo('#scroll-indicator-container',{'transform':'translateY(100vh) translateX(-50%)','display':'none','opacity':0},{'display':'flex','transform':'translateY(0) translateX(-50%)','opacity':1},'start')
+        tl.fromTo('#scroll-indicator-container',{'transform':'translateY(100vh) translateX(-50%)','display':'none','opacity':0.001},{'display':'flex','transform':'translateY(0) translateX(-50%)','opacity':1},'start')
         tl.fromTo('#home-title',{'transform':'translate(-140%, 0)'},{'transform':'translate(0, 0)'},"start")
         //tl.fromTo('#face-wrapper',{'transform':'translate(140%, 0)'},{'transform':'translate(0, 0)'},"start")
         tl.fromTo('#face-wrapper',{'transform':'scale(0.4) translateY(-60%)'},{'transform':'scale(1) translateY(0)',ease: Sine.easeOut},'start')
@@ -170,19 +170,19 @@ export default {
         tlOne.fromTo('#mockups-desktop, #projects-mobile img',{'transform':'scale(0.4) translateY(-60%)'},{'transform':'scale(1) translateY(0)',ease: Sine.easeOut},"start")
         tlOne.fromTo('#projects-mobile h1',{'transform':'translateX(-140%)'},{'transform':'translateX(0)'},"start")
         tlOne.add("butons")
-        tlOne.fromTo('#projects-mobile .button-full',{'opacity':'0', 'transform':'translateY(10px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.5},"butons")
-        tlOne.fromTo('#projects-mobile .button-border',{'opacity':'0', 'transform':'translateY(10px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.6,delay:0.1},"butons")
+        tlOne.fromTo('#projects-mobile .button-full',{'opacity':'0.001', 'transform':'translateY(10px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.5},"butons")
+        tlOne.fromTo('#projects-mobile .button-border',{'opacity':'0.001', 'transform':'translateY(10px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.6,delay:0.1},"butons")
         
         const tlTwo = gsap.timeline({defaults:{duration:0.4}})
         tlTwo.delay(0.5)
         tlTwo.add("start")
-        tlTwo.fromTo('#projects-desktop h1',{'opacity':'0'},{'opacity':'1'},"start")
-        tlTwo.fromTo('#projects-desktop h2',{'opacity':'0', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)',delay:0.3},"start")
-        tlTwo.fromTo('#lead-project-main-info',{'opacity':'0', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.5},"start")
-        tlTwo.fromTo('#lead-project-api-info',{'opacity':'0', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.6},"start")
-        tlTwo.fromTo('#projects-desktop #icons',{'opacity':'0', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.7},"start")
-        tlTwo.fromTo('#projects-desktop .button-full',{'opacity':'0', 'transform':'translateY(35px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.5,delay:0.6},"start")
-        tlTwo.fromTo('#projects-desktop .button-border',{'opacity':'0', 'transform':'translateY(35px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.6,delay:0.7},"start")
+        tlTwo.fromTo('#projects-desktop h1',{'opacity':'0.001'},{'opacity':'1'},"start")
+        tlTwo.fromTo('#projects-desktop h2',{'opacity':'0.001', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)',delay:0.3},"start")
+        tlTwo.fromTo('#lead-project-main-info',{'opacity':'0.001', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.5},"start")
+        tlTwo.fromTo('#lead-project-api-info',{'opacity':'0.001', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.6},"start")
+        tlTwo.fromTo('#projects-desktop #icons',{'opacity':'0.001', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.7},"start")
+        tlTwo.fromTo('#projects-desktop .button-full',{'opacity':'0.001', 'transform':'translateY(35px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.5,delay:0.6},"start")
+        tlTwo.fromTo('#projects-desktop .button-border',{'opacity':'0.001', 'transform':'translateY(35px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.6,delay:0.7},"start")
         
         //tl.fromTo('#lid',{'transform':'perspective(3000px) rotateX(-80deg)'},{'transform':'perspective(3000px) rotateX(0deg)',duration: 0.6,ease: 'none',})
       },

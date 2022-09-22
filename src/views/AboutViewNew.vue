@@ -28,10 +28,10 @@
                                 <p>
                                     Hi, I'm Yente, a software developer based in Bruges. I'm specialized in both 
                                     back and font-end. I started programming in 2016. Since then I have already 
-                                    gained some experience from internships and school projects. The projects I 
-                                    enjoy working on are web applications and software with a lot of functionality.
+                                    gained some experience from internships and school projects. <span class="side-information">The projects I 
+                                    enjoy working on are web applications and software with a lot of functionality.</span>
                                 </p>
-                                <p>
+                                <p class="side-information">
                                     Besides software development I also have interests in artificial intelligence
                                     and tech in general.
                                 </p>
@@ -43,7 +43,7 @@
                                 <a aria-label="linkedin profile" href="https://www.linkedin.com/in/yente-lamote/">
                                     <img class="link-icon" src="@/assets/images/icons/iconmonstr-linkedin-3.svg" alt="linkedIn icon"/>
                                 </a>
-                                <a aria-label="email" href="#">
+                                <a aria-label="email" href="mailto: info@yentelamote.be">
                                     <img class="link-icon" src="@/assets/images/icons/email.svg" alt="mail icon"/>
                                 </a>
                             </div>
@@ -108,17 +108,17 @@
                                 <span>Node.js</span>
                                 <span>Laravel</span>
                                 <span>Java</span>
-                                <span>Python</span>
-                                <span>C#</span>
+                                <span class="less-important">Python</span>
+                                <span class="less-important">C#</span>
                                 <span>MySQL</span>
-                                <span>GraphQL</span>
-                                <span>Sass</span>
+                                <span class="less-important">GraphQL</span>
+                                <span class="less-important">Sass</span>
                                 <span>Linux</span>
-                                <span>ASP.NET</span>
-                                <span>Git</span>
-                                <span>PowerShell</span>
-                                <span>Machine learning</span>
-                                <span>Deep learning</span>
+                                <span class="less-important">ASP.NET</span>
+                                <span class="less-important">Git</span>
+                                <span class="less-important">PowerShell</span>
+                                <span class="less-important">Machine learning</span>
+                                <span class="less-important">Deep learning</span>
                             </div>
                         </div>
                     </div>
@@ -360,6 +360,8 @@ export default {
                         .title{
                             margin:0;
                             font-size: 1em;
+                            height: 1.4em;
+                            overflow: hidden;
                         }
                         .period{
                             color:$grey;
@@ -395,8 +397,119 @@ export default {
     }
     @media screen and (max-width: 1650px) {
         #about #about-container{
-            width: 100%;
+            width: 75%;
         }
-
+        #about #about-container #about-content #skills-list span{
+            margin:0.35em;
+            padding: 0.5em 1em;
+        }
+    }
+    @media screen and (max-width: 1300px) {
+        #about #about-container{
+            width: 90%;
+        }
+    }
+    @media screen and (max-width: 1200px) {
+        #about #about-container{
+            width: 100%;
+            #about-content{
+                width: 55%;
+            }
+        }
+        
+    }
+    @media screen and (max-width: 1000px) {
+        #about #about-container{
+            #about-content{
+                width: 60%;
+            }
+        }
+        #about #about-container #about-content #experience{
+            .job:first-of-type{
+                padding-top: 0;
+            }
+            .job{
+                padding:0.8em;
+                .company{
+                font-size: 1.2em;
+                }
+            }
+            
+        }
+        #about #about-container #about-content #skills-list .less-important{
+            display: none;
+        }
+    }
+    @media screen and (max-width: 1000px) and (min-width:800px){
+        #about #about-container {
+            #about-content{
+            flex-direction: row;
+            width: 90%;
+                nav{
+                    width: 30%;
+                }
+                nav ul {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    li{
+                        margin: 1em;
+                    }
+                }
+            }
+            #profile-picture{
+                display: none;
+            }
+        }
+        #about #about-container #about-content #skills-list .less-important{
+            display: inline-block;
+        }
+    }
+    @media screen and (max-width: 800px) {
+        #about #about-container {
+            width: 80%;
+            flex-direction: column;
+            #about-content{
+                width: 90%;
+                #about-me #links{
+                    margin-top: 1em;
+                }
+            }
+            #profile-picture{
+                width: 70%;
+                padding-bottom: 70%;
+                margin: auto;
+                margin-bottom: 2.5em;
+            }
+            
+        }
+        #about #about-container #about-content #skills-list .less-important{
+            display: none;
+        }
+        #about #about-container #about-content #experience .job{
+            .period{
+                display: none;
+            }
+            .year{
+                display: none;
+            }
+        } 
+        #about #about-container #about-content ul{
+            display: flex;
+            justify-content: space-between;
+            li{
+                margin-right: 0;
+            }
+        }
+        .side-information{
+            display: none;
+        }
+        #about #about-container #about-content #skills-list span{
+            margin:0.3em;
+            padding: 0.5em 0.5em;
+        }
     }
 </style>

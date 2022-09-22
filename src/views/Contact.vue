@@ -24,7 +24,7 @@
                                 <img class="link-icon" src="@/assets/images/icons/iconmonstr-linkedin-3.svg" alt="linkedIn icon"/>
                                 <span class="handle">yente-lamote</span>
                             </a>
-                            <a aria-label="email" href="#">
+                            <a aria-label="email" href="mailto: info@yentelamote.be">
                                 <img class="link-icon" src="@/assets/images/icons/email.svg" alt="mail icon"/>
                                 <span class="handle">info@yentelamote.be</span>
                             </a>
