@@ -36,7 +36,7 @@
                                     and tech in general.
                                 </p>
                             </div>
-                            <div id="links">
+                            <div id="links" class="side-information">
                                 <a aria-label="gitbhub profile" href="https://github.com/yente-lamote">
                                     <img class="link-icon" src="@/assets/images/icons/iconmonstr-github-3.svg" alt="github icon"/>
                                 </a>
@@ -98,7 +98,7 @@
                         <div id="skills"  class="tab">
                             <p>
                                 I'm specialized in both back and front-end but I must say that back-end is more of my expertise.
-                                Below you can see some of my skills.
+                                <span class="side-information">Below you can see some of my skills.</span>
                             </p>
                             <div id="skills-list">   
                                 <span>HTML & CSS</span>
@@ -351,6 +351,11 @@ export default {
                         align-items:flex-end;
                         padding: 1.1em 0.8em;
                         border-bottom: 1px solid $white;
+                        overflow: hidden;
+                        p, span{
+                            overflow:hidden;
+                            white-space: nowrap;
+                        }
                         .company{
                             font-size: 1.2em;
                             font-weight: 600;
@@ -360,8 +365,7 @@ export default {
                         .title{
                             margin:0;
                             font-size: 1em;
-                            height: 1.4em;
-                            overflow: hidden;
+                            
                         }
                         .period{
                             color:$grey;
@@ -474,15 +478,12 @@ export default {
             flex-direction: column;
             #about-content{
                 width: 90%;
-                #about-me #links{
-                    margin-top: 1em;
-                }
             }
             #profile-picture{
                 width: 70%;
                 padding-bottom: 70%;
                 margin: auto;
-                margin-bottom: 2.5em;
+                margin-bottom: 1em;
             }
             
         }
@@ -490,6 +491,12 @@ export default {
             display: none;
         }
         #about #about-container #about-content #experience .job{
+            .company{
+                font-size: 1em;
+            }
+            .title{
+                font-size: 0.9em;
+            }
             .period{
                 display: none;
             }
@@ -500,16 +507,19 @@ export default {
         #about #about-container #about-content ul{
             display: flex;
             justify-content: space-between;
+            margin-top:0.5rem;
+            margin-bottom: 1.5rem;
             li{
                 margin-right: 0;
             }
         }
         .side-information{
-            display: none;
+            display: none !important;
         }
         #about #about-container #about-content #skills-list span{
             margin:0.3em;
-            padding: 0.5em 0.5em;
+            padding: 0.5em;
+            font-size: 0.8em;
         }
     }
 </style>

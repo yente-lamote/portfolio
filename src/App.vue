@@ -202,6 +202,9 @@ export default {
             router.push({name:this.pages[this.currentPage].name})
         }
       },
+      setCurrentPage(page){
+        this.currentPage=page
+      },
       handleScrollUp(){
         if(this.currentPage>0){
           this.currentPage-=1
@@ -250,19 +253,34 @@ export default {
         var yDiff = this.yDown - yUp;
                                                                             
         if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
-            if ( xDiff > 0 ) {
-                /* right swipe */ 
-            } else {
-                /* left swipe */
-            }                       
-        } else {
-            if ( yDiff > 0 ) {
+          if ( xDiff > 0) {//right swipe
+            if(this.currentPage==2||this.currentPage==3){
               this.handleScrollDown()
-            } else { 
+            }
+          } else {//left
+            if(this.currentPage==3||this.currentPage==4){
               this.handleScrollUp()
+            }
+          }
+        }                       
+        else {
+            if ( yDiff > 0 ) {//down
+              if(this.pages[this.currentPage].pageTranslate==2){
+                this.setCurrentPage(5)
+              }else{
+                this.handleScrollDown()
+              }
+            } else { //up
+              if(this.pages[this.currentPage].pageTranslate==2){
+                this.setCurrentPage(1)
+              }else if(this.pages[this.currentPage].pageTranslate==3){
+                this.setCurrentPage(2)
+              }else{
+                this.handleScrollUp()
+              }
             }                 
-            router.push({name:this.pages[this.currentPage].name})                                                
         }
+        router.push({name:this.pages[this.currentPage].name})                                                
         /* reset values */
         this.xDown = null;
         this.yDown = null;      
