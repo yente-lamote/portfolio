@@ -4,7 +4,7 @@ $orange: #FB8500;
 $white: #ffffff;
 $background-color: #F5F9FF;
 //$grey:#8F8F8F;
-$grey:#aFaFaF;
+$grey:#8096a0;
 
 $light-blue:#A5B4FF;
 
@@ -15,6 +15,8 @@ $blue-100:#002d40;
 $blue-200:#00293a;
 $blue-300:#002433;
 $blue-400:#001f2d;
+$blue-500: #001b26;
+$blue-600: #001720;
 $yellow-100:#fce3c4;
 $yellow-200:#fbd09b;
 $glasses:#005e63;
@@ -28,4 +30,27 @@ body{
     top:50%;
     transform: translateY(-50%);
     width: 100%;
+}
+
+.social-links{
+    .link:hover{
+        color: $white !important;
+    }
+    a{
+        width: 3em;
+        height: 3em;
+        background-color: $blue-600;
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 2em;
+    }
+    a:hover{
+        background-color: $blue-400;
+    }
+    .link-icon{
+    width: 50%;
+    height: 50%;
+    }
 }

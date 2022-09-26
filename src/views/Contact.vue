@@ -15,73 +15,98 @@
                         </div>
                         <div id="arrow">
                         </div>
-                        <div id="links">
-                            <a aria-label="gitbhub profile" href="https://github.com/yente-lamote">
-                                <img class="link-icon" src="@/assets/images/icons/iconmonstr-github-3.svg" alt="github icon"/>
-                            <span class="handle">yente-lamote</span>
+                        <div class="social-links">
+                            <a class="link" aria-label="gitbhub profile" href="https://github.com/yente-lamote" target="_blank">
+                                <img class="link-icon" src="@/assets/images/icons/github.png" alt="github icon"/>
                             </a>
-                            <a aria-label="linkedin profile" href="https://www.linkedin.com/in/yente-lamote/">
-                                <img class="link-icon" src="@/assets/images/icons/iconmonstr-linkedin-3.svg" alt="linkedIn icon"/>
-                                <span class="handle">yente-lamote</span>
+                            <a class="link" aria-label="linkedin profile" href="https://www.linkedin.com/in/yente-lamote/" target="_blank">
+                                <img class="link-icon" src="@/assets/images/icons/linkedin.png" alt="linkedIn icon"/>
                             </a>
-                            <a aria-label="email" href="mailto: info@yentelamote.be">
-                                <img class="link-icon" src="@/assets/images/icons/email.svg" alt="mail icon"/>
-                                <span class="handle">info@yentelamote.be</span>
+                            <a class="link" aria-label="email" href="mailto: info@yentelamote.be" target="_blank">
+                                <img class="link-icon" src="@/assets/images/icons/mail.png" alt="mail icon"/>
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="contact-side-container">
-                    <form id="contact-form">
-                        <div class="input-container">
+                    <form ref="form" id="contact-form" @submit.prevent="sendEmail">
+                        <div id="name-container" class="input-container">
                             <label for="name" :class="{'label-focus': formInput.name.focus}">Name</label>
-                            <input v-model="formInput.name.value" id="name" type="text" @focus="handleFocus('name')" @focusout="handleFocusout('name')">
+                            <input v-model="formInput.name.value" id="name" name="name" type="text" @focus="handleFocus('name')" @focusout="handleFocusout('name')" required>
                         </div>
-                        <div class="input-container">
+                        <div id="email-container" class="input-container">
                             <label for="email" :class="{'label-focus': formInput.email.focus}">Email</label>
-                            <input v-model="formInput.email.value" id="email" type="text" @focus="handleFocus('email')" @focusout="handleFocusout('email')">
+                            <input v-model="formInput.email.value" id="email" name="email" type="text" @focus="handleFocus('email')" @focusout="handleFocusout('email')" required>
                         </div>
-                        <div class="input-container">
+                        <div id="message-container" class="input-container">
                             <label for="message" :class="{'label-focus': formInput.message.focus}">Message</label>
-                            <textarea v-model="formInput.message.value" id="message" rows="6" @focus="handleFocus('message')" @focusout="handleFocusout('message')"></textarea>
+                            <textarea v-model="formInput.message.value" id="message" name="message" rows="6" @focus="handleFocus('message')" @focusout="handleFocusout('message')" required></textarea>
                         </div>
-                        <input type="submit" value="Send message">
+                        <div id="submit-container">
+                            <input type="submit" value="Send message" :disabled="isDisabled">
+                        </div>
                     </form>
                 </div>
             </div>
+            <FormSubmittedPopup v-if="showPopup" @showPopup="setShowPopup" :showError="showError"></FormSubmittedPopup>
     </section>
 </template>
 <script>
+import emailjs from '@emailjs/browser';
+import FormSubmittedPopup from '../components/FormSubmittedPopup.vue';
+
 export default {
-    data(){
-        return{
-            formInput:{
-                name:{
-                    focus:false,
-                    value:""
+    data() {
+        return {
+            formInput: {
+                name: {
+                    focus: false,
+                    value: ""
                 },
-                email:{
-                    focus:false,
-                    value:""
+                email: {
+                    focus: false,
+                    value: ""
                 },
-                message:{
-                    focus:false,
-                    value:""
+                message: {
+                    focus: false,
+                    value: ""
                 },
+            },
+            isDisabled: false,
+            showPopup:false,
+            showError:false,
+        };
+    },
+    methods: {
+        setShowPopup(showPopup){
+            this.showPopup=showPopup;
+        },
+        handleFocus(id) {
+            this.formInput[id].focus = true;
+        },
+        handleFocusout(id) {
+            if (!this.formInput[id].value) {
+                this.formInput[id].focus = false;
             }
+        },
+        sendEmail() {
+            this.isDisabled = true;
+            emailjs.sendForm("service_9af7ekb", "template_c71ezr5", this.$refs.form, "q4vRdTEnLH-nwWNz4")
+                .then((result) => {
+                this.formInput.name.value = "";
+                this.formInput.email.value = "";
+                this.formInput.message.value = "";
+                this.isDisabled = false;
+                this.showError=false
+                this.showPopup=true;
+            }, (error) => {
+                this.isDisabled = false;
+                this.showError=true;
+                this.showPopup=true;
+            });
         }
     },
-    methods:{
-        handleFocus(id){
-            this.formInput[id].focus=true
-        },
-        handleFocusout(id){
-            console.log(this.formInput[id])
-            if(!this.formInput[id].value){
-                this.formInput[id].focus=false
-            }
-        }
-    }
+    components: { FormSubmittedPopup }
 }
 </script>
 <style lang="scss">
@@ -146,12 +171,18 @@ export default {
                 width: 48%;
             }
         }
+        input[type=submit]:disabled{
+            opacity: 0.6 !important;
+            background-color: $white !important;
+            color:$blue-600 !important;
+        }
         input[type=submit]{
             display: block;
             border:none;
             width: auto;
-            color:$blue-400;
+           
             background-color: $white;
+            color:$blue-600;
             margin-left: auto;
             padding:0.8em 1.5em;
             font-weight: 600;
@@ -162,8 +193,9 @@ export default {
             transition: all 0.15s linear;
         }
         input[type=submit]:hover{
-            background-color: $pink;
             color:$white;
+            background-color: $blue-500;
+            cursor: pointer;
         }
     }
 
@@ -191,7 +223,6 @@ export default {
             flex-direction: column;
             a{
                 color:$grey;
-                padding: 0.2em 0;
                 span{
                     margin-right: auto;
                     margin-left: 5px;
@@ -204,18 +235,8 @@ export default {
             border-left: 1px;
             border-color: $pink;
             border-style: solid;
-            margin: .5em 0;
-        }
-        #links{
-            a{
-                display: flex;
-                justify-content: center;
-            }
-        }
-        .link-icon{
-            width: 20px;
-            height: 20px;
-        }
+            margin: 1em 0;
+        } 
     }
     @media screen and (max-width: 950px) {
         #contact .content-container{

@@ -26,7 +26,7 @@
             </li>
           </ul>
           <div>
-            <RouterLink class="resume" to="/">Resume</RouterLink>
+            <a href="/resume.pdf" class="resume" target="_blank">Resume</a>
           </div>
         </div>
     </nav>
@@ -243,8 +243,9 @@ export default{
             flex-direction: column;
             li{
               a{
-                padding: 0.7 1.5rem;
+                padding: 0.75rem 1.5rem;
               }
+
               .page-link::after{
                 display: none;
               }
@@ -252,11 +253,14 @@ export default{
             }
           }
           .resume{
-          background-color: $pink !important;
-          color: $dark-blue !important;
-          margin-left:0;
-          margin-bottom: 15px;
+            background-color: $pink !important;
+            margin-bottom: 15px;
+            margin-left: 1.5em;
+            margin-top: 0.5em;
           }
+        }
+        a:hover{
+            margin-top: 0 !important;
         }
       }
     }
@@ -275,9 +279,7 @@ export default{
       background-color: transparent;
     }
     
-    a:hover{
-        margin-top: 0 !important;
-    }
+    
     #home-button{
       font-size: 2rem !important;
     }

@@ -3,12 +3,10 @@ import Header from "./components/Header.vue"
 import HomeView from "./views/HomeView.vue";
 import TopRightBars from "./components/svg's/TopRightBars.vue";
 import DotsNav from './components/DotsNav.vue';
-import AboutView from "./views/AboutView.vue";
-import Projects from "./views/Projects.vue";
+import ProjectsView from "./views/ProjectsView.vue";
 import router from "./router";
 import Contact from "./views/Contact.vue";
-import { createSimpleExpression } from "@vue/compiler-core";
-import AboutViewNew from "./views/AboutViewNew.vue";
+import AboutView from "./views/AboutView.vue";
 </script>
 <template>
   <TopRightBars></TopRightBars>
@@ -16,9 +14,8 @@ import AboutViewNew from "./views/AboutViewNew.vue";
   <Header></Header>
   <main>
     <HomeView class="page" :style="{'transform':`translateY(-${translateY}px)`}"></HomeView>
-    <Projects class="page" :style="{'transform':`translateY(-${translateY}px)`}"></Projects>
-    <!-- <AboutView class="page" :style="{'transform':`translateY(-${translateY}px)`}"></AboutView> -->
-    <AboutViewNew class="page" :style="{'transform':`translateY(-${translateY}px)`}"></AboutViewNew>
+    <ProjectsView class="page" :style="{'transform':`translateY(-${translateY}px)`}"></ProjectsView>
+    <AboutView class="page" :style="{'transform':`translateY(-${translateY}px)`}"></AboutView>
     <Contact class="page" :style="{'transform':`translateY(-${translateY}px)`}"></Contact>
   </main>
    <div id="loading">
@@ -113,16 +110,18 @@ export default {
       }
     },
     methods:{
-      aboutEnter(){
+      async aboutEnter(){
         let aboutPages = ["about","experience","skills"]
         if(!aboutPages.includes(this.from.name)){
-          const tl = gsap.timeline({defaults:{duration:0.4,ease: Power1.easeIn},onComplete:this.animationComplete})
-          tl.delay(0.4)
+          const tl = gsap.timeline({defaults:{duration:0.5,ease: Power2.easeIn},onComplete:this.animationComplete})
+          tl.delay(0.5)
           tl.add("start")
           tl.fromTo('#profile-picture',{'transform':'scale(0.6) translateY(-40%)'},{'transform':'scale(1) translateY(0)',duration:0.7, ease: Sine.easeOut},"start")
-          tl.fromTo("#about nav ul li",{"transform":"translateY(20px)","opacity":0.001},{"transform":"translateY(0)","opacity":1, delay:0.4},"start")
-          tl.fromTo(".tab",{"transform":"translateY(20px)","opacity":0.001},{"transform":"translateY(0)","opacity":1,delay:0.5},"start")
+          tl.fromTo("#about nav ul li",{"transform":"translateX(40px)","opacity":0.001},{"transform":"translateX(0)","opacity":1},"start")
+          tl.fromTo(".tab",{"transform":"translateY(20px)","opacity":0.001},{"transform":"translateY(0)","opacity":1,delay:0.1},"start")
+          tl.fromTo("#about .social-links",{"transform":"translateX(10px)","opacity":0.001},{"transform":"translateX(0)","opacity":1,delay:0.2},"start")
         }else{
+          await new Promise(resolve => setTimeout(resolve, 1000));
           this.animationComplete();
         }
         
@@ -146,22 +145,20 @@ export default {
         const tl = gsap.timeline({defaults:{duration:0.6}})
         tl.to('#scroll-indicator-container',{'transform':'translateY(100vh)','display':'none','opacity':0})
       },
-      /*aboutEnter(){
-        const tl = gsap.timeline({defaults:{duration:0.7,ease: Power1.easeIn},onComplete:this.animationComplete})
-        !this.from.name?
-          tl.delay(0.55)://wanneer pagina voor eerste keer ingeladen wordt
-          tl.delay(0.4)
-        tl.add("start")
-        tl.fromTo('#about-info',{'transform':'translate(-100%, 0)','opacity':'0'},{'transform':'translate(0, 0)','opacity':'1'},"start")
-        tl.fromTo('.tagcloud',{'transform':'translate(140%, 0)','opacity':'0'},{'transform':'translate(0, 0)','opacity':'1'},"start")
-      },*/
+
       contactEnter(){
-        const tl = gsap.timeline({defaults:{duration:0.7,ease: Power1.easeIn},onComplete:this.animationComplete})
-        !this.from.name?
-          tl.delay(0.55)://wanneer pagina voor eerste keer ingeladen wordt
-          tl.delay(0.35)
-        tl.fromTo('#contact-form',{'transform':'translate(200%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
-        tl.fromTo('#left-contact-side-container',{'transform':'translate(-200%, 0)'},{'transform':'translate(0, 0)'},"loadFirst")
+        const tl = gsap.timeline({defaults:{duration:0.4,ease: Power1.easeIn},onComplete:this.animationComplete})
+        tl.delay(0.6)
+        tl.add("start")
+        tl.fromTo('#name-container',{'transform':'translateY(30px)','opacity':'0.001'},{'transform':'translateY(0)','opacity':'1',delay:0.2},"start")
+        tl.fromTo('#email-container',{'transform':'translateY(30px)','opacity':'0.001'},{'transform':'translateY(0)','opacity':'1', delay:0.3},"start")
+        tl.fromTo('#message-container',{'transform':'translateY(30px)','opacity':'0.001'},{'transform':'translateY(0)','opacity':'1', delay:0.4},"start")
+        tl.fromTo('#submit-container',{'transform':'translateY(30px)','opacity':'0.001'},{'transform':'translateY(0)','opacity':'1', delay:0.5},"start")
+
+        tl.fromTo('#contact-info div h1',{'transform':'translateX(20px)','opacity':'0.001'},{'transform':'translateX(0)','opacity':'1'},"start")
+        tl.fromTo('.contact-side-container p',{'transform':'translateY(10px)','opacity':'0.001'},{'transform':'translateY(0)','opacity':'1',delay:0.5},"start")
+        tl.fromTo('#arrow, .social-links',{'opacity':'0.001'},{'opacity':'1',delay:0.7},"start")
+
       },
       projectEnter(){
         const tlOne = gsap.timeline({defaults:{duration:0.7},onComplete:this.animationComplete})
@@ -183,12 +180,9 @@ export default {
         tlTwo.fromTo('#projects-desktop #icons',{'opacity':'0.001', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.7},"start")
         tlTwo.fromTo('#projects-desktop .button-full',{'opacity':'0.001', 'transform':'translateY(35px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.5,delay:0.6},"start")
         tlTwo.fromTo('#projects-desktop .button-border',{'opacity':'0.001', 'transform':'translateY(35px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.6,delay:0.7},"start")
-        
-        //tl.fromTo('#lid',{'transform':'perspective(3000px) rotateX(-80deg)'},{'transform':'perspective(3000px) rotateX(0deg)',duration: 0.6,ease: 'none',})
-      },
+        },
       projectLeave(){
         const tl = gsap.timeline({defaults:{duration:0.6}})
-        //tl.to('#lid',{'transform':'perspective(3000px) rotateX(-90deg)'})
       },
       async animationComplete(){
         this.scrolling=false;
