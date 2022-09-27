@@ -1,18 +1,19 @@
 <template lang="">
-    <div id="popup-container">
-        <div class="popup" v-if="!showError">
-            <p class="title">Thank you</p>
-            <p>Your message has been sent!</p>
-            <p>I will try to get back to you.</p>
-            <a @click="goBackToSite">Back to site</a>
+    <teleport to="body">
+        <div id="popup-container">
+            <div class="popup" v-if="!showError">
+                <p class="title">Thank you</p>
+                <p>Your message has been sent!</p>
+                <p>I will try to get back to you.</p>
+                <a @click="goBackToSite">Back to site</a>
+            </div>
+            <div class="popup" v-if="showError">
+                <p class="title">Something went wrong</p>
+                <p>Please try again or use another method to contact me.</p>
+                <a @click="goBackToSite">Back to site</a>
+            </div>
         </div>
-        <div class="popup" v-if="showError">
-            <p class="title">Something went wrong</p>
-            <p>Please try again or use another method to contact me.</p>
-            <a @click="goBackToSite">Back to site</a>
-        </div>
-    </div>
-
+    </teleport>
 </template>
 <script>
 export default {
@@ -36,12 +37,13 @@ export default {
         overflow: visible;
     }
     #popup-container{
-        background-color: rgba($color: #000000, $alpha: 0.3);
-        height: 100vh;
+        background-color: rgba($color: #000000, $alpha: 0.7);
+        height: 100%;
+        width: 100%;
         position: absolute;
-        left: -20%;
-        right: -20%;
+        left: 0;
         top: 0;
+        z-index: 2;
     }
     .popup{
         padding: 2.5em 5em;

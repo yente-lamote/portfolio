@@ -96,6 +96,9 @@ export default {
                 this.formInput.name.value = "";
                 this.formInput.email.value = "";
                 this.formInput.message.value = "";
+                this.formInput.name.focus = false;
+                this.formInput.email.focus = false;
+                this.formInput.message.focus = false;
                 this.isDisabled = false;
                 this.showError=false
                 this.showPopup=true;
