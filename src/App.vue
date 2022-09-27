@@ -155,9 +155,9 @@ export default {
         tl.fromTo('#message-container',{'transform':'translateY(30px)','opacity':'0.001'},{'transform':'translateY(0)','opacity':'1', delay:0.4},"start")
         tl.fromTo('#submit-container',{'transform':'translateY(30px)','opacity':'0.001'},{'transform':'translateY(0)','opacity':'1', delay:0.5},"start")
 
-        tl.fromTo('#contact-info div h1',{'transform':'translateX(20px)','opacity':'0.001'},{'transform':'translateX(0)','opacity':'1'},"start")
-        tl.fromTo('.contact-side-container p',{'transform':'translateY(10px)','opacity':'0.001'},{'transform':'translateY(0)','opacity':'1',delay:0.5},"start")
-        tl.fromTo('#arrow, .social-links',{'opacity':'0.001'},{'opacity':'1',delay:0.7},"start")
+        tl.fromTo('#contact-info div h1',{'opacity':'0.001'},{'opacity':'1'},"start")
+        tl.fromTo('.contact-side-container p',{'transform':'translateY(5px)','opacity':'0.001'},{'transform':'translateY(0)','opacity':'1',delay:0.3},"start")
+        tl.fromTo('#arrow, .social-links',{'opacity':'0.001'},{'opacity':'1',delay:0.5},"start")
 
       },
       projectEnter(){
