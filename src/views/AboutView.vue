@@ -382,6 +382,9 @@ export default {
             margin:0.35em;
             padding: 0.5em 1em;
         }
+        #about #about-container #about-content ul li a{
+            font-size: 1.5rem;
+        }
     }
     @media screen and (max-width: 1400px) {
         #about #about-container{

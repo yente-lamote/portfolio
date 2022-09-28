@@ -147,6 +147,8 @@ export default {
       },
 
       contactEnter(){
+        const tlHide = gsap.timeline({defaults:{duration:0}})
+
         const tl = gsap.timeline({defaults:{duration:0.4,ease: Power1.easeIn},onComplete:this.animationComplete})
         tl.delay(0.6)
         tl.add("start")
@@ -161,26 +163,36 @@ export default {
 
       },
       projectEnter(){
-        const tlOne = gsap.timeline({defaults:{duration:0.7},onComplete:this.animationComplete})
-        tlOne.delay(0.3)
-        tlOne.add("start")
-        tlOne.fromTo('#mockups-desktop, #projects-mobile img',{'transform':'scale(0.4) translateY(-60%)'},{'transform':'scale(1) translateY(0)',ease: Sine.easeOut},"start")
-        tlOne.fromTo('#projects-mobile h1',{'transform':'translateX(-140%)'},{'transform':'translateX(0)'},"start")
-        tlOne.add("butons")
-        tlOne.fromTo('#projects-mobile .button-full',{'opacity':'0.001', 'transform':'translateY(10px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.5},"butons")
-        tlOne.fromTo('#projects-mobile .button-border',{'opacity':'0.001', 'transform':'translateY(10px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.6,delay:0.1},"butons")
-        
-        const tlTwo = gsap.timeline({defaults:{duration:0.4}})
-        tlTwo.delay(0.5)
-        tlTwo.add("start")
-        tlTwo.fromTo('#projects-desktop h1',{'opacity':'0.001'},{'opacity':'1'},"start")
-        tlTwo.fromTo('#projects-desktop h2',{'opacity':'0.001', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)',delay:0.3},"start")
-        tlTwo.fromTo('#lead-project-main-info',{'opacity':'0.001', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.5},"start")
-        tlTwo.fromTo('#lead-project-api-info',{'opacity':'0.001', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.6},"start")
-        tlTwo.fromTo('#projects-desktop #icons',{'opacity':'0.001', 'transform':'translateY(20px)'},{'opacity':'1', 'transform':'translateY(0)', delay:0.7},"start")
-        tlTwo.fromTo('#projects-desktop .button-full',{'opacity':'0.001', 'transform':'translateY(35px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.5,delay:0.6},"start")
-        tlTwo.fromTo('#projects-desktop .button-border',{'opacity':'0.001', 'transform':'translateY(35px)'},{'opacity':'1', 'transform':'translateY(0)',duration:0.6,delay:0.7},"start")
-        },
+        //less lagier than using fromto
+        const tlHide = gsap.timeline({defaults:{duration:0}})
+        tlHide.add("start")
+        tlHide.to('#mockups-desktop, #projects-mobile img',{'transform':'scale(0.4) translateY(-60%)'},"start")
+        tlHide.to('#projects-mobile h1',{'transform':'translateX(-140%)'},"start")
+        tlHide.to('#projects-desktop h1',{'autoAlpha':'0'},"start",)
+        tlHide.to('#projects-desktop h2',{'autoAlpha':'0', 'transform':'translateY(20px)'},"start")
+        tlHide.to('#lead-project-main-info',{'autoAlpha':'0', 'transform':'translateY(20px)'},"start")
+        tlHide.to('#lead-project-api-info',{'autoAlpha':'0', 'transform':'translateY(20px)'},"start")
+        tlHide.to('#projects-desktop #technologies',{'opacity':'0', 'transform':'translateY(20px)'},"start")
+        tlHide.to('#projects-desktop .button-full',{'opacity':'0', 'transform':'translateY(35px)'},"start")
+        tlHide.to('#projects-desktop .button-border',{'opacity':'0', 'transform':'translateY(35px)'},"start")
+        tlHide.to('#projects-mobile .button-full',{'opacity':'0', 'transform':'translateY(10px)'},"start")
+        tlHide.to('#projects-mobile .button-border',{'opacity':'0', 'transform':'translateY(10px)'},"start")
+
+        const tl = gsap.timeline({defaults:{duration:0.4},onComplete:this.animationComplete})
+        tl.delay(0.3)
+        tl.add("start")
+        tl.to('#mockups-desktop, #projects-mobile img',{'transform':'scale(1) translateY(0)',ease: Sine.easeOut,duration:0.7},"start")
+        tl.to('#projects-desktop h1',{'autoAlpha':'1', delay:0.3},"start",)
+        tl.to('#projects-desktop h2',{'autoAlpha':'1', 'transform':'translateY(0)',delay:0.4},"start")
+        tl.to('#lead-project-main-info',{'autoAlpha':'1', 'transform':'translateY(0)', delay:0.5},"start")
+        tl.to('#lead-project-api-info',{'autoAlpha':'1', 'transform':'translateY(0)', delay:0.6},"start")
+        tl.to('#projects-desktop #technologies',{'opacity':'1', 'transform':'translateY(0)', delay:0.7},"start")
+        tl.to('#projects-desktop .button-full',{'opacity':'1', 'transform':'translateY(0)',duration:0.5,delay:0.8},"start")
+        tl.to('#projects-desktop .button-border',{'opacity':'1', 'transform':'translateY(0)',duration:0.6,delay:0.9},"start")
+        tl.to('#projects-mobile h1',{'transform':'translateX(0)', duration:0.7, delay:0.2},"start")
+        tl.to('#projects-mobile .button-full',{'opacity':'1', 'transform':'translateY(0)',delay:0.4},"start")
+        tl.to('#projects-mobile .button-border',{'opacity':'1', 'transform':'translateY(0)',delay:0.5},"start")
+      },
       projectLeave(){
         const tl = gsap.timeline({defaults:{duration:0.6}})
       },
