@@ -217,7 +217,7 @@ export default {
             p{
                 width: 80%;
                 color:$grey;
-                font-size: 1.2rem;
+                line-height: 1.5;
             }
         }
         #contact-info{
@@ -252,7 +252,6 @@ export default {
                 width:100%;
                 p{
                     width: 100%;
-                    font-size: 1.5em;
                 }
             }
             #links{
@@ -270,11 +269,6 @@ export default {
         #contact .content-container{
             h1{
             font-size:2em;
-            }
-            .contact-side-container{
-                p{
-                    font-size: 1.2em;
-                }
             }
             #links{
                 font-size: 1em;

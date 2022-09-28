@@ -162,7 +162,7 @@ export default {
                 p{
                     margin-bottom:0.9rem;
                     font-size:1.1em;
-                    line-height: 1.6;
+                    line-height: 1.5;
                     color: $grey;
                 }
                 #technologies{

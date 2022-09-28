@@ -113,18 +113,16 @@ export default {
       async aboutEnter(){
         let aboutPages = ["about","experience","skills"]
         if(!aboutPages.includes(this.from.name)){
-          const tl = gsap.timeline({defaults:{duration:0.5,ease: Power2.easeIn},onComplete:this.animationComplete})
+          const tl = gsap.timeline({defaults:{duration:0.5,ease: Power2.easeIn}})
           tl.delay(0.5)
           tl.add("start")
           tl.fromTo('#profile-picture',{'transform':'scale(0.6) translateY(-40%)'},{'transform':'scale(1) translateY(0)',duration:0.7, ease: Sine.easeOut},"start")
           tl.fromTo("#about nav ul li",{"transform":"translateX(40px)","opacity":0.001},{"transform":"translateX(0)","opacity":1},"start")
           tl.fromTo(".tab",{"transform":"translateY(20px)","opacity":0.001},{"transform":"translateY(0)","opacity":1,delay:0.1},"start")
           tl.fromTo("#about .social-links",{"transform":"translateX(10px)","opacity":0.001},{"transform":"translateX(0)","opacity":1,delay:0.2},"start")
-        }else{
-          await new Promise(resolve => setTimeout(resolve, 1000));
-          this.animationComplete();
         }
-        
+        await new Promise(resolve => setTimeout(resolve, 1400));
+        this.animationComplete();
       },
       homeEnter(){
         const tl = gsap.timeline({defaults:{duration:0.7,delay:0},onComplete:this.animationComplete})
@@ -500,6 +498,5 @@ export default {
       width: 100%;
     }
   }
-  
 </style>
 
