@@ -138,7 +138,6 @@ export default {
                     leave:()=>{}
                 },
             ],
-            translateX:0,
             tabWidth:0,
             currentTab:0,
             scrolling:false,
