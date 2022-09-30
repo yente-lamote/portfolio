@@ -27,8 +27,8 @@
                             <div>
                                 <p>
                                     Hi, I'm Yente, a software developer based in Bruges. I'm specialized in both 
-                                    back and font-end. I started programming in 2016. Since then I have already 
-                                    gained some experience from internships and school projects. <span class="side-information">The projects I 
+                                    back and font-end. I started programming in 2016. Since then I have  
+                                    gained experience from internships, student jobs and school projects. <span class="side-information">The projects I 
                                     enjoy working on are web applications and software with a lot of functionality.</span>
                                 </p>
                                 <p class="side-information">
@@ -244,7 +244,7 @@ export default {
                             text-decoration: none;
                             padding:0.1rem 0;
                             font-weight: 600;
-                            font-size: 1.7rem;
+                            font-size: 1.5rem;
                             color:$grey;
                         }
                         margin-right: 3rem;
@@ -374,7 +374,7 @@ export default {
             }
         }
     }
-    @media screen and (max-width: 1650px) {
+    @media screen and (max-width: 1700px) {
         #about #about-container{
             width: 75%;
         }
@@ -383,7 +383,7 @@ export default {
             padding: 0.5em 1em;
         }
         #about #about-container #about-content ul li a{
-            font-size: 1.5rem;
+            font-size: 1.4rem;
         }
     }
     @media screen and (max-width: 1400px) {
