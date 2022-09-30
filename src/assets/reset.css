@@ -5,31 +5,37 @@
 @font-face {
     font-family: "Segoe UI";
     src: url("/Segoe\ UI.ttf");
+	font-display: swap;
 }
 @font-face {
     font-family: "Segoe UI";
     src: url("/Segoe\ UI\ Light.ttf");
 	font-weight: 300;
+	font-display: swap;
 }
 @font-face {
     font-family: "Segoe UI";
     src: url("/Segoe\ UI\ Semibold.ttf");
 	font-weight: 500;
+	font-display: swap;
 }
 @font-face {
     font-family: "Segoe UI";
     src: url("/Segoe\ UI\ Bold.ttf");
 	font-weight: 600;
+	font-display: swap;
 }
 @font-face {
     font-family: "Segoe UI";
     src: url("/Segoe\ UI\ Bold.ttf");
     font-weight: bold;
+	font-display: swap;
 }
 @font-face {
     font-family: "Segoe UI";
     src: url("/Segoe\ UI\ Bold.ttf");
     font-weight: 700;
+	font-display: swap;
 }
 
 html, body, div, span, applet, object, iframe,
