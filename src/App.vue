@@ -355,54 +355,115 @@ export default {
 @keyframes dotElasticBefore {
   0% {
     transform: scale(1, 1);
+    -moz-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
   }
   25% {
     transform: scale(1, 1.5);
+    -moz-transform: scale(1, 1.5);
+    -o-transform: scale(1, 1.5);
+    -webkit-transform: scale(1, 1.5);
+    -ms-transform: scale(1, 1.5);
   }
   50% {
     transform: scale(1, 0.67);
+    -moz-transform: scale(1, 0.67);
+    -o-transform: scale(1, 0.67);
+    -webkit-transform: scale(1, 0.67);
+    -ms-transform: scale(1, 0.67);
   }
   75% {
     transform: scale(1, 1);
+    -moz-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
   }
   100% {
     transform: scale(1, 1);
+    -moz-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
   }
 }
 
 @keyframes dotElastic {
   0% {
     transform: scale(1, 1);
+    -moz-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
   }
   25% {
     transform: scale(1, 1);
+    -moz-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
   }
   50% {
     transform: scale(1, 1.5);
+    -moz-transform: scale(1, 1.5);
+    -o-transform: scale(1, 1.5);
+    -webkit-transform: scale(1, 1.5);
+    -ms-transform: scale(1, 1.5);
   }
   75% {
     transform: scale(1, 1);
+    -moz-transform:  scale(1, 1);
+    -o-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
   }
   100% {
     transform: scale(1, 1);
+    -moz-transform:  scale(1, 1);
+    -o-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
   }
 }
 
 @keyframes dotElasticAfter {
   0% {
     transform: scale(1, 1);
+    -moz-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
   }
   25% {
     transform: scale(1, 1);
+    -moz-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
   }
   50% {
     transform: scale(1, 0.67);
+    -moz-transform: scale(1, 0.67);
+    -o-transform: scale(1, 0.67);
+    -webkit-transform: scale(1, 0.67);
+    -ms-transform: scale(1, 0.67);
   }
   75% {
     transform: scale(1, 1.5);
+    -moz-transform: scale(1, 1.5);
+    -o-transform: scale(1, 1.5);
+    -webkit-transform: scale(1, 1.5);
+    -ms-transform: scale(1, 1.5);
   }
   100% {
     transform: scale(1, 1);
+    -moz-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+
   }
 }
   main{
@@ -427,6 +488,31 @@ export default {
     transition-duration: 1000ms;
     transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
     transition-delay: 0s;
+
+    -webkit-transition: all 1000ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    -webkit-transition-property: all;
+    -webkit-transition-duration: 1000ms;
+    -webkit-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    -webkit-transition-delay: 0s;
+
+    -moz-transition: all 1000ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    -moz-transition-property: all;
+    -moz-transition-duration: 1000ms;
+    -moz-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    -moz-transition-delay: 0s;
+
+    -ms-transition: all 1000ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    -ms-transition-property: all;
+    -ms-transition-duration: 1000ms;
+    -ms-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    -ms-transition-delay: 0s;
+
+    -o-transition: all 1000ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    -o-transition-property: all;
+    -o-transition-duration: 1000ms;
+    -o-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition-delay: 0s;
+    
   }
   #app{
     height: 100vh; /* Fallback for browsers that do not support Custom Properties */
