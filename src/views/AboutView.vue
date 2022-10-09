@@ -22,7 +22,7 @@
                     </ul>
                 </nav>
                 <div style="overflow:hidden; flex:1">
-                    <div id="tabs" :style="{'transform':`translateX(-${translateX}px)`}">
+                    <div id="tabs">
                         <div id="about-me" class="tab">
                             <div>
                                 <p>
@@ -141,6 +141,7 @@ export default {
             tabWidth:0,
             currentTab:0,
             scrolling:false,
+            translateX:0
         }
     },
     watch:{
@@ -154,12 +155,11 @@ export default {
                 this.currentTab=this.tabs.indexOf(newTab)
                 newTab.enter()
             }
-
-      }
-    },
-    computed:{
-        translateX(){
-        return this.tabWidth*this.currentTab
+      },
+      currentTab:function(val){
+        this.translateX =this.tabWidth*val
+        const tl = gsap.timeline({defaults:{duration:1,ease:CustomEase.create("custom", "M0,0 C0,0 0.167,-0.019 0.334,0.136 0.424,0.22 0.52,0.43 0.592,0.652 0.7,0.998 1,1 1,1 ")}})
+        tl.to('#tabs',{'transform':`translateX(-${this.translateX}px)`})
       }
     },
     methods:{
@@ -253,15 +253,6 @@ export default {
                         }
                     }
                 }
-                /*ul::before{
-                    content:"";
-                    height: 1.05px;
-                    background-color: $pink;
-                    width: 24%;
-                    position: absolute;
-                    left: -28%;
-                    top:50%;
-                }*/
             }
 
             //right side
@@ -276,11 +267,6 @@ export default {
                     height: 100%;
                     display: flex;
                     width: 300%;
-                    transition: all 1000ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
-                    transition-property: all;
-                    transition-duration: 1000ms;
-                    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
-                    transition-delay: 0s;
                 }
                 .tab{
                     width: 100%;

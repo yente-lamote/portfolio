@@ -13,10 +13,10 @@ import AboutView from "./views/AboutView.vue";
   <DotsNav></DotsNav>
   <Header></Header>
   <main>
-    <HomeView class="page" :style="{'transform':`translateY(-${translateY}px)`}"></HomeView>
-    <ProjectsView class="page" :style="{'transform':`translateY(-${translateY}px)`}"></ProjectsView>
-    <AboutView class="page" :style="{'transform':`translateY(-${translateY}px)`}"></AboutView>
-    <Contact class="page" :style="{'transform':`translateY(-${translateY}px)`}"></Contact>
+    <HomeView class="page"></HomeView>
+    <ProjectsView class="page"></ProjectsView>
+    <AboutView class="page"></AboutView>
+    <Contact class="page"></Contact>
   </main>
    <div id="loading">
     <div id="loading-container">
@@ -84,6 +84,7 @@ export default {
         from:{},
         xDown: null,
         yDown: null,
+        translateY: 0
       }
     },
     watch:{
@@ -102,12 +103,17 @@ export default {
           const tl = gsap.timeline()
           tl.to('#scroll-indicator-container',{'display':'none', duration:0})
         }
+      },
+      currentPage:function(val){
+        this.translateY = this.vh*100*this.pages[val].pageTranslate;
+        const tl = gsap.timeline({defaults:{duration:1,ease:CustomEase.create("custom", "M0,0 C0,0 0.167,-0.019 0.334,0.136 0.424,0.22 0.52,0.43 0.592,0.652 0.7,0.998 1,1 1,1 ")}})
+        tl.to('.page',{'transform':`translateY(-${this.translateY}px)`})
       }
     },
     computed:{
-      translateY(){
+      /*translateY(){
         return this.vh*100*this.pages[this.currentPage].pageTranslate
-      }
+      }*/
     },
     methods:{
       async aboutEnter(){
@@ -479,40 +485,6 @@ export default {
     margin:auto;
     overflow:hidden;
     position: relative;
-    // -webkit-transition: all 0.5s linear;
-    // -moz-transition: all 0.5s linear;
-    // -o-transition: all 0.5s linear;
-    // transition: all 0.5s linear;
-    transition: all 1000ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
-    transition-property: all;
-    transition-duration: 1000ms;
-    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
-    transition-delay: 0s;
-
-    -webkit-transition: all 1000ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
-    -webkit-transition-property: all;
-    -webkit-transition-duration: 1000ms;
-    -webkit-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
-    -webkit-transition-delay: 0s;
-
-    -moz-transition: all 1000ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
-    -moz-transition-property: all;
-    -moz-transition-duration: 1000ms;
-    -moz-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
-    -moz-transition-delay: 0s;
-
-    -ms-transition: all 1000ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
-    -ms-transition-property: all;
-    -ms-transition-duration: 1000ms;
-    -ms-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
-    -ms-transition-delay: 0s;
-
-    -o-transition: all 1000ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
-    -o-transition-property: all;
-    -o-transition-duration: 1000ms;
-    -o-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
-    -o-transition-delay: 0s;
-    
   }
   #app{
     height: 100vh; /* Fallback for browsers that do not support Custom Properties */
